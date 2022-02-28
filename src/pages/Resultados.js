@@ -12,7 +12,7 @@ import TableA from "../components/TableA";
 
 
 
-function Resultados(){
+function Resultados({catFilter}){
 
 
 let [dataTableRows,setDataTableRows]=React.useState(rowData)
@@ -54,14 +54,18 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
 
     }
 
+    
+    if(catFilter.message){
+    let filter=parseInt((catFilter.message.id).substring(7))-1        
+    let aux=rowData.filter((element)=>element.icon==filter)
+    setDataTableRows(aux)  
+    
+    }                                
+    
+
     return (
         <React.Fragment>
-                <div id="topBarLooged-container_home">
-                    <TopBarLogged />
-                </div>
-            <div id="Buscador_container-Home">
-                <Buscador></Buscador>
-            </div>
+
             <div className="content-res">
                 <div className="actives">
                 <Table >

@@ -5,7 +5,7 @@ import '../../css/components/buscador.css'
 import { useNavigate } from "react-router-dom";
 
 
-function Buscador(){
+function Buscador({setComponent}){
   
   let   items = [
         {
@@ -46,8 +46,8 @@ function Buscador(){
       }
 
         if(redirect){
-          navigate("/resultados",{state:{cat:category}})
-          //setResultados(true)
+          //navigate("/resultados",{state:{cat:category}})
+          setComponent('resultados',{message:category})
           
         }
         return (

@@ -56,9 +56,9 @@ function BurguerMenu(){
 
     return (
         <Menu customBurgerIcon={<Menu32 className="carbon_icon"/>} styles={styles}>
-                    <a id="home" className="menu-item" href="/">Home</a>
-                    <a id="favoritos" className="menu-item" href="/favoritos">Favoritos</a>
-                    <a id="historial" className="menu-item" href="/historial">Historial</a>
+                    <a id="home" className="menu-item" href="/home">Home</a>
+                    <a id="favoritos" className="menu-item" href="/resultados">Favoritos</a>
+                    <a id="historial" className="menu-item" href="/resultados">Historial</a>
                     <a id="rendicion" className="menu-item--small" href="">Rendición de Cuentas</a>
                     </Menu>
     )
