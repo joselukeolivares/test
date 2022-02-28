@@ -1,0 +1,16 @@
+#categoriesContainer{
+    background-color: #F4F4F4;
+    height: 100%;
+    display: block;
+    padding: 2rem;
+}
+
+#cardsContainer>h3{
+    margin: 1rem;
+}
+
+.categoryCards{
+    width: 100%;
+    display: flex;
+    
+}

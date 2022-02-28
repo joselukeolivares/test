@@ -1,0 +1,30 @@
+#headerCategory{
+    display: flex;
+}
+
+.categoryColumn{
+    width: 20rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.headerCategory{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.nameCategory{
+    font-size: 2rem;
+    margin-left: .5rem;
+}
+
+.linkMore{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.linkMore > a{
+    font-size: 2rem;
+}

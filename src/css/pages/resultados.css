@@ -1,0 +1,13 @@
+.content-res{
+    display: flex;
+}
+
+.actives{
+    width: 25%;
+    margin: 5%;
+}
+
+.dataTable-res{
+    width: 55%;
+    margin: 5%;
+}

@@ -1,0 +1,39 @@
+#Buscador_container-Home{
+    display: flex;
+    justify-content: center;
+    margin-top: 15rem;
+}
+
+#topBarLooged-container_home{
+    height: 5rem;
+    position:relative
+}
+
+#historyCards_container{
+    height: 20rem;
+    /*background-color: blueviolet;*/
+}
+
+#categories_container-Home{
+    height: 80rem;
+    /*background-color: blueviolet;*/
+}
+
+@media screen and (max-width: 600px){
+    #Buscador_container-Home{
+        margin-top: 2rem;
+     }
+    
+}
+
+
+@media screen and (max-width:300px){
+
+ #Buscador_container-Home{
+    margin-top: 1rem;
+    /*background-color: red;*/
+ }
+
+  
+    
+}

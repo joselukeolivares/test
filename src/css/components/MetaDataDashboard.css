@@ -1,0 +1,58 @@
+.metadataSection{    
+    width: 100%;
+    color:#255AA8;
+}
+
+.metadataSection div{
+    
+}
+
+.metadata{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.tdRow{
+    margin: 2rem;
+}
+
+
+.background_dashboardCarbon{
+    width: 100%;
+    height: 40rem;
+    opacity: .5;
+    position: absolute;
+    
+}
+
+.title-Section{
+    display: grid;    
+    width: 100%;    
+    padding-top: 10rem;
+    justify-content: center;
+}
+
+.title-Section div{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+}
+
+.title-Section div >*{
+    margin: 1rem;
+}
+
+.arrowDown{
+    display: flex;
+    justify-content: center;
+}
+
+.aboutDCarbon{
+    padding: 3rem 8rem;
+}
+
+.lineChart-container{
+    padding: 5rem;
+}

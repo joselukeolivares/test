@@ -1,0 +1,115 @@
+.Card-container{
+    background-color: white;
+    width: 20rem;
+    height: 10rem;
+    margin: 2rem 1rem;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.topSection_Card-container{
+    display: flex;
+    font-size: .5rem;
+}
+
+.typesText_card-Container{
+    font-size: .8rem;
+    color: #A8A8A8;
+}
+
+.nameText_card-Container{
+    color: #525252;
+    font-size: 1rem;
+}
+
+#typeTitle-topSection_Card{
+    margin: 1rem;
+    
+    
+}
+
+.iconSection{
+    display: flex;
+    margin: 1rem 1rem;
+    justify-content: flex-end;
+}
+
+.dashIcon_container{
+    
+    padding: .5rem;
+    border-radius: 1.5rem;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: .5rem;
+}
+
+.dashboard{
+    background-color: #FF7EB6;
+}
+
+.carbon{
+    background-color: #D0E2FF;
+}
+
+.indicator{
+    background-color: #14B9B9;
+}
+
+.coppelBoard{
+    background-color: #E0E0E0;
+}
+
+.dashboardsCat{
+    /*background-image: url("../../icons/dashboard_icon.png");*/
+    background-size: contain;
+    background-color: #FF7EB6;
+}
+
+.indicadoresCat{
+    /*background-image: url("../../icons/indicadores_icon.png");*/
+    background-size: contain;
+    background-color: #14B9B9;
+    
+}
+
+.rendicionCat{
+    /*background-image: url("../../icons/rendicion_icon.png");*/
+    background-size: contain;
+    background-color: #BB96FB;
+}
+
+.proyectos_vCat{
+    /*background-image: url("../../icons/proyectosV_icon.png");*/
+    background-size: contain;
+    background-color: #F1C21B;
+}
+
+.TablerosCat{
+    /*background-image: url("../../icons/tablero_icon.png");*/
+    background-size: contain;
+    background-color: #67CE51;
+}
+
+.linkCotainer{
+    margin: 1rem;
+    position: absolute;
+    bottom: 0rem;
+}
+
+.link_container>a{
+    text-decoration: none;
+}
+
+.tableauIcon{
+    width: 30px;
+    height: 30px;
+    background-image: url("../../icons/tableau.png");
+    background-color: #D0E2FF;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;    
+    border-radius: 1.5rem;
+}

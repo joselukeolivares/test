@@ -1,0 +1,14 @@
+#cardsContainer{
+    background-color: #F4F4F4;
+    height: 100%;
+    display: block;
+    padding: 2rem;
+}
+
+#cardsContainer>h3{
+    margin-left: 1rem;
+}
+
+.CardsHist-Carrusel{
+    display: flex;
+}

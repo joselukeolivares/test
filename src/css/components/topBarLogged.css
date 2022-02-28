@@ -1,0 +1,66 @@
+#topBarLogged_container{
+    background-color: #161616;
+    display: flex;
+    position: relative;
+    height: 100px;
+    align-items: center;
+
+}
+
+#burgerMenu_container{
+position: absolute;
+left: 0rem;
+width: max-content;
+display: flex;
+align-items: center;
+margin: 0% 1rem;
+}
+
+#burgerMenu_container > div{
+    margin-left: 4rem;
+}
+
+#loggedSearh-section{
+position: absolute;
+right: 0rem;
+width: max-content;
+display: flex;
+margin: 0% 1rem;
+align-items: center;
+}
+
+#userIcon_container{
+    display: flex;
+    align-items: center;
+    margin: 0% 1rem;
+}
+
+#carShop_container{
+    margin: 0% 1rem;
+}
+
+svg.carbon_icon{
+    fill:white
+}
+
+div.text{
+    color:white
+}
+
+@media screen and (max-width:600px){
+
+    #Search_container{
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width:300px){
+
+    #loggedSearh-section{
+        display: none;
+    }
+
+  
+    
+}

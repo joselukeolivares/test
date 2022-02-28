@@ -1,0 +1,60 @@
+@import 'carbon-components/scss/globals/scss/styles.scss';
+
+@font-face {
+    font-family: 'CircularStdMedium';
+    src: local('CircularStdMedium'), url(./fonts/CircularStd-Medium.otf) format('truetype');}
+  
+@font-face {
+     font-family: 'CircularStdBlack';
+     src: local('CircularStdBlack'), url(./fonts/CircularStd-Black.otf) format('truetype');}
+
+body{
+    font-family: CircularStdMedium;
+}
+
+.Background{
+    background-image: url("./pictures/building.png");
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: inherit;
+  }
+  
+  .blackBanner{
+    width: 100%;
+    background-color: #161616;
+    color: #F4F4F4;
+    height: 3%;
+  }
+  
+  .blackBanner > p{
+    margin-left: 1%;
+  }
+  
+  #AppLoginContainer{
+  margin: 5%;
+  }
+  
+  .title {
+    color:#255AA8;
+    
+    
+    font-size: 32px;
+  }
+  
+  .inputs{
+    width: 400px;  
+  }
+  
+  .checkBs{
+    margin: 10px;
+  }
+  
+  TextInput + TextInput{
+    margin: 5%;
+  }
+  
+  
+  
