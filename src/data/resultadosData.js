@@ -6,6 +6,7 @@ export const rowData = [
       type: 'Dashboard',
       format: 'Carbon Design',
       updated: '30/11/21',
+      like:'fav',
     },
     {
       id: '2',
@@ -14,6 +15,7 @@ export const rowData = [
       type: 'Indicador',
       format: 'Tableau',
       updated: '30/11/21',
+      like:'unfav',
 
     },
     {
@@ -23,7 +25,7 @@ export const rowData = [
       type: 'Indicador',
       format: 'Tableau',
       updated: '30/11/21',
-
+      like:'fav',
     },
     {
       id: '4',
@@ -32,7 +34,7 @@ export const rowData = [
       type: 'Indicador',
       format: 'Tableau',
       updated: '30/11/21',
-
+      like:'unfav',
     },
     {
       id: '5',
@@ -41,6 +43,7 @@ export const rowData = [
       type: 'Dashboard',
       format: 'Tableau',
       updated: '30/11/21',
+      like:'fav',
     },
     {
       id: '6',
@@ -49,6 +52,7 @@ export const rowData = [
       type: 'Indicador',
       format: 'Power BI',
       updated: '30/11/21',
+      like:'fav',
     },
     ,
     {
@@ -58,6 +62,7 @@ export const rowData = [
       type: 'Indicador',
       format: 'Power BI',
       updated: '30/11/21',
+      like:'fav',
     },
     ,
     {
@@ -67,6 +72,7 @@ export const rowData = [
       type: 'Indicador',
       format: 'Power BI',
       updated: '30/11/21',
+      like:'fav',
     },
     ,
     {
@@ -76,6 +82,7 @@ export const rowData = [
       type: 'Indicador',
       format: 'Power BI',
       updated: '30/11/21',
+      like:'unfav',
     },
   ];
   

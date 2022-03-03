@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import 'carbon-components/css/carbon-components.min.css';
 import { DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell } from 'carbon-components-react';
 import { headerData, rowData } from '../data/resultadosData'
@@ -8,11 +8,13 @@ import TopBarLogged from "../components/TopBarLogged";
 import { useLocation } from "react-router-dom";
 import '../css/pages/resultados.css'
 import TableA from "../components/TableA";
+import { HomeContext } from "../context";
+import HistoryFilter from "../components/HistoryFilter";
 
 
 
 
-function Resultados({catFilter}){
+function Resultados(){
 
 
 let [dataTableRows,setDataTableRows]=React.useState(rowData)
@@ -55,59 +57,113 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
     }
 
     
-    if(catFilter.message){
-    let filter=parseInt((catFilter.message.id).substring(7))-1        
+    if(false){
+    let filter=9999        
     let aux=rowData.filter((element)=>element.icon==filter)
     setDataTableRows(aux)  
     
-    }                                
+    }
     
+
+
+
+        
+ 
 
     return (
         <React.Fragment>
+            <HomeContext.Consumer>
+                {
+                    ({
+                        catFilter,
+                        setcatFilter,
+                        favorite,
+                        history
+                    })=>
+                    {
+                        if(catFilter!=0){
+                            dataTableRows=rowData.filter(item=>item.icon==catFilter)
+                        }else if(catFilter==0){
+                            dataTableRows=rowData
+                        }
 
-            <div className="content-res">
-                <div className="actives">
-                <Table >
-                    <thead>
-                        <tr>
-                            {header.map((head,i)=><td key={`i${i}`}>{head}</td>)}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {body.map((singleRow,j)=><tr onClick={()=>{
-                                if(j!=5){
-                                    let aux=rowData.filter((element)=>element.icon==(j+1))
-                                    setDataTableRows(aux  
-                                    )
-                                }else{
-                                    setDataTableRows(rowData)
-                                }                               
- 
+                        if(favorite&&headerData.length==5){
+                            headerData.push(    {
+                             key: 'like',
+                             header: 'Favorito',
+                           })
+                           dataTableRows=rowData
+                         }else if(!favorite&&headerData.length==6){
+                             headerData.pop()
+                             dataTableRows=dataTableRows.map(row=>{
+                                 let newRow={}
+                                 newRow.id=row.id
+                                 newRow.icon=row.icon
+                                 newRow.name=row.name
+                                 newRow.type=row.type
+                                 newRow.format=row.format
+                                 newRow.updated=row.updated
+                                 newRow.like=row.like
+                                 return newRow
+                                }
+                                
+                            )
+                             console.log(headerData)
+                         }
 
-                        }}key={`j${j}`}>
-                            {singleRow.map((td,k)=><td key={`j${j}k${k}${td}`}>
-                                {k!=0 && td
-                                   
-                                }
-                                {
-                                 k==0 && getIcons(td)   
-                                }
-                            </td>)}
-                        </tr>)}
-                    </tbody>
-                </Table>
-                </div>
-                <div className="dataTable-res">
-                     <TableA
-                     headerData={headerData}
-                     rowData={dataTableRows}
-                     ></TableA>               
-                </div>
-                
-                    
-            </div>
-            
+                    return (
+                    <div className="content-res">
+                        {!history &&                         <div className="actives">
+                        <Table >
+                            <thead>
+                                <tr>
+                                    {header.map((head,i)=><td key={`i${i}`}>{head}</td>)}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {body.map((singleRow,j)=><tr onClick={()=>{
+                                        if(j!=5){
+                                            let aux=rowData.filter((element)=>element.icon==(j+1))
+                                            //setDataTableRows(aux)
+                                            setcatFilter(j+1)
+                                        }else{
+                                            setcatFilter(0)
+                                        }                               
+        
+
+                                }}key={`j${j}`}>
+                                    {singleRow.map((td,k)=><td key={`j${j}k${k}${td}`}>
+                                        {k!=0 && td
+                                        
+                                        }
+                                        {
+                                        k==0 && getIcons(td)   
+                                        }
+                                    </td>)}
+                                </tr>)}
+                            </tbody>
+                        </Table>
+                        </div>}
+                        {history && <HistoryFilter></HistoryFilter>}
+                        <div className="dataTable-res">
+                            
+    
+                                        <React.Fragment>
+                                    
+                                                <TableA
+                                                headerData={headerData}
+                                                rowData={dataTableRows}
+                                                ></TableA> 
+                                        </React.Fragment>
+                                    
+                        </div>
+                        
+                            
+                    </div>
+                    )
+                    }
+                }
+            </HomeContext.Consumer> 
 
         </React.Fragment>
     )

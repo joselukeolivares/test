@@ -1,0 +1,12 @@
+svg.trashIcon{
+    fill:orange
+}
+
+label{
+    color:orange
+}
+.delete-section{
+    display: flex;
+    justify-content:left;
+    align-items:flex-end;
+}

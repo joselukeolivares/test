@@ -1,5 +1,5 @@
 import { DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell } from 'carbon-components-react';
-import {Dashboard20,ChartLine20,View20,TableSplit20,ReportData20} from '@carbon/icons-react'
+import {Dashboard20,ChartLine20,View20,TableSplit20,ReportData20,CheckmarkFilled32,AlarmAdd32} from '@carbon/icons-react'
 
 function TableA({
     rowData,
@@ -18,7 +18,11 @@ function TableA({
             case '4':
                 return (<div className="dashIcon_container proyectos_vCat"><View20 /></div>)                    
             case '1':
-                return (<div className="dashIcon_container TablerosCat"><TableSplit20 /></div>)            
+                return (<div className="dashIcon_container TablerosCat"><TableSplit20 /></div>)
+                case 'fav':
+                    return (<div className="dashIcon_container "><CheckmarkFilled32 className='favIcon'/></div>)
+                    case 'unfav':
+                        return (<div className="dashIcon_container "><AlarmAdd32 /></div>)                       
             default:
                 console.log("icon")
                 console.log(icon)
@@ -47,11 +51,13 @@ function TableA({
                     <TableRow key={row.id}>
                     {row.cells.map((cell,i) => (
                         <TableCell key={cell.id}>{
-                            i!=0 && cell.value
+                            i>0 && i<5 && cell.value
                             }
                             {
-                            i==0 && getIcons(cell.value)    
-                            }</TableCell>
+                            i==0 && getIcons(cell.value)  }
+                            {i==5 && getIcons(cell.value)
+                            }
+                            </TableCell>
                     ))}
                     </TableRow>
                 ))}

@@ -3,13 +3,14 @@ import {Dropdown,TextInput} from 'carbon-components-react'
 import {Search32} from '@carbon/icons-react'
 import '../../css/components/buscador.css'
 import { useNavigate } from "react-router-dom";
+import { HomeContext } from "../../context";
 
 
-function Buscador({setComponent}){
+function Buscador(){
   
   let   items = [
         {
-          id: 'option-0',
+          id: 'option-2',
           text: 'Dashboards',
         },
         {
@@ -17,7 +18,7 @@ function Buscador({setComponent}){
           text: 'Indicadores',
         },
         {
-          id: 'option-2',
+          id: 'option-4',
           text: 'Rendición de Cuentas',
         },
         {
@@ -26,8 +27,8 @@ function Buscador({setComponent}){
          
         },
         {
-          id: 'option-4',
-          text: 'Tableros Tableau',
+          id: 'option-0',
+          text: 'Tableros Control',
         },
         {
           id: 'option-5',
@@ -47,35 +48,58 @@ function Buscador({setComponent}){
 
         if(redirect){
           //navigate("/resultados",{state:{cat:category}})
-          setComponent('resultados',{message:category})
+          //setComponent('resultados',{message:category})
           
         }
         return (
             <div id="contenedor_Buscador" >
                     
+                <HomeContext.Consumer>
+                  {({
+                    setcatFilter,
+                    setHomeVisible,
+                    setResultados,
+                    setFavorite
+                    })=>{
+                    return (
+                      <React.Fragment>
                     <div id="Dropdown_Buscador" >
-                    <Dropdown
-                        id="DropdownCarbon_buscador"                                                
-                        label="Selecciona Tipo de Visualización"
-                        items={items}
-                        itemToString={(item) => (item ? item.text : '')}
-                        onChange={({selectedItem})=>{
-                          console.log(selectedItem)
-                          setCategory(selectedItem)
-                          
-                        }}
-                        />
-                    </div>
-                    <div id="TextInput_Buscador">
-                        <TextInput
-                        id="what_looking"
-                        labelText=""
-                        placeholder={"What are you looking for today?"}
-                        ></TextInput>
-                    </div>
-                    <div className="searchIcon" onClick={searchTo} >
-                            <Search32  className="search_icon"/>
-                    </div>    
+                        <Dropdown
+                            id="DropdownCarbon_buscador"                                                
+                            label="Selecciona Tipo de Visualización"
+                            items={items}
+                            itemToString={(item) => (item ? item.text : '')}
+                            onChange={({selectedItem})=>{
+                              console.log(selectedItem)
+                              let id=parseInt((selectedItem.id).substring(7))
+                              setCategory(id+1)
+                    
+
+                              
+                            }}
+                            />
+                        </div>
+                        <div id="TextInput_Buscador">
+                            <TextInput
+                            id="what_looking"
+                            labelText=""
+                            placeholder={"What are you looking for today?"}
+                            ></TextInput>
+                        </div>
+                        <div className="searchIcon" onClick={()=>{
+                                    setHomeVisible(false)
+                                    setResultados(true)
+                                    setFavorite(false)
+                                  
+                                    setcatFilter(category)
+
+                        }} >
+                                <Search32  className="search_icon"/>
+                        </div> 
+                      </React.Fragment>
+                    )
+                  }}
+                </HomeContext.Consumer>
   
             </div>
         )
