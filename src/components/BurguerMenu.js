@@ -2,6 +2,8 @@ import {slide  as Menu} from 'react-burger-menu'
 import {Menu32} from '@carbon/icons-react'
 import { HomeContext } from '../context'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 function BurguerMenu(){
     var styles = {
@@ -49,13 +51,14 @@ function BurguerMenu(){
         },
         bmOverlay: {
           background: 'rgba(0, 0, 0, 0.3)'
+        },
+        buttonM:{
+          cursor:'pointer'
         }
       }
-
-      function showSettings(event) {
-        
-    }
     const values=useContext(HomeContext)
+    const navigate=useNavigate()
+
     function swithContent(code){
       switch(code){
         case 1:
@@ -65,22 +68,18 @@ function BurguerMenu(){
               values.setHistory(false)
               break;
         case 2:
-          values.setHomeVisible(false)
-          values.setResultados(true)
+          console.log("option 2 burguer menu")
           values.setFavorite(true)
           values.setHistory(false)
+          navigate("/resultados",{replace:true})
               break;
         case 3:
-          values.setHomeVisible(false)
-          values.setResultados(true)
           values.setFavorite(false)
           values.setHistory(true)
+          navigate("/resultados")
               break;
         case 4:
-          values.setHomeVisible(true)
-              values.setResultados(false)
-              values.setFavorite(false)
-              values.setHistory(false)
+
               break;
         default:
           console.log("option invalid in burguer menu")
@@ -94,10 +93,10 @@ function BurguerMenu(){
 
     return (
         <Menu customBurgerIcon={<Menu32 className="carbon_icon"/>} styles={styles}>
-                    <div id="home" className="menu-item" href="/home" onClick={()=>swithContent(1)}>Home</div>
-                    <div id="favoritos" className="menu-item" href="/resultados" onClick={()=>swithContent(2)}>Favoritos</div>
-                    <div id="historial" className="menu-item" href="/resultados" onClick={()=>swithContent(3)}>Historial</div>
-                    <div id="rendicion" className="menu-item--small" href="" onClick={()=>swithContent(4)}>Rendición de Cuentas</div>
+                    <a id="home" className="menu-item" href="/home" >Home</a>
+                    <div id="favoritos" className="menu-item buttonM" styles={styles} onClick={()=>swithContent(2)}>Favoritos</div>
+                    <div id="historial" className="menu-item buttonM" styles={styles} onClick={()=>swithContent(3)}>Historial</div>
+                    <div id="rendicion" className="menu-item--small buttonM" styles={styles} href="/home" >Rendición de Cuentas</div>
                     </Menu>
     )
 }

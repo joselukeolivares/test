@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useContext, useEffect} from "react";
 import Buscador from "../../components/buscador/buscadorIBM";
 //import '../../css/pages/home.css'
 import TopBarLogged from "../../components/TopBarLogged";
@@ -31,25 +31,37 @@ function Home (){
         
     }
 
+    const values=useContext(HomeContext)
+    //values.setTopBar(true)
+    //values.setFooter(true)
+    //values.setBuscador(true)
+
         return (
             <div id="container_Home">
-                <div id="topBarLooged-container_home">
-                    <TopBarLogged />
-                </div>
-                <div id="Buscador_container-Home">
-                    <Buscador ></Buscador>                    
-                </div>
+
 
                     <HomeContext.Consumer>
                         {(
                           {
-                              homeVisible,
-                              resultados
+                              setFooter,
+                              setTopBar
                         }
                         )=>{
                             return(
                                     <React.Fragment>
-                                        { homeVisible &&
+                                                                                {
+                                            true && 
+                                            <div id="topBarLooged-container_home">
+                                            <TopBarLogged />
+                                            </div>
+                                        }
+                                        {
+                                            true && 
+                                            <div id="Buscador_container-Home">
+                                            <Buscador ></Buscador>                    
+                                            </div> 
+                                        } 
+                                        { true &&
                                             <React.Fragment>
                                                 <div id="historyCards_container">
                                                 <HistoryCards history={data.history}></HistoryCards>
@@ -59,11 +71,7 @@ function Home (){
                                             </div>
                                             </React.Fragment>    
                                         }
-                                        { resultados &&
-                                            <div id="categories_container-Home">
-                                                <Resultados ></Resultados>
-                                            </div>
-                                        } 
+                                        
                                     </React.Fragment>
                                 )
 
@@ -71,7 +79,7 @@ function Home (){
                         }
 
                         </HomeContext.Consumer>                    
-                    <Footer></Footer>                      
+                                          
                 </div>
             )
 }

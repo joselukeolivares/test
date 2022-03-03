@@ -3,6 +3,7 @@ import './index.scss';
 import { Button, Tile,TextInput,Checkbox, Link } from 'carbon-components-react';
 import {ArrowRight32} from '@carbon/icons-react'
 import { useNavigate } from 'react-router-dom';
+import { HomeContext } from './context';
 
 
 
@@ -40,7 +41,22 @@ function Login() {
           <br/>
       </div>
       <div>
-        <Button onClick={handleLogin}>Continuar <ArrowRight32 /></Button>        
+        <HomeContext.Consumer>
+            {({
+              setTopBar,
+              setBuscador,
+              setFooter,
+            })=>{
+              return (
+                <Button onClick={()=>{
+                  setTopBar(true)
+                  setBuscador(true)
+                  setFooter(true)
+                  handleLogin()
+                }}>Continuar <ArrowRight32 /></Button>
+              )
+            }}       
+        </HomeContext.Consumer> 
       </div>
       
           <br/>

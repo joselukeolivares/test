@@ -41,13 +41,14 @@ function Buscador(){
       let [redirect,setRedirect]=React.useState(false)
       let navigate=useNavigate()
 
-      function searchTo() {
-        
-        setRedirect(true)
+      function searchTo(flag) {
+        if(!flag)
+        navigate("/resultados")
+        //setRedirect(true)
       }
 
         if(redirect){
-          //navigate("/resultados",{state:{cat:category}})
+          navigate("/resultados")
           //setComponent('resultados',{message:category})
           
         }
@@ -59,7 +60,8 @@ function Buscador(){
                     setcatFilter,
                     setHomeVisible,
                     setResultados,
-                    setFavorite
+                    setFavorite,
+                    resultados
                     })=>{
                     return (
                       <React.Fragment>
@@ -94,7 +96,11 @@ function Buscador(){
                                     setcatFilter(category)
 
                         }} >
-                                <Search32  className="search_icon"/>
+                                <Search32 onClick={()=>{
+                                    setFavorite(false)
+                                    searchTo(resultados)
+                                  
+                                }} className="search_icon"/>
                         </div> 
                       </React.Fragment>
                     )

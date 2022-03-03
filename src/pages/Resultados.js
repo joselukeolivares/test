@@ -10,6 +10,8 @@ import '../css/pages/resultados.css'
 import TableA from "../components/TableA";
 import { HomeContext } from "../context";
 import HistoryFilter from "../components/HistoryFilter";
+import { Footer } from "../components/Footer";
+
 
 
 
@@ -56,23 +58,11 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
 
     }
 
-    
-    if(false){
-    let filter=9999        
-    let aux=rowData.filter((element)=>element.icon==filter)
-    setDataTableRows(aux)  
-    
-    }
-    
-
-
-
-        
- 
 
     return (
         <React.Fragment>
             <HomeContext.Consumer>
+                
                 {
                     ({
                         catFilter,
@@ -112,6 +102,21 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                          }
 
                     return (
+                        <React.Fragment>
+                                                      {
+                            true && 
+                            <div id="topBarLooged-container_home">
+                              <TopBarLogged />
+                            </div>
+                          }
+                          {
+                            true && 
+                            <div id="Buscador_container-Home">
+                              <Buscador ></Buscador>                    
+                            </div> 
+                          } 
+                            
+
                     <div className="content-res">
                         {!history &&                         <div className="actives">
                         <Table >
@@ -160,9 +165,13 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                         
                             
                     </div>
+               
+                    
+                        </React.Fragment>
                     )
                     }
                 }
+                
             </HomeContext.Consumer> 
 
         </React.Fragment>

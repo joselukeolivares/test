@@ -10,6 +10,9 @@ function HomeProvider(props){
     let [catFilter,setcatFilter]=React.useState(0)
     let [favorite,setFavorite]=React.useState(false)
     let [history,setHistory]=React.useState(false)
+    let [topBar,setTopBar]=React.useState(false)
+    let [buscador,setBuscador]=React.useState(false)
+    let [footer,setFooter]=React.useState(false)
 
 
     return (
@@ -23,7 +26,14 @@ function HomeProvider(props){
             favorite,
             setFavorite,
             history,
-            setHistory
+            setHistory,
+            buscador,
+            setBuscador,
+            topBar,
+            setTopBar,
+            footer,
+            setFooter
+
 
 
 
