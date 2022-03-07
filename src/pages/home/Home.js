@@ -1,6 +1,6 @@
 import React,{useContext, useEffect} from "react";
 import Buscador from "../../components/buscador/buscadorIBM";
-//import '../../css/pages/home.css'
+import '../../css/pages/home.css'
 import TopBarLogged from "../../components/TopBarLogged";
 import HistoryCards from "../../components/HistoryCards";
 import Categories from '../../components/Categories'
@@ -13,8 +13,8 @@ import {HomeContext} from '../../context/'
 
 
 function Home (){
-    console.log("hello there")
-    console.log(data)
+    //console.log("hello there")
+    //console.log(data)
 
     
     function setComponent(komponent,properties){
@@ -44,7 +44,8 @@ function Home (){
                         {(
                           {
                               setFooter,
-                              setTopBar
+                              setTopBar,
+                              subtitle
                         }
                         )=>{
                             return(
@@ -55,6 +56,9 @@ function Home (){
                                             <TopBarLogged />
                                             </div>
                                         }
+                                        <div className="subTitle-container">
+                                            <h1 className="subTitle">{subtitle}</h1>
+                                        </div>
                                         {
                                             true && 
                                             <div id="Buscador_container-Home">
@@ -63,13 +67,14 @@ function Home (){
                                         } 
                                         { true &&
                                             <React.Fragment>
+                       
                                                 <div id="historyCards_container">
                                                 <HistoryCards history={data.history}></HistoryCards>
                                                         </div>
                                                 <div id="categories_container-Home">
                                                 <Categories categories={data.categories}></Categories>
                                             </div>
-                                            </React.Fragment>    
+                                               </React.Fragment>    
                                         }
                                         
                                     </React.Fragment>

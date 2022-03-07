@@ -55,7 +55,7 @@ function Category({categories}){
                             })}
                         </div>
                         <div className="linkMore">
-                            <Link>312 más</Link>
+                            <Link>{`${categoryObj.total} más`}</Link>
                         </div>
                         </div>
                     )

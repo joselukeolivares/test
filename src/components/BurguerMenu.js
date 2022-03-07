@@ -66,16 +66,24 @@ function BurguerMenu(){
               values.setResultados(false)
               values.setFavorite(false)
               values.setHistory(false)
+              values.setTopSearch(false)
+              values.setBuscador(true)
               break;
         case 2:
-          console.log("option 2 burguer menu")
+          //console.log("option 2 burguer menu")
           values.setFavorite(true)
           values.setHistory(false)
+          values.setTopSearch(true)
+          values.setBuscador(false)
+          values.setSubtitle("Mis Favoritos")
           navigate("/resultados",{replace:true})
               break;
         case 3:
           values.setFavorite(false)
           values.setHistory(true)
+          values.setTopSearch(true)
+          values.setBuscador(false)
+          values.setSubtitle("Historial")
           navigate("/resultados")
               break;
         case 4:

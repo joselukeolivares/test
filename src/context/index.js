@@ -13,6 +13,8 @@ function HomeProvider(props){
     let [topBar,setTopBar]=React.useState(false)
     let [buscador,setBuscador]=React.useState(false)
     let [footer,setFooter]=React.useState(false)
+    let [topSearch,setTopSearch]=React.useState(false)
+    let [subtitle,setSubtitle]=React.useState("Data Coppel")
 
 
     return (
@@ -32,7 +34,11 @@ function HomeProvider(props){
             topBar,
             setTopBar,
             footer,
-            setFooter
+            setFooter,
+            subtitle,
+            setSubtitle,
+            topSearch,
+            setTopSearch
 
 
 

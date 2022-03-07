@@ -31,8 +31,8 @@ function Card({cardInfo}){
     
 
     return   (
-        <div className="Card-container">
-            <div className="topSection_Card-container">
+        <div className="card-history">
+            <div className="topSection_HistoryCard-container">
                 <div id="typeTitle-topSection_Card">
                     <p id="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
                     <p id="nameTitle_typeTitle" className='nameText_card-Container'>{title}</p>
@@ -55,7 +55,7 @@ function Card({cardInfo}){
             </div>
             <div className='linkCotainer'>
                 <div className="link_container">
-                    <Link to="/" className='linkCard'>Ver de nuevo</Link>
+                    {/*<Link to="/" className='linkCard'>Ver de nuevo</Link>*/}
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import {Menu32,UserFilled32,ShoppingCart32} from '@carbon/icons-react'
 import Search from 'carbon-components-react/lib/components/Search'
 import '../css/components/topBarLogged.css'
 import BurguerMenu from './BurguerMenu'
+import { HomeContext } from '../context'
 
 
 function TopBarLogged (){
@@ -26,10 +27,22 @@ function TopBarLogged (){
                         <div className='text'>Logout</div>
                     </div>
                     <div id="Search_container">
-                        <Search
-                            id="search-1"
-                            labelText=""
-                        placeholder="Search" />
+                        <HomeContext.Consumer>
+                            {({
+                                topSearch
+                            })=>{
+                                return (
+                                    <React.Fragment>
+                                        {topSearch && 
+                                                <Search
+                                                id="search-1"
+                                                labelText=""
+                                                placeholder="Search" />}
+                                    </React.Fragment>
+                                )
+                            }}
+                        </HomeContext.Consumer>
+     
                     </div>
                     <div id="carShop_container">
                         <ShoppingCart32 className='carbon_icon'/>

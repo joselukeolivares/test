@@ -61,7 +61,9 @@ function Buscador(){
                     setHomeVisible,
                     setResultados,
                     setFavorite,
-                    resultados
+                    resultados,
+                    setSubtitle,
+                    setTopSearch
                     })=>{
                     return (
                       <React.Fragment>
@@ -92,7 +94,8 @@ function Buscador(){
                                     setHomeVisible(false)
                                     setResultados(true)
                                     setFavorite(false)
-                                  
+                                    setSubtitle("Data Coppel")
+                                    setTopSearch(true)                                  
                                     setcatFilter(category)
 
                         }} >

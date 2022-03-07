@@ -68,7 +68,8 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                         catFilter,
                         setcatFilter,
                         favorite,
-                        history
+                        history, 
+                        subtitle
                     })=>
                     {
                         if(catFilter!=0){
@@ -76,7 +77,7 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                         }else if(catFilter==0){
                             dataTableRows=rowData
                         }
-
+                        /*
                         if(favorite&&headerData.length==5){
                             headerData.push(    {
                              key: 'like',
@@ -100,7 +101,7 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                             )
                              console.log(headerData)
                          }
-
+                            */
                     return (
                         <React.Fragment>
                                                       {
@@ -109,12 +110,9 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                               <TopBarLogged />
                             </div>
                           }
-                          {
-                            true && 
-                            <div id="Buscador_container-Home">
-                              <Buscador ></Buscador>                    
-                            </div> 
-                          } 
+                            <div className="subTitle-container">
+                                            <h1 className="subTitle">{subtitle}</h1>
+                                        </div>    
                             
 
                     <div className="content-res">

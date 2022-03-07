@@ -1,5 +1,5 @@
 import React from "react";
-import {Favorite32,ArrowDown32} from '@carbon/icons-react'
+import {AlarmAdd32,ArrowDown32} from '@carbon/icons-react'
 import '../css/components/MetaDataDashboard.css'
 import RopaImg from "../pictures/ropa.png"
 
@@ -10,7 +10,7 @@ function MetaDataDashboad(){
             <div className="title-Section">
                 <h1 className="titleKPI">Ventas Ropa y Zapatos</h1>
                 <div>
-                    <Favorite32 />
+                    <AlarmAdd32 />
                     <p>AGREGAR A FAVORITOS</p>
                 </div>
             </div>

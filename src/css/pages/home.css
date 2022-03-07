@@ -1,7 +1,7 @@
 #Buscador_container-Home{
     display: flex;
     justify-content: center;
-    margin-top: 15rem;
+    margin-top: 0rem;
 }
 
 #topBarLooged-container_home{
@@ -10,13 +10,24 @@
 }
 
 #historyCards_container{
-    height: 20rem;
+    height: 32rem;
     /*background-color: blueviolet;*/
 }
 
 #categories_container-Home{
     height: 80rem;
     /*background-color: blueviolet;*/
+}
+
+.subTitle{
+    color:#255AA8;
+}
+
+.subTitle-container{
+    display: flex;
+    justify-content: center;
+    margin: 4rem ;
+    font-family: CircularStdBlack;
 }
 
 @media screen and (max-width: 600px){

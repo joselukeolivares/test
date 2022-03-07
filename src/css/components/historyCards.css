@@ -3,12 +3,60 @@
     height: 100%;
     display: block;
     padding: 2rem;
+    font-family: CircularStdBlack;
+
 }
 
-#cardsContainer>h3{
+#cardsContainer h3{
     margin-left: 1rem;
 }
 
 .CardsHist-Carrusel{
+    display: flex;    
+
+    width: 100%;
+    position: relative;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden;
+    
+    
+}
+
+
+
+.homeTitle p{
+    margin: 3rem 1rem;
+}
+
+.triangulo {
+    width: 0; 
+    height: 0; 
+    border-left: 100px solid rgb(179, 170, 170);
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    position: absolute;
+    right: 3rem;
+    top: 25%;
+    opacity: 1; 
+    z-index: 3;
+
+}
+
+.card-history{
+    background-color: white;
+width: 250px;
+height: 10rem;
+margin: 1rem .5rem;
+border-radius: 1rem;
+position: relative;
+}
+
+.topSection_HistoryCard-container{
+    background-color: white;
+    width: inherit;
+    height: 10rem;
+    margin: 1rem 0;
+    border-radius: 1rem;
+    position: relative;
     display: flex;
 }

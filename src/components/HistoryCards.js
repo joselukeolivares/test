@@ -13,11 +13,18 @@ function HistoryCards({history}){
     return    (
                 <React.Fragment>
                 <div id="cardsContainer">
-                    <h3>Últimas búsquedas</h3>
+                    <div className="homeTitle">
+                        <h3>¿Qué es Data Coppel?</h3>
+                        <p>Data Coppel es una plataforma que ordena y resume la informarción más importante de la empresa desde un mismo lugar. Además facilita la integración, visualización y análisis de datos para fortalecer la productividad y el conocimiento del negocio.</p>
+                    </div>
+                    <h3>Volver a ver</h3>
                     <div className="CardsHist-Carrusel">
                         {history.map((element,i)=>{
                             return (<Card key={`${i}`} cardInfo={element}></Card>)
                         })}
+                        <div className="triangulo">
+
+                        </div>
                     </div>
                 </div>
                 </React.Fragment>

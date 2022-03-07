@@ -105,6 +105,10 @@ export const rowData = [
     {
       key: 'updated',
       header: 'Ultima Actualización',
+    },
+    {
+      key: 'like',
+      header: '',
     }
   ];
   
