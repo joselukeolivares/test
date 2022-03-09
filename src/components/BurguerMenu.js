@@ -1,8 +1,9 @@
 import {slide  as Menu} from 'react-burger-menu'
-import {Menu32} from '@carbon/icons-react'
+import {Menu32,Home20,Explore20,Add20,RecentlyViewed20,Gamification20,Dashboard20,ChartLine20,ReportData20,View20,TableSplit20} from '@carbon/icons-react'
 import { HomeContext } from '../context'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../css/components/burguerMenu.css'
 
 
 function BurguerMenu(){
@@ -44,7 +45,7 @@ function BurguerMenu(){
           padding: '0.8em'
         },
         bmItem: {
-          display: 'block',
+          display: 'flex',
           textDecoration:'none',
           color:'white',
           marginTop:'1rem'
@@ -87,7 +88,7 @@ function BurguerMenu(){
           navigate("/resultados")
               break;
         case 4:
-
+          navigate("/resultados",{replace:true})
               break;
         default:
           console.log("option invalid in burguer menu")
@@ -101,11 +102,64 @@ function BurguerMenu(){
 
     return (
         <Menu customBurgerIcon={<Menu32 className="carbon_icon"/>} styles={styles}>
-                    <a id="home" className="menu-item" href="/home" >Home</a>
-                    <div id="favoritos" className="menu-item buttonM" styles={styles} onClick={()=>swithContent(2)}>Favoritos</div>
-                    <div id="historial" className="menu-item buttonM" styles={styles} onClick={()=>swithContent(3)}>Historial</div>
-                    <div id="rendicion" className="menu-item--small buttonM" styles={styles} href="/home" >Rendición de Cuentas</div>
-                    </Menu>
+                    <div className='burguer-cursor'>
+                      
+                      <a id="home" className="menu-item menu-subItem" href="/home" > <Home20/><p className='burguer-titles'>Home</p> </a>
+                    </div>
+                    
+                    <div id="Explorar" className="menu-item buttonM burguer-cursor" styles={styles} onClick={()=>swithContent(2)}>
+                        
+                        <Explore20 />
+                        <p className='burguer-titles'>Explorar</p></div>
+                    <div className='burguer-cursor' onClick={()=>{
+                      values.setcatFilter(3)
+                      swithContent(4)
+                    }}>
+                          <div className="dashIcon_container dashboardsCat">
+                            <Dashboard20 /></div>
+                          <p className='burguer-titles'>Dasboards</p>
+                    </div>
+                    <div className='burguer-cursor' onClick={()=>{
+                      values.setcatFilter(2)
+                      swithContent(4)
+                    }}>
+                          <div className="dashIcon_container indicadoresCat">
+                              <ChartLine20 /></div>
+                          <p className='burguer-titles'>Indicadores</p>
+                    </div>
+                    <div className='burguer-cursor' onClick={()=>{
+                      values.setcatFilter(4)
+                      swithContent(4)
+                    }}>
+                          <div className="dashIcon_container rendicionCat">
+                            <ReportData20 /></div>
+                          <p className='burguer-titles'>Reportes</p>
+                    </div>
+                    <div className='burguer-cursor' onClick={()=>{
+                      values.setcatFilter(5)
+                      swithContent(4)
+                    }}>
+                          <div className="dashIcon_container proyectos_vCat">
+                            <View20 /></div>
+                          <p className='burguer-titles'>Visualización de Datos</p>
+                    </div>
+                    <div className='burguer-cursor' onClick={()=>{
+                      values.setcatFilter(1)
+                      swithContent(4)
+                    }}>
+                          <div className="dashIcon_container TablerosCat">
+                            <TableSplit20 /></div>
+                          <p className='burguer-titles'>Tableros</p>
+                    </div>
+                    <div id="favoritos" className="menu-item buttonM burguer-cursor" styles={styles} onClick={()=>swithContent(2)}>
+                    <Add20 /><p className='burguer-titles'>Favoritos</p> </div>  
+                    <div id="historial" className="menu-item buttonM burguer-cursor" styles={styles} onClick={()=>swithContent(3)}>
+                    <RecentlyViewed20 /><p className='burguer-titles'>Historial</p></div>
+                    <div>
+                      
+                      <a id="home" className="menu-item menu-subItem" href="/home" > <Gamification20 /><p className='burguer-titles'>About</p> About</a>
+                    </div></Menu>
+                    
     )
 }
 

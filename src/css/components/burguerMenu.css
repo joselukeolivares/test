@@ -1,0 +1,14 @@
+.menu-subItem{
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items:center;
+}
+
+p.burguer-titles{
+    margin-left: 1rem;
+}
+
+div.burguer-cursor{
+    cursor: pointer;
+}
