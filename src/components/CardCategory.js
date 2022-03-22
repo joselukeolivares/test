@@ -19,6 +19,7 @@ const clasesIconsCard={
         const type=metadata.type
         const typeCode=metadata.typeCode
         const typeIcons=metadata.typeIcons
+        console.log(type)
 
         const navigate=useNavigate()
     function handleClick(){
@@ -53,7 +54,7 @@ const clasesIconsCard={
             <div className="bottom_CardCategory-container">
                 <div id="typeTitle-topSection_Card">
                     <p id="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
-                    <a id="nameTitle_typeTitle" className='nameText_card-Container' href='/dashboardCarbon'>{name}</a>
+                    <a id="nameTitle_typeTitle" className='nameText_card-Container' href={type=='indicator'?'/vizualization':'/dashboardCarbon'}>{name}</a>
                     
                 </div>                               
                 <div className="iconSection-Category">                    
