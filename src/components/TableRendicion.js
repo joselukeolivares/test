@@ -3,29 +3,28 @@ import { DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, Tab
 import {CheckmarkFilled20,AddAlt20 } from '@carbon/icons-react'
 import '../css/components/tableRendicion.css'
 
+let dinamicRows=[]
+
+
 function getIcons(icon){
 
-    switch(icon){
-        case "fav":
+    
+        if(icon){
             return (<CheckmarkFilled20 className='favIcon'/>)
-            break;
-        case "addFav":
+            }
+        else{ 
             return (<AddAlt20 />)
-            break;
-        default:
-            console.log("icon")
-            console.log(icon)
-            return <p>not icon</p>
-
-    }
+            }
+        
+    
 
 }
 
 function variationStyle(index,cell){
         let value=cell.value.value
         let variation=cell.value.variation
-    console.log(cell.value)
-    console.log("*************")
+    //console.log(cell.value)
+    //console.log("*************")
 
   
             return (
@@ -49,12 +48,25 @@ function variationStyle(index,cell){
 
 }
 
-function TableRendicion({headerData,rowData}){
+function updateFavIndicator(index){
+
+    
+}
+
+function TableRendicion({headerData,rowDataProps}){
+    let [showTable,setShowTable]=React.useState(true)
+    dinamicRows=[]
     return (
         <div className='tableRendicion-Container'>
-                    <DataTable  rows={rowData} headers={headerData}>
+                    <div className='titlesContainer'>
+                        <h4 className='header20'>Resultado Mensual</h4>
+                        <h4 className='header20'>Resultado Mensual</h4>
+                        <h4 className='header20'>Resultado Acumulado</h4>
+                        <h4 className='header40'>Resultado Anual</h4>
+                    </div>
+                    {showTable&&<DataTable  rows={rowDataProps} headers={headerData}>
                     {({ rows, headers, getHeaderProps, getTableProps }) => (
-                        <TableContainer title="DataTable">
+                        <TableContainer title="">
                         <Table {...getTableProps()}>
                             <TableHead>
                             <TableRow>
@@ -66,7 +78,7 @@ function TableRendicion({headerData,rowData}){
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {rows.map((row) => (
+                            {rows.map((row,index) => (
                                 <TableRow key={row.id}>
                                 {row.cells.map((cell,i) => (
                                     <TableCell key={cell.id}                                 
@@ -77,7 +89,15 @@ function TableRendicion({headerData,rowData}){
                                         i==1 && <div>{cell.value}<div className='subTitleIndicator' onClick={()=>{}}>Metadatos del KPI</div> </div>
                                         }
                                         {
-                                        i==0 && getIcons(cell.value)}
+                                        i==0 && <div onClick={()=>{
+                                            
+                                            console.log(dinamicRows[index].favorite)
+                                            dinamicRows[index].favorite=!dinamicRows[index].favorite
+                                            console.log(dinamicRows[index])
+                                            //setShowTable(false)
+                                            //setShowTable(true)
+                                            }
+                                            }>{getIcons(cell.value)}</div>}
                                         
                                         </TableCell>
                                 ))}
@@ -87,7 +107,7 @@ function TableRendicion({headerData,rowData}){
                         </Table>
                         </TableContainer>
                     )}
-                    </DataTable>
+                    </DataTable>}
         </div>
     )
 }

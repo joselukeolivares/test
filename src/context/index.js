@@ -15,7 +15,8 @@ function HomeProvider(props){
     let [footer,setFooter]=React.useState(false)
     let [topSearch,setTopSearch]=React.useState(false)
     let [subtitle,setSubtitle]=React.useState("Data Coppel")
-
+    let [rowRendicion,setRowRendicion]=React.useState([])
+    
 
     return (
         <HomeContext.Provider value={{
@@ -38,7 +39,8 @@ function HomeProvider(props){
             subtitle,
             setSubtitle,
             topSearch,
-            setTopSearch
+            setTopSearch,
+            rowRendicion,setRowRendicion
 
 
 

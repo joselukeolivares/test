@@ -1,5 +1,5 @@
 import {slide  as Menu} from 'react-burger-menu'
-import {Menu32,Home20,Explore20,Add20,RecentlyViewed20,Gamification20,Dashboard20,ChartLine20,ReportData20,View20,TableSplit20} from '@carbon/icons-react'
+import {Menu32,Home20,Explore20,Add20,RecentlyViewed20,Gamification20,Dashboard20,ChartLine20,ReportData20,View20,TableSplit20,Bot20} from '@carbon/icons-react'
 import { HomeContext } from '../context'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -90,6 +90,9 @@ function BurguerMenu(){
         case 4:
           navigate("/resultados",{replace:true})
               break;
+        case 5:
+          navigate("/rendicion",{replace:true})
+              break;
         default:
           console.log("option invalid in burguer menu")
         
@@ -151,14 +154,22 @@ function BurguerMenu(){
                             <TableSplit20 /></div>
                           <p className='burguer-titles'>Tableros</p>
                     </div>
+
+                    <div id="favoritos" className="menu-item buttonM burguer-cursor" styles={styles} onClick={()=>swithContent(5)}>
+                    <Bot20 /><p className='burguer-titles'>Rendición de Cuentas</p> 
+                    </div>
                     <div id="favoritos" className="menu-item buttonM burguer-cursor" styles={styles} onClick={()=>swithContent(2)}>
-                    <Add20 /><p className='burguer-titles'>Favoritos</p> </div>  
+                    <Add20/><p className='burguer-titles'>Favoritos</p> 
+                    </div>  
                     <div id="historial" className="menu-item buttonM burguer-cursor" styles={styles} onClick={()=>swithContent(3)}>
-                    <RecentlyViewed20 /><p className='burguer-titles'>Historial</p></div>
+                      <RecentlyViewed20 />
+                      <p className='burguer-titles'>Historial</p>
+                      </div>
                     <div>
                       
-                      <a id="home" className="menu-item menu-subItem" href="/home" > <Gamification20 /><p className='burguer-titles'>About</p> About</a>
-                    </div></Menu>
+                      <a id="about" className="menu-item menu-subItem" href="/home" > <Gamification20 /><p className='burguer-titles'>About</p> About</a>
+                    </div>
+                    </Menu>
                     
     )
 }
