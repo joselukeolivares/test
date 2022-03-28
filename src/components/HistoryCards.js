@@ -9,7 +9,7 @@ const {Anime, stagger} = ReactAnime
 function HistoryCards({history}){
 
         let maxTranslateX=(history.length)*250
-        let actualX=0  
+          
 
 
         

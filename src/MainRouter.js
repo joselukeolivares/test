@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import Login from "./Login"
 import { DashboardCarbon } from "./components/DashboardCarbon";
 import Resultados from './pages/Resultados'
+import { Rendicion } from "./pages/Rendicion";
 
 
 const MainRouter=()=>{
@@ -18,6 +19,7 @@ const MainRouter=()=>{
             <Route path="/home" element={<Home></Home>}></Route>
             <Route path="/dashboardCarbon" element={<DashboardCarbon></DashboardCarbon>}></Route>
             <Route path="/resultados" element={<Resultados></Resultados>}></Route>
+            <Route path="/rendicion" element={<Rendicion></Rendicion>}></Route>
                
             </Routes>
         </React.Fragment>
