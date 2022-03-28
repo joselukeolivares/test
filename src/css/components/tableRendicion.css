@@ -1,0 +1,56 @@
+.positiveVar{
+    color:#25B5C0;
+}
+
+.negativeVar{
+    color:red;
+}
+
+.subTitleIndicator{
+    font-size: 10px;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.titlesContainer{
+    display: flex;
+}
+
+.tableRendicion-Container{
+    margin: 5rem 3rem;
+}
+
+.header20{
+    width: 20%;
+    text-align: center;
+}
+
+.header40{
+    width: 40%;
+    text-align: center;
+}
+
+.filtersContainer{
+    margin: 3rem 0rem;
+    display: flex;
+    width: 100%;
+    
+}
+
+.filtersContainer > div{
+    margin: 2rem 0rem 2rem 1.3rem;
+    width: 15%;
+    
+}
+
+/*
+td:nth-child(2n+3){
+    padding-left:0%!important;
+    
+}
+
+td:nth-child(2n+2){
+    padding-right:0%!important;
+    
+}
+*/

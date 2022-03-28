@@ -1,0 +1,235 @@
+{
+    "rowData":[
+        
+            {
+                "id":"1",
+                "favorite":false,
+                "name":"Venta total muebles",
+                "mensualRM_Y-1":{
+                    "value":"13,456",
+                    "variation":3.33
+                },                
+                "mensualRM_Y":{
+                    "value":"14,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y-1":{
+                    "value":"15,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y":{
+                    "value":"16,456",
+                    "variation":3.33
+                },              
+                "rAnual-2":{
+                    "value":"17,456",
+                    "variation":3.33
+                },
+                "rAnual-1":{
+                    "value":"18,456",
+                    "variation":3.33
+                },                
+                "rAnual":{
+                    "value":"19,456",
+                    "variation":3.33
+                },
+                "goal":{
+                    "value":"10,456",
+                    "variation":-3.33
+                }
+                
+            },
+            {
+                "id":"2",
+                "favorite":true,
+                "name":"Venta total Ropa",
+                "mensualRM_Y-1":{
+                    "value":"13,456",
+                    "variation":3.33
+                },                
+                "mensualRM_Y":{
+                    "value":"14,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y-1":{
+                    "value":"15,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y":{
+                    "value":"16,456",
+                    "variation":3.33
+                },              
+                "rAnual-2":{
+                    "value":"17,456",
+                    "variation":3.33
+                },
+                "rAnual-1":{
+                    "value":"18,456",
+                    "variation":3.33
+                },                
+                "rAnual":{
+                    "value":"19,456",
+                    "variation":3.33
+                },
+                "goal":{
+                    "value":"10,456",
+                    "variation":-3.33
+                }
+                
+            },
+            {
+                "id":"3",
+                "favorite":false,
+                "name":"Venta total muebles",
+                "mensualRM_Y-1":{
+                    "value":"13,456",
+                    "variation":3.33
+                },                
+                "mensualRM_Y":{
+                    "value":"14,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y-1":{
+                    "value":"15,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y":{
+                    "value":"16,456",
+                    "variation":3.33
+                },              
+                "rAnual-2":{
+                    "value":"17,456",
+                    "variation":3.33
+                },
+                "rAnual-1":{
+                    "value":"18,456",
+                    "variation":3.33
+                },                
+                "rAnual":{
+                    "value":"19,456",
+                    "variation":3.33
+                },
+                "goal":{
+                    "value":"10,456",
+                    "variation":-3.33
+                }
+                
+            },
+            {
+                "id":"4",
+                "favorite":false,
+                "name":"Venta total muebles",
+                "mensualRM_Y-1":{
+                    "value":"13,456",
+                    "variation":3.33
+                },                
+                "mensualRM_Y":{
+                    "value":"14,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y-1":{
+                    "value":"15,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y":{
+                    "value":"16,456",
+                    "variation":3.33
+                },              
+                "rAnual-2":{
+                    "value":"17,456",
+                    "variation":3.33
+                },
+                "rAnual-1":{
+                    "value":"18,456",
+                    "variation":3.33
+                },                
+                "rAnual":{
+                    "value":"19,456",
+                    "variation":3.33
+                },
+                "goal":{
+                    "value":"10,456",
+                    "variation":-3.33
+                }
+                
+            },
+            {
+                "id":"5",
+                "favorite":false,
+                "name":"Venta total muebles",
+                "mensualRM_Y-1":{
+                    "value":"13,456",
+                    "variation":3.33
+                },                
+                "mensualRM_Y":{
+                    "value":"14,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y-1":{
+                    "value":"15,456",
+                    "variation":3.33
+                },                
+                "mensualRA_Y":{
+                    "value":"16,456",
+                    "variation":3.33
+                },              
+                "rAnual-2":{
+                    "value":"17,456",
+                    "variation":3.33
+                },
+                "rAnual-1":{
+                    "value":"18,456",
+                    "variation":3.33
+                },                
+                "rAnual":{
+                    "value":"19,456",
+                    "variation":3.33
+                },
+                "goal":{
+                    "value":"10,456",
+                    "variation":-3.33
+                }
+                
+            }
+
+
+
+            
+  
+
+        
+    ],
+    "headerData":[
+        {"key":"favorite"
+            ,"header":""
+        },
+        {"key":"name"
+            ,"header":"Indicador"
+        },
+        {"key":"mensualRM_Y-1"
+            ,"header":"Ene 2020"},
+
+        {"key":"mensualRM_Y"
+            ,"header":"Ene 2021"},
+
+        {"key":"mensualRA_Y-1"
+            ,"header":"Ene 2020"},
+
+        {"key":"mensualRA_Y"
+            ,"header":"Ene 2021"},
+
+        {"key":"rAnual-2"
+            ,"header":"2019"},
+
+        {"key":"rAnual-1"
+            ,"header":"2020"},
+
+        {"key":"rAnual"
+            ,"header":"2021"},
+
+        {"key":"goal"
+            ,"header":"Meta 2021"}
+     
+            
+    ]
+}

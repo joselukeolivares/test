@@ -1,16 +1,26 @@
 import React from "react";
-import {AlarmAdd32,ArrowDown32} from '@carbon/icons-react'
+import {AddAlt32,ArrowDown32,CheckmarkFilled32} from '@carbon/icons-react'
 import '../css/components/MetaDataDashboard.css'
 import RopaImg from "../pictures/ropa.png"
 
 function MetaDataDashboad(){
+    let [favorite,setFavorite]=React.useState(false)
+    
     return(
         <section className="metadataSection">
             <img className="background_dashboardCarbon" src={RopaImg}></img>
             <div className="title-Section">
                 <h1 className="titleKPI">Ventas Ropa y Zapatos</h1>
                 <div>
-                    <AlarmAdd32 />
+                    
+                    <div className="turnFav" onClick={()=>{
+                        if(favorite){
+                            setFavorite(false)
+                        }else{
+                            setFavorite(true)
+                        }
+                        console.log(favorite)
+                    }}>{favorite && <CheckmarkFilled32 />}{!favorite && <AddAlt32 />}</div>
                     <p>AGREGAR A FAVORITOS</p>
                 </div>
             </div>

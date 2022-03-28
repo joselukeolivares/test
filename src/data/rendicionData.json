@@ -3,23 +3,23 @@
     "indicator":{
         "name":"Venta total muebles",
         "metaData":"Metadatos del KPI"
-    },
-    "monthResult":[
-        {"value":"11,325",
-         "variation":"3.33"
-        }
-    ],
+    },    
     "resultSMLY":[
         {"value":"11,325",
          "variation":"3.33"
         }
     ],
-    "monthAccumulated":[
+    "monthResult":[
         {"value":"11,325",
          "variation":"3.33"
         }
     ],
     "accumulatedSMLY":[
+        {"value":"11,325",
+         "variation":"3.33"
+        }
+    ],
+    "monthAccumulated":[
         {"value":"11,325",
          "variation":"3.33"
         }

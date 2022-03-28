@@ -50,11 +50,11 @@
             "typeIcon":"dataviz",
             "total":"95",
             "bag":[
-                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]},
-                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]},
-                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]},
-                {"name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","typeIcons":["dashboard","carbon"]},
-                {"name":"Productos","type":"Power Bi","typeCode":"PowerBi","typeIcons":["dashboard","carbon"]}
+                {"name":"Ventas Celulares","type":"indicator","typeCode":"CarbonDesign","typeIcons":["indicator"]},
+                {"name":"Ventas Celulares","type":"indicator","typeCode":"CarbonDesign","typeIcons":["indicator"]},
+                {"name":"Ventas Celulares","type":"indicator","typeCode":"CarbonDesign","typeIcons":["indicator"]},
+                {"name":"Ventas semanales","type":"indicator","typeCode":"Tableau","typeIcons":["indicator"]},
+                {"name":"Productos","type":"indicator","typeCode":"PowerBi","typeIcons":["indicator"]}
             ]
         },
         "TablerosCat":{

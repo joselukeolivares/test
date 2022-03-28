@@ -1,0 +1,128 @@
+:root{
+    --color_Ctes_Generados:#6EA863;
+    --color_Nunca0_15:#778BAF;
+    --color_NuncaMas15:#778BAF;
+    --color_ASV:#6EA863;
+    --color_Saldados015:#EADC99;
+    --color_SaldadosMas15:#D6BA34;
+    --color_Vencidos1:#F2B3E9;
+    --color_Vencidos2:#BC82B1;
+    --color_Vencidos3:#84346F;
+    --color_Vencidos4:#540437;
+    --color_CtesZ:#F77366;
+    --color_Quebrantados:#FFA15A;
+    --color_etiquetas:#808080;
+    --color_ZonaGrisGraficas:#d1d1d1;
+}
+
+.quickHelp_tooltip{
+    width: 150px;
+    position:fixed;
+    right: 50px;
+    top: 25%;
+    box-shadow: 10px 0 15px #ddd;
+    border-radius: 5px;
+    font-size: 12px;
+    background: white;
+    opacity: .8;
+    transition: 3s;
+}
+
+.tooltip_minimizer{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.minimizer__tooltip_minimizer{
+    cursor: pointer;
+    height: 5px;
+    width: 15px;
+    border-radius: 10px;
+    margin: 5%;
+    background-color: grey;
+}
+
+.tooltip_element{
+    display: flex;
+    align-items: center;
+    margin: 5% 1%;
+    position: relative;
+}
+
+.circle_tooltip-element{
+    height: 15px;
+    width: 15px;
+    border-radius: 7px;
+    margin-right: 2%;
+    margin-left: 5%;
+}
+
+.name_element{
+    margin: 0 5%;
+    text-decoration: none;
+    color:black
+}
+
+.Ctes_Generados{
+    background-color: var(--color_Ctes_Generados);
+}
+
+.Nunca0_15{
+    background-color: var(--color_Nunca0_15);
+}
+
+.NuncaMas15{
+    background-color: var(--color_NuncaMas15);
+}
+
+.ASV{
+    background-color: var(--color_ASV);
+}
+
+.Saldados015{
+    background-color: var(--color_Saldados015);
+}
+
+.SaldadosMas15{
+    background-color: var(--color_SaldadosMas15);
+}
+
+.Vencidos1{
+    background-color: var(--color_Vencidos1);
+}
+
+.Vencidos2{
+    background-color: var(--color_Vencidos2);
+}
+
+.Vencidos3{
+    background-color: var(--color_Vencidos3);
+}
+
+.Vencidos4{
+    background-color: var(--color_Vencidos4);
+}
+
+.CtesZ{
+    background-color: var(--color_CtesZ);
+}
+
+.Quebrantados{
+    background-color: var(--color_Quebrantados);
+}
+
+.segmentDesc{
+    padding: 4rem 10rem;
+}
+
+#migracionSVG{
+    justify-content: center;
+    display: flex;  
+}
+
+.buttonsPlayer{
+    justify-content: center;
+    display: flex; 
+}
+
