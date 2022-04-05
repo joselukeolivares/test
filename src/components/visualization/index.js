@@ -30,7 +30,7 @@ function MigracionApp() {
       
     <div className="App">
         <div className='segmentDesc'>
-        <h1>MIGRACIÓN DE CLIENTES</h1>
+        <h1>MIGRACIÓN DE CLIENTES!</h1>
         <p>En Coppel el activo más importante son los Clientes, pues son ellos quienes conforman y dan vida a la organización.
            Es imprescindible estudiar y entender su comportamiento dentro de la cartera de crédito para ofrecer nuevas oportunidades y estrategias de negocio que ayuden a incrementar el número de Clientes activos.
            Con base el Estado de Resultados de Clientes que conforman hoy nuestra cartera (Clientes Generados, Nunca 0-15, Nunca +15, Activos sin Vencido, Saldado 0-15, Saldado +15, Vencido 1, Vencido 2, Vencido 3, vencido 4+, Clientes Z y Quebrantados), analizamos el comportamiento de cada segmento durante un año respecto al crédito.
