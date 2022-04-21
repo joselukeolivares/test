@@ -1,6 +1,7 @@
 import * as d3 from 'd3'
 import '../styles/migracion.css'
 import agenda from '../data/agenda.json'
+import {BarChart_Re} from './BarChart_Re'
 
 
 function MigracionRe(){
@@ -20,18 +21,18 @@ function MigracionRe(){
     let chartHeight
     let simulation
     let cluster=[
-      {id:0,name:'Clientes Generados',color:'#6ea863',opacity:.5,containerNodes:[] },
-      {id:1,name: 'Nunca 0-15',color:'#778baf',opacity:.5,containerNodes:[]},
-      {id:2,name: 'Nunca +15',color:'#778baf',opacity:1,containerNodes:[]} ,
-      {id:3,name:'Activos Sin Vencido',color:'#6ea863',opacity:1,containerNodes:[]},
-      {id:4,name:'Saldados 0-15',color:'#d6ba34',opacity:.5,containerNodes:[]}, 
-      {id:5,name:'Saldados +15',color:'#d6ba34',opacity:1,containerNodes:[]}, 
-      {id:6,name:'Vencidos 1',color:'#e0bad9',opacity:1,containerNodes:[]},
-      {id:7,name:'Vencidos 2',color:'#bc82b1',opacity:.4,containerNodes:[]}, 
-      {id:8,name:'Vencidos 3',color:'#84346f',opacity:.7,containerNodes:[]}, 
-      {id:9,name:'Vencidos +4',color:'#540437',opacity:1,containerNodes:[]},
-      {id:10,name:'Clientes Z',color:'var(--color_CtesZ)',opacity:1,containerNodes:[]}, 
-      {id:11,name:'Quebrantados',color:'#ffa15a',opacity:1,containerNodes:[]}
+      {id:0,name:'Clientes Generados',color:'#6ea863',opacity:.5,containerNodes:[],quantity:0 },
+      {id:1,name: 'Nunca 0-15',color:'#778baf',opacity:.5,containerNodes:[],quantity:0},
+      {id:2,name: 'Nunca +15',color:'#778baf',opacity:1,containerNodes:[],quantity:0} ,
+      {id:3,name:'Activos Sin Vencido',color:'#6ea863',opacity:1,containerNodes:[],quantity:0},
+      {id:4,name:'Saldados 0-15',color:'#d6ba34',opacity:.5,containerNodes:[],quantity:0}, 
+      {id:5,name:'Saldados +15',color:'#d6ba34',opacity:1,containerNodes:[],quantity:0}, 
+      {id:6,name:'Vencidos 1',color:'#e0bad9',opacity:1,containerNodes:[],quantity:0},
+      {id:7,name:'Vencidos 2',color:'#bc82b1',opacity:.4,containerNodes:[],quantity:0}, 
+      {id:8,name:'Vencidos 3',color:'#84346f',opacity:.7,containerNodes:[],quantity:0}, 
+      {id:9,name:'Vencidos +4',color:'#540437',opacity:1,containerNodes:[],quantity:0},
+      {id:10,name:'Clientes Z',color:'var(--color_CtesZ)',opacity:1,containerNodes:[],quantity:0}, 
+      {id:11,name:'Quebrantados',color:'#ffa15a',opacity:1,containerNodes:[],quantity:0}
       ]
     let timer={
       year_counter:0,            
@@ -138,15 +139,20 @@ function MigracionRe(){
             cluster[i].x=centerX+(_cos*xRadius)
             cluster[i].y=centerY+(_sen*yRadius)
             cluster[i].id=i
-            cluster[i].name=segmentos[i]            
+            cluster[i].name=segmentos[i]
+            
+            
 
-            /*
-            svg.append('circle')
-               .style("fill",cluster[i].color)
-               .attr("r","25px")
-               .attr("cx",cluster[i].x)
-               .attr("cy",cluster[i].y)
-            */   
+           
+            svg.append('text')
+               .text("Hello World")
+               .attr("id",`clusterTag${i}`)
+               .style("fill",cluster[i].color)              
+               //.attr("x",cluster[i].x)
+               .attr("x",i<7?(cluster[i].x+40):(cluster[i].x-100))
+               .attr("y",i==6?cluster[i].y+25:cluster[i].y)
+               //.attr("y",cluster[i].y>cluster[0].y?cluster[i].y+50:cluster[i].y-50)
+               
             
           }
           
@@ -165,7 +171,9 @@ function MigracionRe(){
           for(var i=0;i<segments.length;i++){
           //Se crean todos los nuevamente
           buildNodes(agenda[timer.year][timer.month][segments[i].name],i)
-          //console.log(agenda[timer.year][timer.month][segments[i].name])
+          svg.select(`#clusterTag${i}`).text(agenda[timer.year][timer.month][segments[i].name]["Total Clientes"])
+          cluster[i].quantity=parseInt((agenda[timer.year][timer.month][segments[i].name]["Total Clientes"]).replace(/,/g, ''))
+          //console.log(agenda[timer.year][timer.month][segments[i].name]["Total Clientes"])
           
           }
           
@@ -186,29 +194,61 @@ function MigracionRe(){
           .attr("id",d=>d.id)                   
           .attr('fill',d=>d.color)
           .attr('opacity',d=>d.opacity)
+          .on('mouseover',handlerMouseoverNode
+          )
+          .on('mouseout',handlerMouseoutNode)
 
-        
-          svg.append("text")
+          d3.select("#calendarMigracion").remove()
+          
+          svg          
+          .append("text")
           .attr("id","calendarMigracion")
           .attr("x",`${width/3}px`)
           .attr("y","10px")
           .text(`${timer.month} /20${timer.year} `)
+
+          console.log(svg.select("#calendarMigracions"))
   
         
         
         if(!simulation){
                 buildSimulation()
-               idTimeInterval= timeManager()
-
+                BarChart_Re(cluster)
+                //idTimeInterval= timeManager()
+                
 
               }   
      
   
-        
+              
         //buildSimulation()
 
 
         }
+
+        function handlerMouseoverNode(d,i){
+            
+            d3.select(this)
+            .attr("fill","orange")
+            .attr("r",20)
+
+            svg.append("text")
+            .attr("id",`mouseOver${i.id}`)
+            .text(cluster[i.clusterId].name)
+            .attr("fill",cluster[i.clusterId].color)
+            .attr("x",i.x-50)
+            .attr("y",i.y-50) 
+            
+
+        }
+
+        function handlerMouseoutNode(d,i){
+          d3.select(this)
+          .attr("fill",cluster[i.clusterId].color)
+          .attr("r",i.radius)
+
+          svg.select(`#mouseOver${i.id}`).remove()
+      }
 
         function buildNodes(clusterElement, k){
           //k: id o posición del Cluster en la lista de segmentos
@@ -270,8 +310,11 @@ function MigracionRe(){
           console.log(`Date: ${timer.month} ${timer.year_list[timer.year_counter]}`)
           if(agendaN2_keys){
           agendaN2_keys.forEach(function(segmentDestiny,i){
-                let agendaN3_values=agenda[timer.year_list[timer.year_counter]][timer.month][segmentDestiny] 
-                //console.log(`Year ${timer.year_list[timer.year_counter]} Month timer.month ${timer.month}`)
+                let agendaN3_values=agenda[timer.year_list[timer.year_counter]][timer.month][segmentDestiny]
+                svg.select(`#clusterTag${i}`).text(agenda[timer.year_list[timer.year_counter]][timer.month][segmentDestiny]["Total Clientes"])
+                cluster[i].quantity=parseInt((agenda[timer.year_list[timer.year_counter]][timer.month][segmentDestiny]["Total Clientes"]).replace(/,/g, ''))
+                //console.log("Updating")
+                //console.log(agenda[timer.year_list[timer.year_counter]][timer.month][segmentDestiny]["Total Clientes"])
                 
                 let agendaN4_keys=Object.keys(agendaN3_values)
                 
@@ -352,6 +395,7 @@ function MigracionRe(){
                 data=data.concat(element.containerNodes)
               });
               simulation.alpha(1).alphaTarget(0).restart()
+
               
             }else{
               console.log("Happy new year")              
@@ -372,6 +416,8 @@ function MigracionRe(){
                 
             }
 
+            
+            
           }, 5000);
 
           return idTimeInterval
@@ -403,11 +449,14 @@ function MigracionRe(){
                     .attr("fill",d=>cluster[d.clusterId].color)
                     .attr("opacity",d=>cluster[d.clusterId].opacity)
                     if(playSimulation){
-                    timeManager()
+                      timeManager()
+                      BarChart_Re(cluster)
+                      
                     }
                   })
+             
                   ;
-
+                  
                   simulation.restart()
         
         }

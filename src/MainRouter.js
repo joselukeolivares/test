@@ -22,6 +22,7 @@ const MainRouter=()=>{
             <Route path="/dashboardCarbon" element={<DashboardCarbon></DashboardCarbon>}></Route>
             <Route path="/resultados" element={<Resultados></Resultados>}></Route>
             <Route path="/rendicion" element={<Rendicion/>}></Route>
+            <Route path="/vizualization" element={<MigracionApp/>}></Route>
               
                
             </Routes>

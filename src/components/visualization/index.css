@@ -117,7 +117,7 @@
 }
 
 #migracionSVG{
-    justify-content: center;
+    /*justify-content: center;*/
     display: flex;  
 }
 
