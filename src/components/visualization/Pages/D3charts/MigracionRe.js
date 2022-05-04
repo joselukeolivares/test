@@ -164,9 +164,7 @@ function MigracionRe(){
 
         function buildData(segments){
           //Se inicia una nueva simulación desde el primer mes del año          
-        
-        
-        if(data.length==0){
+          if(data.length==0){
 
           for(var i=0;i<segments.length;i++){
           //Se crean todos los nuevamente
@@ -175,13 +173,12 @@ function MigracionRe(){
           cluster[i].quantity=parseInt((agenda[timer.year][timer.month][segments[i].name]["Total Clientes"]).replace(/,/g, ''))
           //console.log(agenda[timer.year][timer.month][segments[i].name]["Total Clientes"])
           
+          }         
+          
+          }else{
+            //Se crean solo los nodos nuevos en Clientes Generados
+            buildNodes(agenda[timer.year_counter][timer.month]["Clientes Generados"],0)  
           }
-          
-          
-        }else{
-          //Se crean solo los nodos nuevos en Clientes Generados
-          //buildNodes(agenda[timer.year_counter][timer.month]["Clientes Generados"],0)  
-        }
 
         nodesData=d3.select(".migracion_re")
           .selectAll('.circle')
@@ -213,7 +210,7 @@ function MigracionRe(){
         
         if(!simulation){
                 buildSimulation()
-                BarChart_Re(cluster)
+                
                 //idTimeInterval= timeManager()
                 
 
@@ -221,7 +218,7 @@ function MigracionRe(){
      
   
               
-        //buildSimulation()
+              BarChart_Re(cluster)
 
 
         }
@@ -417,7 +414,7 @@ function MigracionRe(){
             }
 
             
-            
+            BarChart_Re(cluster) 
           }, 5000);
 
           return idTimeInterval
@@ -450,7 +447,7 @@ function MigracionRe(){
                     .attr("opacity",d=>cluster[d.clusterId].opacity)
                     if(playSimulation){
                       timeManager()
-                      BarChart_Re(cluster)
+                      
                       
                     }
                   })
