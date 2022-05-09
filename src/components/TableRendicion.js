@@ -53,9 +53,14 @@ function updateFavIndicator(index){
     
 }
 
-function TableRendicion({headerData,rowDataProps}){
-    let [showTable,setShowTable]=React.useState(true)
+function TableRendicion({headerData,rowData,updateRowsData}){
+
     dinamicRows=[]
+
+    function updateContent(index){
+        updateRowsData(index)
+
+    }
     return (
         <div className='tableRendicion-Container'>
                     <div className='titlesContainer'>
@@ -64,7 +69,7 @@ function TableRendicion({headerData,rowDataProps}){
                         <h4 className='header20'>Resultado Acumulado</h4>
                         <h4 className='header40'>Resultado Anual</h4>
                     </div>
-                    {showTable&&<DataTable  rows={rowDataProps} headers={headerData}>
+                    <DataTable  rows={rowData} headers={headerData}>
                     {({ rows, headers, getHeaderProps, getTableProps }) => (
                         <TableContainer title="">
                         <Table {...getTableProps()}>
@@ -90,13 +95,12 @@ function TableRendicion({headerData,rowDataProps}){
                                         }
                                         {
                                         i==0 && <div onClick={()=>{
+                                            updateContent(index)
+                                            //console.log(rowData)
+                                            return "Hello"
                                             
-                                            console.log(dinamicRows[index].favorite)
-                                            dinamicRows[index].favorite=!dinamicRows[index].favorite
-                                            console.log(dinamicRows[index])
-                                            //setShowTable(false)
-                                            //setShowTable(true)
                                             }
+
                                             }>{getIcons(cell.value)}</div>}
                                         
                                         </TableCell>
@@ -107,7 +111,7 @@ function TableRendicion({headerData,rowDataProps}){
                         </Table>
                         </TableContainer>
                     )}
-                    </DataTable>}
+                    </DataTable>
         </div>
     )
 }

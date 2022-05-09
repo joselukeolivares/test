@@ -1,0 +1,28 @@
+{
+    "generados":[
+        {"year":2016,"generados":"2,641,956","activados":"2,042,788"},
+        {"year":2017,"generados":"1,971,261","activados":"1,769,163"},
+        {"year":2018,"generados":"2,473,873","activados":"2,232,958"}
+    ],
+    "n015":[
+        {"year":2016,"generados":"869,155","activados":"350,372"},
+        {"year":2017,"generados":"734,485","activados":"297,998"},
+        {"year":2018,"generados":"321,869","activados":"102,808"}
+    ],
+    "n15":[
+        {"year":2016,"generados":"1,514,100","activados":"131,086"},
+        {"year":2017,"generados":"1,971,261","activados":"144,210"},
+        {"year":2018,"generados":"2,473,873","activados":"158,037"}
+    ],
+    "asv":[
+        {"year":2016,"totales":"8,861,793","asv":60.8,"vencidos1":24.8,"saldaos":13.4},
+        {"year":2016,"totales":"8,625,301","asv":59.6,"vencidos1":24.0,"saldaos":13.4},
+        {"year":2016,"totales":"8,511,041","asv":59.6,"vencidos1":22.2,"saldaos":13.1}
+    ],
+    "saldados015":[
+        {"year":2016,"totales":"2,688,060","generados":34.6,"vencidos1":8.5,"saldados015":36.6,"saldados15":18.7},
+        {"year":2016,"totales":"2,688,060","generados":34.6,"vencidos1":8.5,"saldados015":36.6,"saldados15":18.7},
+        {"year":2016,"totales":"2,688,060","generados":34.6,"vencidos1":8.5,"saldados015":36.6,"saldados15":18.7},
+        
+    ]
+}

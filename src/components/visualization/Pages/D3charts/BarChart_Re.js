@@ -47,7 +47,8 @@ let bars=svg.selectAll(".bar")
     .attr("width",barWidth)
     .attr("height",d=>height-y(0))
     .attr("fill",d=>d.color) 
-    .on('mouseover',mouseOverRect)   
+    .on('mouseover',mouseOverRect) 
+    .on('mouseout',mouseOutRect)  
     .transition().duration(1000)
     .attr("y",(d)=>y(d.quantity))
     .attr("height",(d=>height-y(d.quantity)))
@@ -63,12 +64,15 @@ let bars=svg.selectAll(".bar")
         
         svg.append("text")
                 .text(`${i.quantity}`)
-                .attr("x",()=>x(i.quantity))
-                .attr("y",y(200))
+                .attr("id",`textRect${i.id}`)
+                .attr("x",x(i.name))
+                .attr("y",y(i.quantity))
                 .attr("fill",i.color)
         }
         
-        function mouseOutRect(d,i,svg){
+        function mouseOutRect(d,i){
+
+         svg.selectAll(`#textRect${i.id}`).remove()       
 
         }    
 

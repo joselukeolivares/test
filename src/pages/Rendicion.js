@@ -36,9 +36,34 @@ function Rendicion(){
           disabled: true,
         },
       ];
-console.log(filtersDropdown)
+//console.log(filtersDropdown)
  //let values=useContext(HomeContext)
- //values.setRowDataRendicion(data.headerData)
+ let [rowsData,setRowsData]=React.useState(data.rowData)
+ 
+
+ function updateRowsData(index){
+     
+     let aux=[]
+
+     rowsData.forEach((row,i)=>{
+         if(i==index){
+             row.favorite=!row.favorite
+         }
+         aux.push(row)
+     })
+
+                   
+     setRowsData([])
+     
+     setTimeout(function(){
+       setRowsData(aux)
+     },1)
+     
+     //aux.pop()
+     //console.log(aux)
+     //this.forceUpdate()
+     
+ }
 
 
     return (
@@ -105,8 +130,8 @@ console.log(filtersDropdown)
                 itemToString={(item) => (item ? item.text : '')}
                 /> 
             </div>                              
-                    {/*<TableRendicion headerData={data.headerData} rowDataProps={rowData}></TableRendicion>            
-                  */}
+                    {<TableRendicion headerData={data.headerData} rowData={rowsData} updateRowsData={updateRowsData}></TableRendicion>            
+                  }
             <HomeContext.Consumer>
               {
                 (
