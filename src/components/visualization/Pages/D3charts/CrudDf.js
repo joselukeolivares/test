@@ -45,7 +45,7 @@ crudDf.destroy=()=>{}
 crudDf.controls=(chart,control)=>{
     
     //debugger
-    return chart.idTimeInterval(control,chart)
+    //return chart.idTimeInterval(control,chart)
 }
 
 export default crudDf
