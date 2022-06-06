@@ -7,7 +7,7 @@ function BarChart_Re(data){
  let barWidth=15
  let svg;
 
- console.log(data)
+ //console.log(data)
 
 
  //Set Ranges and Scales 
