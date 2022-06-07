@@ -12,6 +12,7 @@
     "carbon-components-react": "^7.53.0",
     "carbon-icons": "^7.0.7",
     "d3": "^7.3.0",
+    "gh-pages": "^4.0.0",
     "gsap": "^3.9.1",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
@@ -27,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pre-deploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +49,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://joselukeolivares.github.io/test/"
 }
