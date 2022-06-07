@@ -23,7 +23,7 @@ const clasesIconsCard={
 
         const navigate=useNavigate()
     function handleClick(){
-        navigate("../home",{replace:true})
+        navigate("/test/home",{replace:true})
     }
 
     function iconComponent(name){
@@ -54,7 +54,7 @@ const clasesIconsCard={
             <div className="bottom_CardCategory-container">
                 <div id="typeTitle-topSection_Card">
                     <p id="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
-                    <a id="nameTitle_typeTitle" className='nameText_card-Container' href={type=='indicator'?'/vizualization':'/dashboardCarbon'}>{name}</a>
+                    <a id="nameTitle_typeTitle" className='nameText_card-Container' href={type=='indicator'?'/test/vizualization':'/test/dashboardCarbon'}>{name}</a>
                     
                 </div>                               
                 <div className="iconSection-Category">                    

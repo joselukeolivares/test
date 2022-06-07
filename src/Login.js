@@ -11,7 +11,7 @@ function Login() {
   let navigate=useNavigate()
 
   function handleLogin(){    
-    navigate("../home",{replace:true})
+    navigate("/test/home",{replace:true})
   }
   
 

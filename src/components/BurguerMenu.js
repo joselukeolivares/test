@@ -77,7 +77,7 @@ function BurguerMenu(){
           values.setTopSearch(true)
           values.setBuscador(false)
           values.setSubtitle("Mis Favoritos")
-          navigate("/resultados",{replace:true})
+          navigate("/test/resultados",{replace:true})
               break;
         case 3:
           values.setFavorite(false)
@@ -85,13 +85,13 @@ function BurguerMenu(){
           values.setTopSearch(true)
           values.setBuscador(false)
           values.setSubtitle("Historial")
-          navigate("/resultados")
+          navigate("/test/resultados")
               break;
         case 4:
-          navigate("/resultados",{replace:true})
+          navigate("/test/resultados",{replace:true})
               break;
         case 5:
-          navigate("/rendicion",{replace:true})
+          navigate("/test/rendicion",{replace:true})
               break;
         default:
           console.log("option invalid in burguer menu")
@@ -107,7 +107,7 @@ function BurguerMenu(){
         <Menu customBurgerIcon={<Menu32 className="carbon_icon"/>} styles={styles}>
                     <div className='burguer-cursor'>
                       
-                      <a id="home" className="menu-item menu-subItem" href="/home" > <Home20/><p className='burguer-titles'>Home</p> </a>
+                      <a id="home" className="menu-item menu-subItem" href="/test/home" > <Home20/><p className='burguer-titles'>Home</p> </a>
                     </div>
                     
                     <div id="Explorar" className="menu-item buttonM burguer-cursor" styles={styles} onClick={()=>swithContent(2)}>
@@ -167,7 +167,7 @@ function BurguerMenu(){
                       </div>
                     <div>
                       
-                      <a id="about" className="menu-item menu-subItem" href="/home" > <Gamification20 /><p className='burguer-titles'>About</p> About</a>
+                      <a id="about" className="menu-item menu-subItem" href="/test/home" > <Gamification20 /><p className='burguer-titles'>About</p> About</a>
                     </div>
                     </Menu>
                     
