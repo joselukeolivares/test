@@ -43,12 +43,12 @@ function Buscador(){
 
       function searchTo(flag) {
         if(!flag)
-        navigate("/resultados")
+        navigate("/test/resultados")
         //setRedirect(true)
       }
 
         if(redirect){
-          navigate("/resultados")
+          navigate("/test/resultados")
           //setComponent('resultados',{message:category})
           
         }

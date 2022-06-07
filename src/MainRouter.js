@@ -17,12 +17,12 @@ const MainRouter=()=>{
         <React.Fragment>
             <Routes>
                
-            <Route path="/" element={<Login />}/>
-            <Route path="/home" element={<Home></Home>}></Route>
-            <Route path="/dashboardCarbon" element={<DashboardCarbon></DashboardCarbon>}></Route>
-            <Route path="/resultados" element={<Resultados></Resultados>}></Route>
-            <Route path="/rendicion" element={<Rendicion/>}></Route>
-            <Route path="/vizualization" element={<MigracionApp/>}></Route>
+            <Route path="/test/" element={<Login />}/>
+            <Route path="/test/home" element={<Home></Home>}></Route>
+            <Route path="/test/dashboardCarbon" element={<DashboardCarbon></DashboardCarbon>}></Route>
+            <Route path="/test/resultados" element={<Resultados></Resultados>}></Route>
+            <Route path="/test/rendicion" element={<Rendicion/>}></Route>
+            <Route path="/test/vizualization" element={<MigracionApp/>}></Route>
               
                
             </Routes>
