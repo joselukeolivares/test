@@ -8,6 +8,8 @@ import Resultados from './pages/Resultados'
 import {MigracionApp} from './components/visualization'
 import {MigracionD3} from './components/MigracionD3'
 import {Rendicion} from './pages/Rendicion'
+import {CarbonChart} from './components/CarbonChart'
+import {BoxLineBarCarbon} from './components/BoxLineBarCarbon'
 
 
 const MainRouter=()=>{
@@ -23,6 +25,8 @@ const MainRouter=()=>{
             <Route path="/test/resultados" element={<Resultados></Resultados>}></Route>
             <Route path="/test/rendicion" element={<Rendicion/>}></Route>
             <Route path="/test/vizualization" element={<MigracionApp/>}></Route>
+            <Route path="/test/carbon" element={<CarbonChart/>}></Route>
+            <Route path="/test/carbon/combo" element={<BoxLineBarCarbon/>}></Route>
               
                
             </Routes>
