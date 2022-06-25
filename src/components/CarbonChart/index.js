@@ -12,7 +12,7 @@ function CarbonChart(){
 
     
     React.useEffect(()=>{
-        fetch('http://localhost:3001/dcoppel/ci')        
+        fetch(`http://localhost:3001/kpi_result?idkpi1=${encodeURIComponent('CLTS0012')}`)        
         .then(response=>response.json())
         .then(data=>{
             //console.log(data)
@@ -33,7 +33,10 @@ function CarbonChart(){
                     }
                 },
                 "curve":"curveMonotoneX",
-                "height":"400px"
+                "height":"400px",
+                "points":{
+                    "enabled":false
+                }
             }
         
             setStateOptions(optionsChart)

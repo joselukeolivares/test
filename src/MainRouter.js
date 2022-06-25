@@ -10,7 +10,9 @@ import {MigracionD3} from './components/MigracionD3'
 import {Rendicion} from './pages/Rendicion'
 import {CarbonChart} from './components/CarbonChart'
 import {BoxLineBarCarbon} from './components/BoxLineBarCarbon'
-
+import {StackedAreaTS} from './components/StackedAreaTS'
+import {TreeMap} from './components/Treemap'
+import { PieChartDC } from "./components/Pie";
 
 const MainRouter=()=>{
 
@@ -27,6 +29,9 @@ const MainRouter=()=>{
             <Route path="/test/vizualization" element={<MigracionApp/>}></Route>
             <Route path="/test/carbon" element={<CarbonChart/>}></Route>
             <Route path="/test/carbon/combo" element={<BoxLineBarCarbon/>}></Route>
+            <Route path="/test/carbon/stacked" element={<StackedAreaTS/>}></Route>
+            <Route path="/test/carbon/treemap" element={<TreeMap/>}></Route>
+            <Route path="/test/carbon/pie" element={<PieChartDC/>}></Route>
               
                
             </Routes>
