@@ -13,6 +13,7 @@ import {BoxLineBarCarbon} from './components/BoxLineBarCarbon'
 import {StackedAreaTS} from './components/StackedAreaTS'
 import {TreeMap} from './components/Treemap'
 import { PieChartDC } from "./components/Pie";
+import {GaugeDC} from './components/Gauge'
 
 const MainRouter=()=>{
 
@@ -32,6 +33,7 @@ const MainRouter=()=>{
             <Route path="/test/carbon/stacked" element={<StackedAreaTS/>}></Route>
             <Route path="/test/carbon/treemap" element={<TreeMap/>}></Route>
             <Route path="/test/carbon/pie" element={<PieChartDC/>}></Route>
+            <Route path="/test/carbon/gauge" element={<GaugeDC/>}  ></Route>
               
                
             </Routes>
