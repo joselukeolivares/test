@@ -13,11 +13,9 @@ import {BoxLineBarCarbon} from './components/BoxLineBarCarbon'
 import {StackedAreaTS} from './components/StackedAreaTS'
 import {TreeMap} from './components/Treemap'
 import { PieChartDC } from "./components/Pie";
-<<<<<<< HEAD
 import { DonutDC } from "./components/Donut";
-=======
 import {GaugeDC} from './components/Gauge'
->>>>>>> dc5540f62b58d20d2ee005eeb823ca6716a0cb55
+import { ScatterDC } from "./components/Scatter/index";
 
 const MainRouter=()=>{
 
@@ -39,6 +37,7 @@ const MainRouter=()=>{
             <Route path="/test/carbon/pie" element={<PieChartDC/>}></Route>
             <Route path='/test/carbon/donut' element={<DonutDC/>}></Route>
             <Route path="/test/carbon/gauge" element={<GaugeDC/>}  ></Route>
+            <Route path="/test/carbon/scatter" element={<ScatterDC/>}/>
               
                
             </Routes>
