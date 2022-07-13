@@ -16,6 +16,7 @@ import { PieChartDC } from "./components/Pie";
 import { DonutDC } from "./components/Donut";
 import {GaugeDC} from './components/Gauge'
 import { ScatterDC } from "./components/Scatter/index";
+import {HeatMapChartDC} from "./components/HeatMap"
 
 const MainRouter=()=>{
 
@@ -38,6 +39,7 @@ const MainRouter=()=>{
             <Route path='/test/carbon/donut' element={<DonutDC/>}></Route>
             <Route path="/test/carbon/gauge" element={<GaugeDC/>}  ></Route>
             <Route path="/test/carbon/scatter" element={<ScatterDC/>}/>
+            <Route path="/test/carbon/headmap" element={<HeatMapChartDC/>}/>
               
                
             </Routes>
