@@ -17,6 +17,7 @@ import { DonutDC } from "./components/Donut";
 import {GaugeDC} from './components/Gauge'
 import { ScatterDC } from "./components/Scatter/index";
 import {HeatMapChartDC} from "./components/HeatMap"
+import { Sankey } from "./components/Sankey";
 
 const MainRouter=()=>{
 
@@ -40,6 +41,7 @@ const MainRouter=()=>{
             <Route path="/test/carbon/gauge" element={<GaugeDC/>}  ></Route>
             <Route path="/test/carbon/scatter" element={<ScatterDC/>}/>
             <Route path="/test/carbon/headmap" element={<HeatMapChartDC/>}/>
+            <Route path="/test/d3/sankey" element={<Sankey/>}/>
               
                
             </Routes>

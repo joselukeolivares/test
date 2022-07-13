@@ -4,7 +4,7 @@ import "@carbon/charts/styles.css"
 import './carbonChart.css'
 
 
-function CarbonChart(){
+function CarbonChart({idIndicador}){
 
     const [dataKpi,setDataKPI]=React.useState([])    
     const [stateOptions,setStateOptions]=React.useState({})
@@ -12,11 +12,11 @@ function CarbonChart(){
 
     
     React.useEffect(()=>{
-        fetch(`http://localhost:3001/kpi_result?idkpi1=${encodeURIComponent('CLTS0012')}`)        
+        fetch(`http://localhost:3001/kpi_result?idkpi1=${encodeURIComponent(`${idIndicador}`)}`)        
         .then(response=>response.json())
         .then(data=>{
             //console.log(data)
-            debugger
+            //debugger
 
             let optionsChart={
                 "title":`${data.idIndicador}`,
