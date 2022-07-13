@@ -8,6 +8,14 @@ import {Dashboard20,ChartLine20,View20,TableSplit20,ReportData20} from '@carbon/
 
 let categoriesKeyList=[]
 const cardsCategory=[1,2,3,4,5]
+const idIndicadores=[
+    "VTSM0023",
+    "GSTO0004",    
+    "VSVG01",
+    "CLTS0023",
+    "MGCM01"
+    ]
+
 function Category({categories}){
     categoriesKeyList=Object.keys(categories)
 
@@ -33,7 +41,7 @@ function Category({categories}){
     return (
         <React.Fragment>
             
-            {categoriesKeyList.map((categoryKey)=>{
+            {categoriesKeyList.map((categoryKey,indexCategory)=>{
 
                     const categoryObj=categories[categoryKey]
    
@@ -44,13 +52,13 @@ function Category({categories}){
                                 {iconComponent(categoryObj.typeIcon)}                                
                             </div>
                             <div className="nameCategory">                                
-                                <h4>{categoryObj.name}</h4>
+                                <h4>{categoryObj.name} ok</h4>
                             </div>
                         </div>
                         <div className="cardsCategory">
                             {categoryObj.bag.map((element,i)=>{
                                 return (
-                                    <CardCategory key={`${i}`} metadata={element}></CardCategory>
+                                    <CardCategory key={`${i}`} metadata={element} idIndicador={indexCategory==1?idIndicadores[i]:0}></CardCategory>
                                 )
                             })}
                         </div>

@@ -4,8 +4,12 @@ import { Footer } from './Footer'
 import {MetaDataDashboad} from './MetaDataDashboard'
 import { LineChart } from "@carbon/charts-react";
 import "@carbon/charts/styles.css";
+import { CarbonChart } from './CarbonChart';
 
 import '../css/components/dashboardCarbon.css'
+import { useLocation } from 'react-router-dom';
+import { BoxLineBarCarbon } from './BoxLineBarCarbon';
+import {BarSimpleDC} from './BarSimple'
 
 function DashboardCarbon(){
 
@@ -231,6 +235,10 @@ function DashboardCarbon(){
 }
 	};
 
+	console.log(useLocation().state)
+	state.idIndicador=useLocation().state.idIndicador
+
+	
     return (
         <React.Fragment>
             <section id="topBarLooged-container_home">
@@ -247,6 +255,15 @@ function DashboardCarbon(){
                 options={state.options}>
             </LineChart>
             </div>
+
+			{state.idIndicador!=0 && (
+				<React.Fragment>
+					<CarbonChart idIndicador={state.idIndicador}></CarbonChart>
+					<BoxLineBarCarbon idIndicador={state.idIndicador}></BoxLineBarCarbon>			
+					<BarSimpleDC idIndicador={state.idIndicador}></BarSimpleDC>
+				</React.Fragment>	
+				)
+			}
                         
             <Footer></Footer>
         </React.Fragment>

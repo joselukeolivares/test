@@ -13,7 +13,7 @@ const clasesIconsCard={
 }
 
 
-    function CardCategory({metadata}){
+    function CardCategory({metadata,idIndicador}){
 
         const name=metadata.name
         const type=metadata.type
@@ -55,6 +55,20 @@ const clasesIconsCard={
                 <div id="typeTitle-topSection_Card">
                     <p id="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
                     <a id="nameTitle_typeTitle" className='nameText_card-Container' href={type=='indicator'?'/test/vizualization':'/test/dashboardCarbon'}>{name}</a>
+                    <Link
+                        to={{
+                            pathname:type=='indicator'?'/test/vizualization':'/test/dashboardCarbon',
+                        }
+                            }       
+                            
+                            state={
+                                {idIndicador:idIndicador}
+                            }
+                            
+                            
+                    >   idIndicador 
+                        {name}
+                    </Link>
                     
                 </div>                               
                 <div className="iconSection-Category">                    

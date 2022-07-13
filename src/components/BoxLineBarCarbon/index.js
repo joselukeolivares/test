@@ -5,7 +5,7 @@ import {ComboChart} from '@carbon/charts-react'
 import { json } from 'd3'
 import { Router } from 'react-router-dom'
 
-function BoxLineBarCarbon(){
+function BoxLineBarCarbon({idIndicador}){
     const [dataKpi,setDataKPI]=React.useState([])    
     const [stateOptions,setStateOptions]=React.useState({})
 
@@ -62,11 +62,11 @@ function BoxLineBarCarbon(){
     React.useEffect(()=>{
 
         const resultado=
-        fetch(`http://localhost:3001/kpi_result?idkpi1=${encodeURIComponent('CLTS0002')}`)
+        fetch(`http://localhost:3001/kpi_result?idkpi1=${encodeURIComponent(`${idIndicador}`)}`)
         .then(data=>data.json())
 
         const pronostico=
-        fetch(`http://localhost:3001/kpi_forecast?id1=${encodeURIComponent('CLTS0002')}`)
+        fetch(`http://localhost:3001/kpi_forecast?id1=${encodeURIComponent(`${idIndicador}`)}`)
         .then(data=>data.json())
 
         Promise.all([
