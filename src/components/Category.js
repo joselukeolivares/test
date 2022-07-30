@@ -52,7 +52,7 @@ function Category({categories}){
                                 {iconComponent(categoryObj.typeIcon)}                                
                             </div>
                             <div className="nameCategory">                                
-                                <h4>{categoryObj.name} ok</h4>
+                                <h4>{categoryObj.name}</h4>
                             </div>
                         </div>
                         <div className="cardsCategory">

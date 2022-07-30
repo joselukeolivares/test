@@ -10,6 +10,8 @@ import '../css/components/dashboardCarbon.css'
 import { useLocation } from 'react-router-dom';
 import { BoxLineBarCarbon } from './BoxLineBarCarbon';
 import {BarSimpleDC} from './BarSimple'
+import {LinesResultForescast} from './LinesResForescast'
+import {FormGroup,RadioButtonGroup,RadioButton} from 'carbon-components-react'
 
 function DashboardCarbon(){
 
@@ -237,6 +239,8 @@ function DashboardCarbon(){
 
 	console.log(useLocation().state)
 	state.idIndicador=useLocation().state.idIndicador
+	const [forecastChart,setPronostico]=React.useState("opt-1")
+
 
 	
     return (
@@ -249,19 +253,63 @@ function DashboardCarbon(){
                 <h3>Acerca de</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor, sit amet, molestie egestas ac sagittis, aliquet. Diam scelerisque tempus bibendum convallis nunc. Ullamcorper dui maecenas ac ultricies. Porta ac id purus sit in duis mi turpis. Quam quis vitae habitasse id urna et. Tempus pharetra urna, quis ut elit vulputate. Quis eu tempor et, ac dictum dolor. Pharetra ac eu id nulla libero sit. Risus vulputate eget vitae consequat mauris, non. Habitant egestas feugiat libero, ornare lectus tincidunt lorem magnis tempus. Dictum placerat senectus eget ultrices fusce penatibus dignissim volutpat. Felis, odio vitae quam tincidunt sit viverra pharetra maecenas faucibus.</p>
             </div>
+            {/*Example
             <div className='lineChart-container'>
-            <LineChart
+			<LineChart
                 data={state.data}
                 options={state.options}>
             </LineChart>
-            </div>
+			</div>
+			*/}
 
 			{state.idIndicador!=0 && (
 				<React.Fragment>
-					<CarbonChart idIndicador={state.idIndicador}></CarbonChart>
-					<BoxLineBarCarbon idIndicador={state.idIndicador}></BoxLineBarCarbon>			
-					<BarSimpleDC idIndicador={state.idIndicador}></BarSimpleDC>
-				</React.Fragment>	
+
+					<FormGroup
+					onChange={e=>{
+						setPronostico(e.target.value)
+					}}
+					legendText='Selección de tipo de gráfico para Pronostico'
+					>
+						<RadioButtonGroup
+						defaultSelected="default-selected"
+						legend="Group Legend"
+						name="forecast-radio-button-group"
+						valueSelected="default-selected"
+						>
+							<RadioButton
+							id="radio-1"
+							labelText="Lineas"
+							value="opt-1"
+							/>
+
+							<RadioButton
+							id="radio-2"
+							labelText="Barras-Lineas"
+							value="opt-2"
+							/>
+
+							
+						</RadioButtonGroup>
+					</FormGroup>	
+					<div className="principalChart">
+					{forecastChart=='opt-1' && (
+						<CarbonChart idIndicador={state.idIndicador}></CarbonChart>
+						
+					)}
+					{forecastChart=='opt-2' && (
+						<BarSimpleDC idIndicador={state.idIndicador}></BarSimpleDC>
+						
+					)}
+					</div>
+					<div className="miniChartsContainer">						
+						<BoxLineBarCarbon idIndicador={state.idIndicador}></BoxLineBarCarbon>
+						<LineChart data={state.data} options={state.options}> </LineChart>
+						<LinesResultForescast idIndicador={state.idIndicador}></LinesResultForescast>
+			
+									
+					</div>
+					</React.Fragment>	
 				)
 			}
                         

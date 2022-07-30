@@ -32,7 +32,7 @@ export class BarSimpleDC extends React.Component{
                 let groupData=data.map(row=>({...row,group:this.state.idIndicador,"value":parseInt(row.resultado)}))        
             
                 this.setState({...this.state,data:groupData})
-                debugger
+                //debugger
             })
 
         }else{
@@ -43,7 +43,6 @@ export class BarSimpleDC extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <h1>Bar Simple Carbon JLOC</h1>
                 {
                 
                 this.state.data.length>0 && (

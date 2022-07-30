@@ -90,7 +90,6 @@ function BoxLineBarCarbon({idIndicador}){
 
     return(
         <React.Fragment>
-            <h1>Carbon Chart: Combo line+bar</h1>
             <ComboChart
             data={dataKpi}
             options={optionsChart}

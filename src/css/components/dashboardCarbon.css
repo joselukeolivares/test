@@ -1,0 +1,13 @@
+.miniChartsContainer{
+    display: flex;
+    justify-content: center
+        
+}
+
+.miniChartsContainer * {
+    width: 33%
+}
+
+.principalChart{
+    height: 400px
+}

@@ -16,7 +16,9 @@
 
 #categories_container-Home{
     height: 80rem;
-    /*background-color: blueviolet;*/
+    background-color: #F4F4F4;
+    display: flex;
+    justify-content: center;
 }
 
 .subTitle{

@@ -54,7 +54,7 @@ const clasesIconsCard={
             <div className="bottom_CardCategory-container">
                 <div id="typeTitle-topSection_Card">
                     <p id="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
-                    <a id="nameTitle_typeTitle" className='nameText_card-Container' href={type=='indicator'?'/test/vizualization':'/test/dashboardCarbon'}>{name}</a>
+          
                     <Link
                         to={{
                             pathname:type=='indicator'?'/test/vizualization':'/test/dashboardCarbon',
@@ -66,7 +66,7 @@ const clasesIconsCard={
                             }
                             
                             
-                    >   idIndicador 
+                    >   
                         {name}
                     </Link>
                     
