@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 import { BoxLineBarCarbon } from './BoxLineBarCarbon';
 import {BarSimpleDC} from './BarSimple'
 import {LinesResultForescast} from './LinesResForescast'
-import {FormGroup,RadioButtonGroup,RadioButton} from 'carbon-components-react'
+import {FormGroup,RadioButtonGroup,RadioButton,Toggle} from 'carbon-components-react'
 
 function DashboardCarbon(){
 
@@ -237,9 +237,10 @@ function DashboardCarbon(){
 }
 	};
 
-	console.log(useLocation().state)
+	//console.log(useLocation().state)
 	state.idIndicador=useLocation().state.idIndicador
 	const [forecastChart,setPronostico]=React.useState("opt-1")
+	const [meta,setMeta]=React.useState({load:false,show:false,loading:false})
 
 
 	
@@ -265,9 +266,18 @@ function DashboardCarbon(){
 			{state.idIndicador!=0 && (
 				<React.Fragment>
 
-					<FormGroup
-					onChange={e=>{
-						setPronostico(e.target.value)
+					<FormGroup 					onChange={e=>{
+						let value=e.target.value
+						switch(value){
+							case 'opt-1':
+							case 'opt-2':
+								setPronostico(e.target.value)
+								break;
+							case 'opt-3':
+							break;
+							default:
+							console.log("opt-invalid")
+						}
 					}}
 					legendText='Selección de tipo de gráfico para Pronostico'
 					>
@@ -289,12 +299,30 @@ function DashboardCarbon(){
 							value="opt-2"
 							/>
 
+							<RadioButton
+							id="radio-3"
+							labelText="Meta"
+							value="opt-3"
+							/>
+
 							
 						</RadioButtonGroup>
-					</FormGroup>	
+					</FormGroup>
+					<Toggle
+						id="toggle-meta"
+						labelText="Meta"
+						onToggle={(toggled)=>{
+							/*
+							console.log("Toggled:")
+							console.log(toggled)
+							*/
+							setMeta(({...meta,show:toggled,}))
+
+						}}
+					/>	
 					<div className="principalChart">
 					{forecastChart=='opt-1' && (
-						<CarbonChart idIndicador={state.idIndicador}></CarbonChart>
+						<CarbonChart idIndicador={state.idIndicador} meta={meta} setMeta={setMeta}></CarbonChart>
 						
 					)}
 					{forecastChart=='opt-2' && (
