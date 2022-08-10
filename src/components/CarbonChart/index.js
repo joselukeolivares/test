@@ -2,6 +2,7 @@ import React from 'react'
 import {LineChart} from '@carbon/charts-react'
 import "@carbon/charts/styles.css"
 import './carbonChart.css'
+import { MeterChartDC } from '../Meter'
 
 
 function CarbonChart({idIndicador,meta,setMeta}){
@@ -49,9 +50,9 @@ function CarbonChart({idIndicador,meta,setMeta}){
     React.useEffect(()=>{
 
         if(isMounted.current){
-                    //console.log("meta.loaded:")
-                if(meta.lodaded){
-                    //console.log("True")
+                    console.log("meta.loaded:")
+                if(meta.loaded){
+                    console.log("True")
                     if(!meta.show){
                         let filterMeta=dataKpi.filter(row=>{
                             return row.type!=2
@@ -61,6 +62,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
                         //console.log(filterMeta)
                     }else{
                         let plus=dataKpi.concat(dataKpiMeta)
+                        debugger
                         setDataKPI(plus)
                         console.log(dataKpi)
                         console.log(dataKpiMeta)
@@ -69,7 +71,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
 
                 }else{
                     getMeta([idIndicador])
-                    //console.log("False")
+                    console.log("False")
                     
                 }
         }else{
@@ -87,11 +89,11 @@ function CarbonChart({idIndicador,meta,setMeta}){
         fetch(uriToFetch)
             .then(resultado=>resultado.json())
             .then(data=>{
-                let dataMeta=data.map(row=>({fechaCorte:row.fechaCorte,group:"meta","resultado":parseInt(30000),type:2}))
+                let dataMeta=data.map(row=>({fechaCorte:row.fechaCorte,group:"meta","resultado":row.metaAcumulado,type:2}))
                 //setDataKPI(meta)                
                 //debugger                
                 //console.log(dataKpi.concat(meta))
-                setMeta(({...meta,lodaded:true}))
+                setMeta(({...meta,loaded:true}))
 
                 setDataKPI(dataKpi.concat(dataMeta))
                 let metas=dataKpiMeta.concat(dataMeta)
@@ -126,7 +128,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
             
 
             
-            let groupData=data.map(row=>({fechaCorte:row.fechaCorte,group:"grupo 1","resultado":parseInt(row.resultado),type:1}))        
+            let groupData=data.map(row=>({fechaCorte:row.fechaCorte,group:"grupo 1","resultado":row.resultado,type:1}))        
             //let groupData=data.map(row=>({...row,group:"grupo 1","resultado":"A"}))        
             
             let test=groupData[0]
@@ -143,12 +145,19 @@ function CarbonChart({idIndicador,meta,setMeta}){
             <p>Este es un componente para CarbonChart</p>
             <p>{/*dataKpi*/}</p>
             <div className="lineChart_container">
-            {(dataKpi.length>0) &&
+            {(dataKpi.length>0) && 
+                        <React.Fragment>
+                            <MeterChartDC
+                            value={35}
+                            lowLimit={0}
+                            hightLimit={100}
+                            ></MeterChartDC>
                             <LineChart
                             data={dataKpi}
                             options={optionsChart}
                             >
                             </LineChart>
+                            </React.Fragment>
             }
             </div>
         </React.Fragment>

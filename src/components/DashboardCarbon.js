@@ -240,7 +240,7 @@ function DashboardCarbon(){
 	//console.log(useLocation().state)
 	state.idIndicador=useLocation().state.idIndicador
 	const [forecastChart,setPronostico]=React.useState("opt-1")
-	const [meta,setMeta]=React.useState({load:false,show:false,loading:false})
+	const [meta,setMeta]=React.useState({loaded:false,show:false,loading:false})
 
 
 	
@@ -312,10 +312,10 @@ function DashboardCarbon(){
 						id="toggle-meta"
 						labelText="Meta"
 						onToggle={(toggled)=>{
-							/*
+							
 							console.log("Toggled:")
 							console.log(toggled)
-							*/
+							
 							setMeta(({...meta,show:toggled,}))
 
 						}}
