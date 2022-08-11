@@ -2,3 +2,14 @@
    /* width: 1200px;
     height: 720px;*/
 }
+
+.meterCumplimiento{
+    display: flex;
+    width: 40%;
+    justify-content: flex-end;
+    margin-left: 60%
+}
+
+.meter{
+    width:200px;
+}

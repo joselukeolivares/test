@@ -13,8 +13,9 @@ function CarbonChart({idIndicador,meta,setMeta}){
     const [dataKpi,setDataKPI]=React.useState([])
     const [dataKpiMeta,setDataKpiMeta]=React.useState([])
     const [dataKpiPron,setDataKpiPron]=React.useState([])
-    //const [dataKpiRes,setDataKpiRes]=React.useState([])
-    //const [filtereData,setFiltereData]=React.useState([])
+    const [dataGlobal,setDataGlobal]=React.useState({})
+    const [lastResult,setLastResult]=React.useState(0)
+    const [acomplished,setAcomplished]=React.useState(0)
 
     let optionsChart={
         "title":`Waiting title`,
@@ -62,7 +63,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
                         //console.log(filterMeta)
                     }else{
                         let plus=dataKpi.concat(dataKpiMeta)
-                        debugger
+                        //debugger
                         setDataKPI(plus)
                         console.log(dataKpi)
                         console.log(dataKpiMeta)
@@ -98,7 +99,13 @@ function CarbonChart({idIndicador,meta,setMeta}){
                 setDataKPI(dataKpi.concat(dataMeta))
                 let metas=dataKpiMeta.concat(dataMeta)
                 setDataKpiMeta(metas)
-                //debugger
+
+                let lastMeta=metas[metas.length-1].resultado
+                let aux=((lastResult/lastMeta)*100).toFixed(2)
+                
+                setAcomplished(aux)//debugger
+                debugger
+                
             })
         
 
@@ -118,22 +125,12 @@ function CarbonChart({idIndicador,meta,setMeta}){
         fetch(`http://localhost:3001/kpi_result?idkpi1=${encodeURIComponent(`${idIndicador}`)}`)        
         .then(response=>response.json())
         .then(data=>{
-            //console.log(data)
+            
             //debugger
-
-
-        
-            
-
-            
-
-            
-            let groupData=data.map(row=>({fechaCorte:row.fechaCorte,group:"grupo 1","resultado":row.resultado,type:1}))        
-            //let groupData=data.map(row=>({...row,group:"grupo 1","resultado":"A"}))        
-            
-            let test=groupData[0]
+            let groupData=data.map(row=>({fechaCorte:row.fechaCorte,group:"grupo 1","resultado":parseFloat(row.resultado),type:1}))                                  
 
             setDataKPI(groupData)
+            setLastResult(data[data.length-1].resultado)
         })
         .catch(err=>{
             console.log(err)
@@ -147,11 +144,19 @@ function CarbonChart({idIndicador,meta,setMeta}){
             <div className="lineChart_container">
             {(dataKpi.length>0) && 
                         <React.Fragment>
-                            <MeterChartDC
-                            value={35}
-                            lowLimit={0}
-                            hightLimit={100}
-                            ></MeterChartDC>
+                            <div className="meterCumplimiento">
+                                {meta.show &&(
+                                    <MeterChartDC className="meter"
+                             
+                                    value={acomplished
+                                                                                                                    
+                                }
+                                    lowLimit={0}
+                                    hightLimit={1000}
+                                    ></MeterChartDC>
+                                    
+                                )}
+                            </div>
                             <LineChart
                             data={dataKpi}
                             options={optionsChart}
