@@ -12,7 +12,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
     
     const [dataKpi,setDataKPI]=React.useState([])
     const [dataKpiMeta,setDataKpiMeta]=React.useState([])
-    const [dataKpiPron,setDataKpiPron]=React.useState([])
+    const [dataKpiForec,setDataKpiForec]=React.useState([])
     const [dataGlobal,setDataGlobal]=React.useState({})
     const [lastResult,setLastResult]=React.useState(0)
     const [acomplished,setAcomplished]=React.useState(0)
@@ -44,16 +44,45 @@ function CarbonChart({idIndicador,meta,setMeta}){
 
     }
 
-    function getPronostico(id){
-        
+    function getForecast(ids){
+        let uriBase=`http://localhost:3001/kpi_forecast?`
+        let uriToFetch=uriMaker(uriBase,ids)
+
+        fetch(uriToFetch)
+            .then(result=>result.json())
+            .then(data=>{
+                let groupData=data.map(row=>({fechaCorte:row.fechaCorte,group:"pronostico",resultado:row.pronostico,type:3}))
+                //debugger
+                setMeta(({...meta,forecastLoaded:true}))
+                setDataKPI(dataKpi.concat(groupData))
+                setDataKpiForec(dataKpiForec)
+            })
     }
+
+    React.useEffect(()=>{
+        if(isMounted.current){
+            if(meta.forecastLoaded){
+                if(!meta.forecastShow){
+                    let filterForecast=dataKpi.filter(row=>row.type!=3) 
+                    setDataKPI(filterForecast)
+                }else{
+                    let plus=dataKpi.concat(dataKpiForec)
+                    setDataKPI(plus)
+                }         
+            }else{
+                getForecast([idIndicador])
+            }
+        }else{
+            isMounted.current=true
+        }
+    },[meta.forecastShow])
 
     React.useEffect(()=>{
 
         if(isMounted.current){
-                    console.log("meta.loaded:")
+                    //console.log("meta.loaded:")
                 if(meta.loaded){
-                    console.log("True")
+                    //console.log("True")
                     if(!meta.show){
                         let filterMeta=dataKpi.filter(row=>{
                             return row.type!=2
@@ -65,8 +94,8 @@ function CarbonChart({idIndicador,meta,setMeta}){
                         let plus=dataKpi.concat(dataKpiMeta)
                         //debugger
                         setDataKPI(plus)
-                        console.log(dataKpi)
-                        console.log(dataKpiMeta)
+                        //console.log(dataKpi)
+                        //console.log(dataKpiMeta)
                     
                     }
 
@@ -104,7 +133,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
                 let aux=((lastResult/lastMeta)*100).toFixed(2)
                 
                 setAcomplished(aux)//debugger
-                debugger
+                //debugger
                 
             })
         
@@ -139,7 +168,6 @@ function CarbonChart({idIndicador,meta,setMeta}){
 
     return(
         <React.Fragment>
-            <p>Este es un componente para CarbonChart</p>
             <p>{/*dataKpi*/}</p>
             <div className="lineChart_container">
             {(dataKpi.length>0) && 
