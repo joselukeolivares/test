@@ -12,6 +12,7 @@ import { BoxLineBarCarbon } from './BoxLineBarCarbon';
 import {BarSimpleDC} from './BarSimple'
 import {LinesResultForescast} from './LinesResForescast'
 import {FormGroup,RadioButtonGroup,RadioButton,Toggle} from 'carbon-components-react'
+import { AddIndicador } from './AddIndicator/index';
 
 function DashboardCarbon(){
 
@@ -241,7 +242,21 @@ function DashboardCarbon(){
 	state.idIndicador=useLocation().state.idIndicador
 	const [forecastChart,setPronostico]=React.useState("opt-1")
 	const [meta,setMeta]=React.useState({loaded:false,show:false,loading:false,forecastShow:false,forecastLoaded:false})
-
+	const [listIds,setListIds]=React.useState([
+		{id:'option-1',label:"VTSM0023",idIndicador:"VTSM0023"},
+		{id:'option-2',label:"GSTO0004",idIndicador:"VTSM0023"},
+		{id:'option-3',label:"CLTS0023",idIndicador:"VTSM0023"},
+		{id:'option-4',label:"VSVG01",idIndicador:"VTSM0023"},
+		{id:'option-5',label:"MGCM01",idIndicador:"VTSM0023"}
+	])
+   
+	/*
+	    "VTSM0023",
+    "GSTO0004",    
+    "VSVG01",
+    "CLTS0023",
+    "MGCM01"
+	 */
 
 	
     return (
@@ -329,6 +344,9 @@ function DashboardCarbon(){
 							setMeta(({...meta,forecastShow:toggled}))	
 						}}
 					/>
+					<AddIndicador items={listIds}>
+						<h1>hola mundo</h1>
+					</AddIndicador >	
 					<div className="principalChart">
 					{forecastChart=='opt-1' && (
 						<CarbonChart idIndicador={state.idIndicador} meta={meta} setMeta={setMeta}></CarbonChart>

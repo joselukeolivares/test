@@ -31,7 +31,7 @@ const MainRouter=()=>{
             <Route path="/test/dashboardCarbon" element={<DashboardCarbon></DashboardCarbon>}></Route>
             <Route path="/test/resultados" element={<Resultados></Resultados>}></Route>
             <Route path="/test/rendicion" element={<Rendicion/>}></Route>
-            <Route path="/test/vizualization" element={<MigracionApp/>}></Route>
+            <Route path="/test/d3/migracion" element={<MigracionApp/>}></Route>
             <Route path="/test/carbon" element={<CarbonChart/>}></Route>
             <Route path="/test/carbon/combo" element={<BoxLineBarCarbon/>}></Route>
             <Route path="/test/carbon/stacked" element={<StackedAreaTS/>}></Route>
@@ -41,7 +41,7 @@ const MainRouter=()=>{
             <Route path="/test/carbon/gauge" element={<GaugeDC/>}  ></Route>
             <Route path="/test/carbon/scatter" element={<ScatterDC/>}/>
             <Route path="/test/carbon/headmap" element={<HeatMapChartDC/>}/>
-            <Route path="/test/d3/sankey" element={<Sankey/>}/>
+            <Route path="/test/d3/proyectosCoppel" element={<Sankey/>}/>
               
                
             </Routes>

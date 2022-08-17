@@ -49,12 +49,13 @@
             "name":"Proyectos Visualización",
             "typeIcon":"dataviz",
             "total":"95",
-            "bag":[
-                {"name":"Ventas Celulares","type":"indicator","typeCode":"CarbonDesign","typeIcons":["indicator"]},
-                {"name":"Ventas Celulares","type":"indicator","typeCode":"CarbonDesign","typeIcons":["indicator"]},
-                {"name":"Ventas Celulares","type":"indicator","typeCode":"CarbonDesign","typeIcons":["indicator"]},
-                {"name":"Ventas semanales","type":"indicator","typeCode":"Tableau","typeIcons":["indicator"]},
-                {"name":"Productos","type":"indicator","typeCode":"PowerBi","typeIcons":["indicator"]}
+            "bag":[                
+                {"name":"Migración de clientes","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/migracion"},
+                {"name":"Proyectos ADV Sankey","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Armando Felix Zaragoza","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/proyectosCoppel"},
+                {"name":"Tiendas Coppel en mapa","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/coppelMap"},
+                {"name":"Estado Resultado De Clientes","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"Pixi","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/erc"},
+                {"name":"Estado Resultado De Clientes","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"Pixi","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/erc"}
+            
             ]
         },
         "TablerosCat":{

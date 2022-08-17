@@ -73,7 +73,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
                 getForecast([idIndicador])
             }
         }else{
-            isMounted.current=true
+            //isMounted.current=true
         }
     },[meta.forecastShow])
 
@@ -100,6 +100,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
                     }
 
                 }else{
+                    debugger
                     getMeta([idIndicador])
                     console.log("False")
                     
@@ -132,7 +133,8 @@ function CarbonChart({idIndicador,meta,setMeta}){
                 let lastMeta=metas[metas.length-1].resultado
                 let aux=((lastResult/lastMeta)*100).toFixed(2)
                 
-                setAcomplished(aux)//debugger
+                setAcomplished(aux)//
+                debugger
                 //debugger
                 
             })
@@ -158,8 +160,10 @@ function CarbonChart({idIndicador,meta,setMeta}){
             //debugger
             let groupData=data.map(row=>({fechaCorte:row.fechaCorte,group:"grupo 1","resultado":parseFloat(row.resultado),type:1}))                                  
 
+            //debugger
             setDataKPI(groupData)
-            setLastResult(data[data.length-1].resultado)
+            let result=data[data.length-1].resultado
+            setLastResult(result)   
         })
         .catch(err=>{
             console.log(err)

@@ -1,0 +1,10 @@
+{
+    "projects":[
+        {"name":"Migración de clientes","developed":"D3.js","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null},
+        {"name":"Proyectos ADV Sankey","developed":"D3.js","Author":"José Armando Felix Zaragoza","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null},
+        {"name":"Tiendas Coppel en mapa","developed":"D3.js","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null},
+        {"name":"Estado Resultado De Clientes","developed":"Pixi","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null},
+        {"name":"Estado Resultado De Clientes","developed":"Pixi","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null}
+    
+    ]
+}

@@ -19,6 +19,7 @@ const clasesIconsCard={
         const type=metadata.type
         const typeCode=metadata.typeCode
         const typeIcons=metadata.typeIcons
+        const route=metadata.route
         console.log(type)
 
         const navigate=useNavigate()
@@ -57,7 +58,7 @@ const clasesIconsCard={
           
                     <Link
                         to={{
-                            pathname:type=='indicator'?'/test/vizualization':'/test/dashboardCarbon',
+                            pathname:type=='indicator'?`${route}`:'/test/dashboardCarbon',
                         }
                             }       
                             
