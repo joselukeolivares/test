@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 import { BoxLineBarCarbon } from './BoxLineBarCarbon';
 import {BarSimpleDC} from './BarSimple'
 import {LinesResultForescast} from './LinesResForescast'
-import {FormGroup,RadioButtonGroup,RadioButton,Toggle} from 'carbon-components-react'
+import {FormGroup,RadioButtonGroup,RadioButton,Toggle,SelectItem} from 'carbon-components-react'
 import { AddIndicador } from './AddIndicator/index';
 
 function DashboardCarbon(){
@@ -244,20 +244,18 @@ function DashboardCarbon(){
 	const [meta,setMeta]=React.useState({loaded:false,show:false,loading:false,forecastShow:false,forecastLoaded:false})
 	const [listIds,setListIds]=React.useState([
 		{id:'option-1',label:"VTSM0023",idIndicador:"VTSM0023"},
-		{id:'option-2',label:"GSTO0004",idIndicador:"VTSM0023"},
-		{id:'option-3',label:"CLTS0023",idIndicador:"VTSM0023"},
-		{id:'option-4',label:"VSVG01",idIndicador:"VTSM0023"},
-		{id:'option-5',label:"MGCM01",idIndicador:"VTSM0023"}
+		{id:'option-2',label:"GSTO0004",idIndicador:"GSTO0004"},
+		{id:'option-3',label:"CLTS0023",idIndicador:"CLTS0023"},
+		{id:'option-4',label:"VSVG01",idIndicador:"VSVG01"},
+		{id:'option-5',label:"MGCM01",idIndicador:"MGCM01"}
 	])
-   
-	/*
-	    "VTSM0023",
-    "GSTO0004",    
-    "VSVG01",
-    "CLTS0023",
-    "MGCM01"
-	 */
+	const [idSelected,setIdSelected]=React.useState(listIds[0].label)
+	const [addedIds,setAddedIds]=React.useState([])
 
+	function getData(){
+        console.log("I got it: "+idSelected)
+        return true
+    }
 	
     return (
         <React.Fragment>
@@ -269,15 +267,7 @@ function DashboardCarbon(){
                 <h3>Acerca de</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor, sit amet, molestie egestas ac sagittis, aliquet. Diam scelerisque tempus bibendum convallis nunc. Ullamcorper dui maecenas ac ultricies. Porta ac id purus sit in duis mi turpis. Quam quis vitae habitasse id urna et. Tempus pharetra urna, quis ut elit vulputate. Quis eu tempor et, ac dictum dolor. Pharetra ac eu id nulla libero sit. Risus vulputate eget vitae consequat mauris, non. Habitant egestas feugiat libero, ornare lectus tincidunt lorem magnis tempus. Dictum placerat senectus eget ultrices fusce penatibus dignissim volutpat. Felis, odio vitae quam tincidunt sit viverra pharetra maecenas faucibus.</p>
             </div>
-            {/*Example
-            <div className='lineChart-container'>
-			<LineChart
-                data={state.data}
-                options={state.options}>
-            </LineChart>
-			</div>
-			*/}
-
+            
 			{state.idIndicador!=0 && (
 				<React.Fragment>
 
@@ -344,8 +334,19 @@ function DashboardCarbon(){
 							setMeta(({...meta,forecastShow:toggled}))	
 						}}
 					/>
-					<AddIndicador items={listIds}>
-						<h1>hola mundo</h1>
+					<AddIndicador   getData={getData} setIdSelected={setIdSelected}>
+						{
+							listIds.map((element,index) => {
+								//debugger
+							return (                        
+								<SelectItem
+									key ={`SelectId${index}`}
+									text={`${element.label}`}
+									value={`${element.label}`}
+								/> 
+							)
+						})
+						}
 					</AddIndicador >	
 					<div className="principalChart">
 					{forecastChart=='opt-1' && (
