@@ -3,13 +3,12 @@
 // https://observablehq.com/@d3/sankey-diagram
 import * as d3 from 'd3';
 import * as d3Sankey from 'd3-sankey';
-import dataset from './dataset.csv'
+import dataset from './dataset.csv';
 
 export function SankeyD3(){
 
   d3.csv(dataset).then(function(data){
   let sankeyData = data;
-     console.log(sankeyData);
     
     debugger
 
@@ -183,14 +182,11 @@ export function SankeyD3(){
     let nodes = document.querySelectorAll("rect");
     let links = document.querySelectorAll("path");
 
-    console.log(nodes);
-    // console.log(links);
     
     nodes.forEach(function(element) {
       let sourceLinks = element.__data__.sourceLinks;
       let targetLinks = element.__data__.targetLinks;
       // let sourceLinks2 = element.__data__.sourceLinks
-      console.log(element);
 
       element.addEventListener("mouseover", function( event ) {
         event.target.style.fill = "#33A16C";
