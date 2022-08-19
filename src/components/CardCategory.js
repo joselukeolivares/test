@@ -58,14 +58,14 @@ const clasesIconsCard={
           
                     <Link
                         to={{
-                            pathname:type=='indicator'?`${route}`:'/test/dashboardCarbon',
+                            pathname:type=='indicator'?`${route}`:`/test/dashboardCarbon?idIndicador=${idIndicador}`,
                         }
                             }       
-                            
+                            /*
                             state={
                                 {idIndicador:idIndicador}
                             }
-                            
+                            */
                             
                     >   
                         {name}

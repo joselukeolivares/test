@@ -7,7 +7,7 @@ import "@carbon/charts/styles.css";
 import { CarbonChart } from './CarbonChart';
 
 import '../css/components/dashboardCarbon.css'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { BoxLineBarCarbon } from './BoxLineBarCarbon';
 import {BarSimpleDC} from './BarSimple'
 import {LinesResultForescast} from './LinesResForescast'
@@ -238,8 +238,23 @@ function DashboardCarbon(){
 }
 	};
 
-	//console.log(useLocation().state)
-	state.idIndicador=useLocation().state.idIndicador
+	const [importId,setImportId]=React.useState(useLocation())
+	const [searchParams,setSearchParams]=useSearchParams()
+	//useLocation().state.idIndicador
+		try{
+			//debugger
+			 if(importId.state==null){
+				state.idIndicador=searchParams.get("idIndicador")
+			}else{
+				state.idIndicador=importId.state.idIndicador
+				
+
+				
+			}
+		}catch(err){
+			console.log(err)
+		}
+	
 	const [forecastChart,setPronostico]=React.useState("opt-1")
 	const [meta,setMeta]=React.useState({loaded:false,show:false,loading:false,forecastShow:false,forecastLoaded:false})
 	const [listIds,setListIds]=React.useState([

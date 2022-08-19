@@ -4,11 +4,17 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HomeProvider } from './context';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import MainRouter from './MainRouter';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <HomeProvider>
-      <App />
+    <BrowserRouter>
+              <MainRouter></MainRouter>
+                  <App />                
+              </BrowserRouter>
     </HomeProvider>
   </React.StrictMode>,
   document.getElementById('root')
