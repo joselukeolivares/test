@@ -5,14 +5,16 @@ import {MetaDataDashboad} from './MetaDataDashboard'
 import { LineChart } from "@carbon/charts-react";
 import "@carbon/charts/styles.css";
 import { CarbonChart } from './CarbonChart';
+import {getDataIndicador} from '../fetchHelper/getData'
 
 import '../css/components/dashboardCarbon.css'
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { BoxLineBarCarbon } from './BoxLineBarCarbon';
 import {BarSimpleDC} from './BarSimple'
 import {LinesResultForescast} from './LinesResForescast'
-import {FormGroup,RadioButtonGroup,RadioButton,Toggle,SelectItem} from 'carbon-components-react'
+import {FormGroup,RadioButtonGroup,RadioButton,Toggle,SelectItem,ContentSwitcher,Switch} from 'carbon-components-react'
 import { AddIndicador } from './AddIndicator/index';
+import {HeatMapChartDC} from './HeatMap'
 
 function DashboardCarbon(){
 
@@ -255,7 +257,7 @@ function DashboardCarbon(){
 			console.log(err)
 		}
 	
-	const [forecastChart,setPronostico]=React.useState("opt-1")
+	const [principalChart,setPrincipalChart]=React.useState("opt-0")
 	const [meta,setMeta]=React.useState({loaded:false,show:false,loading:false,forecastShow:false,forecastLoaded:false})
 	const [listIds,setListIds]=React.useState([
 		{id:'option-1',label:"VTSM0023",idIndicador:"VTSM0023"},
@@ -266,12 +268,31 @@ function DashboardCarbon(){
 	])
 	const [idSelected,setIdSelected]=React.useState(listIds[0].label)
 	const [addedIds,setAddedIds]=React.useState([])
+	const [idKpiData,setIdKpiData]=React.useState([])
 
-	function getData(){
-        console.log("I got it: "+idSelected)
+	React.useEffect(() => {
+		let data=getDataIndicador([state.idIndicador],1)
+		data.promiseData.then(data=>{
+			//debugger
+			setIdKpiData(data)
+
+		})
+
+	},[])
+	
+	React.useEffect(()=>{
+		console.log("DC Effect")
+		console.log(idKpiData)
+	},[idKpiData])
+	
+	function getData(idIndicador){
+		console.log("I got it: "+idSelected)
+		let data=getDataIndicador(addedIds[addedIds.length-1],2)
         return true
     }
 	
+
+
     return (
         <React.Fragment>
             <section id="topBarLooged-container_home">
@@ -286,12 +307,23 @@ function DashboardCarbon(){
 			{state.idIndicador!=0 && (
 				<React.Fragment>
 
+					<ContentSwitcher onChange={(e)=>{
+						console.log(e)
+						setPrincipalChart(`opt-${e.index}`)
+					}}>
+
+						<Switch name={"line"} text={"Gráfico Linea"} />
+						<Switch name={"line"} text={"Gráfico Treemap"} />
+						<Switch name={"line"} text={"Gráfico Barras"} />
+						<Switch name={"line"} text={"Gráfico Linea"} />
+					</ContentSwitcher >
+
 					<FormGroup 					onChange={e=>{
 						let value=e.target.value
 						switch(value){
 							case 'opt-1':
 							case 'opt-2':
-								setPronostico(e.target.value)
+								setPrincipalChart(e.target.value)
 								break;
 							case 'opt-3':
 							break;
@@ -349,7 +381,7 @@ function DashboardCarbon(){
 							setMeta(({...meta,forecastShow:toggled}))	
 						}}
 					/>
-					<AddIndicador   getData={getData} setIdSelected={setIdSelected}>
+					<AddIndicador   getData={getData} setIdSelected={setIdSelected} idSelected={idSelected}>
 						{
 							listIds.map((element,index) => {
 								//debugger
@@ -362,14 +394,17 @@ function DashboardCarbon(){
 							)
 						})
 						}
-					</AddIndicador >	
+					</AddIndicador >
 					<div className="principalChart">
-					{forecastChart=='opt-1' && (
-						<CarbonChart idIndicador={state.idIndicador} meta={meta} setMeta={setMeta}></CarbonChart>
+					{principalChart=='opt-0' && (
+						<CarbonChart idIndicador={state.idIndicador} meta={meta} setMeta={setMeta} idKpiData={idKpiData}></CarbonChart>
 						
 					)}
-					{forecastChart=='opt-2' && (
-						<BarSimpleDC idIndicador={state.idIndicador}></BarSimpleDC>
+					{principalChart=='opt-1' && (
+						/*<BarSimpleDC idIndicador={state.idIndicador}></BarSimpleDC>*/
+						
+						<HeatMapChartDC idIndicador={state.idIndicador}  idKpiData={idKpiData}/>
+						
 						
 					)}
 					</div>

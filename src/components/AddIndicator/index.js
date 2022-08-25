@@ -3,7 +3,7 @@ import {ModalWrapper,ModalFooter,Select,SelectItem,SelectGroup} from 'carbon-com
 import {Bot20} from '@carbon/icons-react'
 
 
-export function AddIndicador({children,getData,setIdSelected}){
+export function AddIndicador({children,getData,setIdSelected,idSelected}){
    
     return (
         <ModalWrapper
@@ -26,8 +26,9 @@ export function AddIndicador({children,getData,setIdSelected}){
                 id='select-ids-lista'
                 labelText="Selecciona"
                 onChange={(e)=>{                    
-                    setIdSelected(e.nativeEvent.target.value)
-                    console.log(e)
+                    let selected=e.nativeEvent.target.value
+                    setIdSelected(idSelected.push(selected))
+                    
 
                 }}
             >

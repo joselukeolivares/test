@@ -5,7 +5,7 @@ import './carbonChart.css'
 import { MeterChartDC } from '../Meter'
 
 
-function CarbonChart({idIndicador,meta,setMeta}){
+function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
 
     const [stateOptions,setStateOptions]=React.useState({})
     const isMounted=React.useRef(false)
@@ -52,7 +52,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
             .then(result=>result.json())
             .then(data=>{
                 let groupData=data.map(row=>({fechaCorte:row.fechaCorte,group:"pronostico",resultado:row.pronostico,type:3}))
-                //debugger
+                //
                 setMeta(({...meta,forecastLoaded:true}))
                 setDataKPI(dataKpi.concat(groupData))
                 setDataKpiForec(dataKpiForec)
@@ -92,7 +92,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
                         //console.log(filterMeta)
                     }else{
                         let plus=dataKpi.concat(dataKpiMeta)
-                        //debugger
+                        //
                         setDataKPI(plus)
                         //console.log(dataKpi)
                         //console.log(dataKpiMeta)
@@ -100,7 +100,7 @@ function CarbonChart({idIndicador,meta,setMeta}){
                     }
 
                 }else{
-                    debugger
+                    
                     getMeta([idIndicador])
                     console.log("False")
                     
@@ -115,14 +115,14 @@ function CarbonChart({idIndicador,meta,setMeta}){
     function getMeta(ids){
         let uriBase=`http://localhost:3001/metaIndicador?`
         let uriToFetch=uriMaker(uriBase,ids)
-//debugger
+//
         
         fetch(uriToFetch)
             .then(resultado=>resultado.json())
             .then(data=>{
                 let dataMeta=data.map(row=>({fechaCorte:row.fechaCorte,group:"meta","resultado":row.metaAcumulado,type:2}))
                 //setDataKPI(meta)                
-                //debugger                
+                //                
                 //console.log(dataKpi.concat(meta))
                 setMeta(({...meta,loaded:true}))
 
@@ -134,8 +134,8 @@ function CarbonChart({idIndicador,meta,setMeta}){
                 let aux=((lastResult/lastMeta)*100).toFixed(2)
                 
                 setAcomplished(aux)//
-                debugger
-                //debugger
+                
+                //
                 
             })
         
@@ -152,23 +152,26 @@ function CarbonChart({idIndicador,meta,setMeta}){
 
     React.useEffect(()=>{
         
-
+        /*
         fetch(`http://localhost:3001/kpi_result?idkpi1=${encodeURIComponent(`${idIndicador}`)}`)        
         .then(response=>response.json())
         .then(data=>{
             
-            //debugger
-            let groupData=data.map(row=>({fechaCorte:row.fechaCorte,group:"grupo 1","resultado":parseFloat(row.resultado),type:1}))                                  
+            //
+        })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+        */
+        let groupData=idKpiData.map(row=>({fechaCorte:row.fechaCorte,group:"grupo 1","resultado":parseFloat(row.resultado),type:1}))                                  
 
-            //debugger
+        //
+        if(idKpiData.length>0){
             setDataKPI(groupData)
-            let result=data[data.length-1].resultado
+            let result=idKpiData[idKpiData.length-1].resultado        
             setLastResult(result)   
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    },[])
+        }
+    },[idKpiData])
 
     return(
         <React.Fragment>
