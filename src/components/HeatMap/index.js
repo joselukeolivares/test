@@ -47,7 +47,7 @@ export class HeatMapChartDC extends React.Component{
             let transform=this.state.data.map(row=>{
                 return {...row,value:row.resultado,year:(row.fechaCorte).substring(0,4),month:(row.fechaCorte).substring(5,7)}
             })
-
+            
             this.setState({...this.state,data:transform})
         
         }

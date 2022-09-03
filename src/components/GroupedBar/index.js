@@ -1,12 +1,12 @@
 import React from "react";
-import { SimpleBarChart } from "@carbon/charts-react";
+import { GroupedBarChart } from "@carbon/charts-react";
+import "@carbon/charts/styles.css"
+         
 
-export class BarSimpleDC extends React.Component{
+export class GroupedBarDC extends React.Component{
     constructor(props){
         super(props)
-        let data=[]
-        console.log("Simple Bar")
-        console.log(props.idKpiData)
+        let data= []
         if(props.idKpiData.length>0){
             let groupData=props.idKpiData.map(row=>({...row,group:row.type?row.type:1,"resultado":parseInt(row.resultado)}))        
             
@@ -24,7 +24,7 @@ export class BarSimpleDC extends React.Component{
                 "title": "Vertical simple bar (time series)",
                 "axes": {
                   "left": {
-                    "mapsTo": "resultado"
+                    "mapsTo": "value"
                   },
                   "bottom": {
                     "mapsTo": "fechaCorte",
@@ -41,7 +41,7 @@ export class BarSimpleDC extends React.Component{
     }
 
     componentDidUpdate(){
-        //debugger
+        debugger
 
         
     }
@@ -49,13 +49,14 @@ export class BarSimpleDC extends React.Component{
     render(){
         return(
             <React.Fragment>
+                
                 {
                 
-                this.state.data && (
-                    <SimpleBarChart
+                this.state.data.length>0 && (
+                    <GroupedBarChart
                     options={this.state.options}
                     data={this.state.data}
-                    ></SimpleBarChart>
+                    ></GroupedBarChart>
                 )
                 
                 }

@@ -13,7 +13,7 @@ const clasesIconsCard={
 }
 
 
-    function CardCategory({metadata,idIndicador}){
+    function CardCategory({metadata,idIndicador,indicator}){
 
         const name=metadata.name
         const type=metadata.type
@@ -61,11 +61,11 @@ const clasesIconsCard={
                             pathname:type=='indicator'?`${route}`:`/test/dashboardCarbon?idIndicador=${idIndicador}`,
                         }
                             }       
-                            /*
+                            
                             state={
-                                {idIndicador:idIndicador}
+                                {indicator:indicator}
                             }
-                            */
+                            
                             
                     >   
                         {name}

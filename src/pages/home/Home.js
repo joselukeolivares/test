@@ -8,6 +8,7 @@ import { Footer } from "../../components/Footer";
 import data from '../../data/data.json'
 import Resultados from "../Resultados";
 import {HomeContext} from '../../context/'
+import {getDataIndicador} from '../../fetchHelper/getData'
 
 
 
@@ -15,6 +16,22 @@ import {HomeContext} from '../../context/'
 function Home (){
     //console.log("hello there")
     //console.log(data)
+
+    const [indicatorsData,setIndicatorsData]=React.useState([])
+    
+    React.useEffect(()=>{
+        let promise=getDataIndicador([],4)
+        promise.promiseData.then(data=>{
+            try{
+                localStorage.setItem('indicatorsMetaData',JSON.stringify(data))
+            }catch(err){
+                console.log(err)
+            }
+            let aux=data.slice(-5)
+            setIndicatorsData(aux)
+            debugger
+        })
+    },[])
 
     
     function setComponent(komponent,properties){
@@ -72,7 +89,7 @@ function Home (){
                                                 <HistoryCards history={data.history}></HistoryCards>
                                                         </div>
                                                 <div id="categories_container-Home">
-                                                <Categories categories={data.categories}></Categories>
+                                                <Categories categories={data.categories} indicatorsData={indicatorsData}></Categories>
                                             </div>
                                                </React.Fragment>    
                                         }

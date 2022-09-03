@@ -16,8 +16,12 @@ const idIndicadores=[
     "MGCM01"
     ]
 
-function Category({categories}){
+function Category({categories,indicatorsData}){
+    debugger
     categoriesKeyList=Object.keys(categories)
+    if(typeof indicatorsData==='undefined'){
+        indicatorsData=[]
+    }
 
     function iconComponent(name){
         switch(name){
@@ -56,11 +60,19 @@ function Category({categories}){
                             </div>
                         </div>
                         <div className="cardsCategory">
-                            {categoryObj.bag.map((element,i)=>{
+                            {indexCategory!=1 && categoryObj.bag.map((element,i)=>{
                                 return (
                                     <CardCategory key={`${i}`} metadata={element} idIndicador={indexCategory==1?idIndicadores[i]:0}></CardCategory>
                                 )
                             })}
+                            {
+                                indexCategory==1 && indicatorsData.map((element,i)=>{
+                                return (
+                                    <CardCategory key={`${i}`} metadata={{"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]}} indicator={element} idIndicador={element.idIndicador}></CardCategory>
+                                )
+                            })
+                            }
+                            
                         </div>
                         <div className="linkMore">
                             <Link>{`${categoryObj.total} más`}</Link>

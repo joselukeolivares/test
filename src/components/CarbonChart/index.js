@@ -5,8 +5,8 @@ import './carbonChart.css'
 import { MeterChartDC } from '../Meter'
 
 
-function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
-
+function CarbonChart({idIndicador,meta,setMeta,idKpiData,points}){
+    
     const [stateOptions,setStateOptions]=React.useState({})
     const isMounted=React.useRef(false)
     
@@ -16,8 +16,7 @@ function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
     const [dataGlobal,setDataGlobal]=React.useState({})
     const [lastResult,setLastResult]=React.useState(0)
     const [acomplished,setAcomplished]=React.useState(0)
-
-    let optionsChart={
+    const [options,setOptions]=React.useState({
         "title":`Waiting title`,
         "axes":{
             "bottom":{
@@ -34,16 +33,14 @@ function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
         "curve":"curveMonotoneX",
         "height":"400px",
         "points":{
-            "enabled":false
+            "enabled":points
         }
-    }
+    }    )
+    
+    
 
-    //setStateOptions(optionsChart)
 
-    function getResultado(id){
-
-    }
-
+/*
     function getForecast(ids){
         let uriBase=`http://localhost:3001/kpi_forecast?`
         let uriToFetch=uriMaker(uriBase,ids)
@@ -58,7 +55,21 @@ function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
                 setDataKpiForec(dataKpiForec)
             })
     }
-
+*/
+    React.useEffect(()=>{
+        /*
+        let optionsChart=options
+        optionsChart["points"]["enabled"]=points
+        console.log(optionsChart["points"]["enabled"])
+        setOptions({})
+        setOptions(optionsChart)
+        */
+        
+    },[idKpiData])
+/*
+    React.useEffect(()=>{
+        console.log(options["points"]["enabled"])
+    },[options])
     React.useEffect(()=>{
         if(isMounted.current){
             if(meta.forecastLoaded){
@@ -76,80 +87,81 @@ function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
             //isMounted.current=true
         }
     },[meta.forecastShow])
-
+    
     React.useEffect(()=>{
-
+        
         if(isMounted.current){
-                    //console.log("meta.loaded:")
-                if(meta.loaded){
-                    //console.log("True")
-                    if(!meta.show){
-                        let filterMeta=dataKpi.filter(row=>{
-                            return row.type!=2
-                            
-                        })
-                        setDataKPI(filterMeta)                                                
-                        //console.log(filterMeta)
-                    }else{
-                        let plus=dataKpi.concat(dataKpiMeta)
-                        //
-                        setDataKPI(plus)
-                        //console.log(dataKpi)
-                        //console.log(dataKpiMeta)
-                    
-                    }
-
+            //console.log("meta.loaded:")
+            if(meta.loaded){
+                //console.log("True")
+                if(!meta.show){
+                    let filterMeta=dataKpi.filter(row=>{
+                        return row.type!=2
+                        
+                    })
+                    setDataKPI(filterMeta)                                                
+                    //console.log(filterMeta)
                 }else{
-                    
-                    getMeta([idIndicador])
-                    console.log("False")
+                    let plus=dataKpi.concat(dataKpiMeta)
+                    //
+                    setDataKPI(plus)
+                    //console.log(dataKpi)
+                    //console.log(dataKpiMeta)
                     
                 }
+                
+            }else{
+                
+                getMeta([idIndicador])
+                console.log("False")
+                
+            }
         }else{
             isMounted.current=true
         }
-      
-
+        
+        
     },[meta.show])
-
+    
     function getMeta(ids){
         let uriBase=`http://localhost:3001/metaIndicador?`
         let uriToFetch=uriMaker(uriBase,ids)
-//
+        //
         
         fetch(uriToFetch)
-            .then(resultado=>resultado.json())
-            .then(data=>{
-                let dataMeta=data.map(row=>({fechaCorte:row.fechaCorte,group:"meta","resultado":row.metaAcumulado,type:2}))
-                //setDataKPI(meta)                
-                //                
-                //console.log(dataKpi.concat(meta))
-                setMeta(({...meta,loaded:true}))
-
-                setDataKPI(dataKpi.concat(dataMeta))
-                let metas=dataKpiMeta.concat(dataMeta)
-                setDataKpiMeta(metas)
-
-                let lastMeta=metas[metas.length-1].resultado
-                let aux=((lastResult/lastMeta)*100).toFixed(2)
-                
-                setAcomplished(aux)//
-                
-                //
-                
-            })
+        .then(resultado=>resultado.json())
+        .then(data=>{
+            let dataMeta=data.map(row=>({fechaCorte:row.fechaCorte,group:"meta","resultado":row.metaAcumulado,type:2}))
+            //setDataKPI(meta)                
+            //                
+            //console.log(dataKpi.concat(meta))
+            setMeta(({...meta,loaded:true}))
+            
+            setDataKPI(dataKpi.concat(dataMeta))
+            let metas=dataKpiMeta.concat(dataMeta)
+            setDataKpiMeta(metas)
+            
+            let lastMeta=metas[metas.length-1].resultado
+            let aux=((lastResult/lastMeta)*100).toFixed(2)
+            
+            setAcomplished(aux)//
+            
+            //
+            
+        })
         
-
+        
     }
-
+    
     function uriMaker(uriBase,ids){
-
+        
         ids.forEach((element,index) => {
             uriBase+=`idkpi${index}=${encodeURIComponent(`${element}`)}`
         });       
         return uriBase
     }
-
+    */
+    
     React.useEffect(()=>{
         
         /*
@@ -159,12 +171,14 @@ function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
             
             //
         })
-                    .catch(err=>{
-                        console.log(err)
-                    })
+        .catch(err=>{
+            console.log(err)
+        })
         */
-        let groupData=idKpiData.map(row=>({fechaCorte:row.fechaCorte,group:"grupo 1","resultado":parseFloat(row.resultado),type:1}))                                  
-
+        
+        //console.log(idKpiData)
+        let groupData=idKpiData.map(row=>({fechaCorte:row.fechaCorte,group:row.group?row.group:"grupo 1","resultado":parseFloat(row.resultado),type:1}))                                  
+        
         //
         if(idKpiData.length>0){
             setDataKPI(groupData)
@@ -192,9 +206,9 @@ function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
                                     
                                 )}
                             </div>
-                            <LineChart
+                                                        <LineChart
                             data={dataKpi}
-                            options={optionsChart}
+                            options={options}
                             >
                             </LineChart>
                             </React.Fragment>
@@ -205,3 +219,8 @@ function CarbonChart({idIndicador,meta,setMeta,idKpiData}){
 }
 
 export {CarbonChart}
+/*
+
+
+
+*/

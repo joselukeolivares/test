@@ -9,8 +9,23 @@ class StackedAreaTS extends React.Component{
 //CLTS0002
     constructor(props){
         super(props)
+        /*
+        311636 css160330cp7
+        311938 css160330cp7
+        */
+        let data=[]
+            //debugger
+            
+            if(props.idKpiData.length>0)
+            data=props.idKpiData.map(row=>{
+                
+                return {...row,group:row.type?row.type:1}
+            })
+            
+
+            console.log(data)
         this.state={
-            data:[],
+            data:data,
             options: {
                 "title": "Stacked area (time series)",
                 "axes": {
@@ -32,6 +47,8 @@ class StackedAreaTS extends React.Component{
     }
 
     componentDidMount(){
+
+        /*
         fetch(`http://localhost:3001/kpi_result?idkpi1=${encodeURIComponent('CLTS0012')}&idkpi2=${encodeURIComponent('CLTS0002')}`)
         .then(result=>result.json())
         .then(data=>{
@@ -50,17 +67,22 @@ class StackedAreaTS extends React.Component{
             this.setState({...this.state,data:grouped})
             //debugger
         })
+        */
+        
     }
 
 
     render=()=>(
         <React.Fragment>
-            <StackedAreaChart
-            data={this.state.data}
-            options={this.state.options}
-            >
-            </StackedAreaChart>
-        </React.Fragment>
+            {this.state.data.length>0 && (
+                <StackedAreaChart
+                data={this.state.data}
+                options={this.state.options}
+                >
+                </StackedAreaChart>            
+            )
+            }
+            </React.Fragment>
     )
        
 

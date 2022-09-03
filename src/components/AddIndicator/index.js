@@ -27,7 +27,8 @@ export function AddIndicador({children,getData,setIdSelected,idSelected}){
                 labelText="Selecciona"
                 onChange={(e)=>{                    
                     let selected=e.nativeEvent.target.value
-                    setIdSelected(idSelected.push(selected))
+                    debugger
+                    setIdSelected(selected)
                     
 
                 }}

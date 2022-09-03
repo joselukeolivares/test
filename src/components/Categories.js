@@ -3,7 +3,7 @@ import Card from "./Card"
 import '../css/components/categoriesContainer.css'
 import { Category } from "./Category";
 
-function Categories({categories}){
+function Categories({categories,indicatorsData}){
 
     return    (
                 <React.Fragment>
@@ -11,7 +11,7 @@ function Categories({categories}){
                     <h3>Oferta de productos</h3>
                     <div className="categoryCards">
                         
-                        <Category categories={categories}></Category>
+                        <Category categories={categories} indicatorsData={indicatorsData}></Category>
                     </div>
                 </div>
                 </React.Fragment>

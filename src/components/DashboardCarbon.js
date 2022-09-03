@@ -8,16 +8,28 @@ import { CarbonChart } from './CarbonChart';
 import {getDataIndicador} from '../fetchHelper/getData'
 
 import '../css/components/dashboardCarbon.css'
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams, useParams } from 'react-router-dom';
 import { BoxLineBarCarbon } from './BoxLineBarCarbon';
 import {BarSimpleDC} from './BarSimple'
 import {LinesResultForescast} from './LinesResForescast'
 import {FormGroup,RadioButtonGroup,RadioButton,Toggle,SelectItem,ContentSwitcher,Switch} from 'carbon-components-react'
 import { AddIndicador } from './AddIndicator/index';
 import {HeatMapChartDC} from './HeatMap'
+import {StackedAreaTS} from './StackedAreaTS'
+import { LineChartDC } from './LineTest/index';
+import {GroupedBarDC} from './GroupedBar'
 
 function DashboardCarbon(){
+	
+	const {indicator}=useLocation().state
+	
+	const [listIds,setListIds]=React.useState([])
+	const [idSelected,setIdSelected]=React.useState()
+	
+	
 
+
+	
 	let state = {
 		data: [
 	{
@@ -244,52 +256,164 @@ function DashboardCarbon(){
 	const [searchParams,setSearchParams]=useSearchParams()
 	//useLocation().state.idIndicador
 		try{
-			//debugger
-			 if(importId.state==null){
-				state.idIndicador=searchParams.get("idIndicador")
-			}else{
-				state.idIndicador=importId.state.idIndicador
-				
-
-				
-			}
+			//
+			state.idIndicador=searchParams.get("idIndicador")
+			 if(state.idIndicador==undefined)
+				 state.idIndicador=importId.state.idIndicador							
+			
 		}catch(err){
 			console.log(err)
 		}
 	
 	const [principalChart,setPrincipalChart]=React.useState("opt-0")
 	const [meta,setMeta]=React.useState({loaded:false,show:false,loading:false,forecastShow:false,forecastLoaded:false})
-	const [listIds,setListIds]=React.useState([
-		{id:'option-1',label:"VTSM0023",idIndicador:"VTSM0023"},
-		{id:'option-2',label:"GSTO0004",idIndicador:"GSTO0004"},
-		{id:'option-3',label:"CLTS0023",idIndicador:"CLTS0023"},
-		{id:'option-4',label:"VSVG01",idIndicador:"VSVG01"},
-		{id:'option-5',label:"MGCM01",idIndicador:"MGCM01"}
-	])
-	const [idSelected,setIdSelected]=React.useState(listIds[0].label)
 	const [addedIds,setAddedIds]=React.useState([])
 	const [idKpiData,setIdKpiData]=React.useState([])
+	const [idKpiDataForecast,setidKpiDataForecast]=React.useState([])
+	const [idKpiDataMeta,setIdKpiDataMeta]=React.useState([])
+	//const [indicator,setIndicator]=React.useState({})
+	
 
 	React.useEffect(() => {
+		
+		
 		let data=getDataIndicador([state.idIndicador],1)
 		data.promiseData.then(data=>{
-			//debugger
+			//
 			setIdKpiData(data)
 
 		})
 
-	},[])
+		if(indicator!=undefined){
+			let hijos=indicator.Hijos
+			hijos=hijos.replace("[","")
+			hijos=hijos.replace("]","")
+			let childs=hijos.split(",")
+			
+			let padres=indicator.Padres
+			padres=padres.replace("[","")
+			padres=padres.replace("]","")
+			let father=padres.split(",")
+			
+			let indicatorsMetaData=localStorage.getItem('indicatorsMetaData')
+			let listIndicators=JSON.parse(indicatorsMetaData)
+			let relationFamily=[]//father and sons
+			let relationType=[]//same type: $,%,unity,etc
+			let optionIndex=1
+			
+			
+			childs.forEach((element,i) => {
+				let index=listIndicators.findIndex((row)=>row.idIndicador==element)
+				if(index!=-1){
+					let child=listIndicators[index]
+					relationFamily.push(({...child,value:child.idIndicador,id:`option-${optionIndex+i}`,label:`${child.indicadorNC} (Alta realación)`}))
+					optionIndex++
+				}
+			});
 	
+			for(var i=0;i<listIndicators.length;i++){
+				if(listIndicators[i].idEtiqueta==indicator.idEtiqueta){
+					let indicatorAux=listIndicators[i]
+					relationType.push(({...indicatorAux,value:indicatorAux.idIndicador,id:`option-${optionIndex+i}`,label:`${indicatorAux.indicadorNC}. Etiqueta:${indicatorAux.Etiqueta}`}))
+					optionIndex++
+				}
+			}
+			//debugger
+			let addIndicatorsList=relationFamily.concat(relationType)
+			setListIds(addIndicatorsList)
+			if(listIds.length>0)
+			setIdSelected(listIds[0].label)
+			//console.log(listIndicators.length)
+			//console.log(relationFamily)
+			//console.log(relationType)
+			console.log(addIndicatorsList)
+			
+	
+		}
+
+		
+		
+		
+
+
+
+	},[])
+
+	function getData(){
+		let result=getDataIndicador([idSelected],1)
+		
+		result.promiseData.then(data=>{
+			
+				let otherIdData=data.map(row=>({...row,type:2,group:row.idIndicador}))
+				let concatData=idKpiData.concat(otherIdData)
+				debugger
+				setIdKpiData(concatData)
+				
+	
+			
+			
+		})
+		
+		//console.log(result)
+
+	}
+/*	
 	React.useEffect(()=>{
 		console.log("DC Effect")
 		console.log(idKpiData)
 	},[idKpiData])
-	
-	function getData(idIndicador){
-		console.log("I got it: "+idSelected)
-		let data=getDataIndicador(addedIds[addedIds.length-1],2)
-        return true
-    }
+*/	
+	function getForecast(idIndicador,toggled){
+		//console.log("I got it: "+idSelected)
+		
+		if(idKpiDataForecast.length==0){
+			let result=getDataIndicador(idIndicador,2)
+			result.promiseData.then(data=>{
+				let addForecast=data.map(row=>({fechaCorte:row.fechaCorte,group:"pronostico",resultado:row.pronostico,type:3}))
+				setidKpiDataForecast(addForecast)
+				updatedData(addForecast,toggled,3)
+				console.log(`Pronostico :${addForecast.length}`)
+			})
+			//
+			console.log("getForevast finalizado")
+		}else{
+			updatedData(idKpiDataForecast,toggled,3)
+				
+		}	
+		//
+        //return true
+	}
+
+	function getMeta(idIndicador,toggled){
+		
+		if(idKpiDataMeta.length==0){
+			let result=getDataIndicador(idIndicador,3)
+			result.promiseData.then(data=>{
+				let addMeta=data.map(row=>({fechaCorte:row.fechaCorte,group:"meta","resultado":row.metaAcumulado,type:2}))
+				setIdKpiDataMeta(addMeta)
+				updatedData(addMeta,toggled,2)
+				//console.log(`Pronostico :${addForecast.length}`)
+			})
+			//
+			console.log("getMeta finalizado")
+		}else{
+				updatedData(idKpiDataMeta,toggled,2)
+		}
+	}
+
+	function updatedData(data,toggled,type){
+		let updatedData
+		if(toggled){
+			updatedData=idKpiData.concat(data)
+		}else{
+			updatedData=idKpiData.filter(row=>row.type!=type)
+		}
+		setIdKpiData(updatedData)
+		console.log(`Updated Data: ${updatedData.length}`)
+		console.log(updatedData)
+		//
+		
+	}
 	
 
 
@@ -310,12 +434,14 @@ function DashboardCarbon(){
 					<ContentSwitcher onChange={(e)=>{
 						console.log(e)
 						setPrincipalChart(`opt-${e.index}`)
+
 					}}>
 
-						<Switch name={"line"} text={"Gráfico Linea"} />
-						<Switch name={"line"} text={"Gráfico Treemap"} />
-						<Switch name={"line"} text={"Gráfico Barras"} />
-						<Switch name={"line"} text={"Gráfico Linea"} />
+						<Switch name={"line"} text={"Gráfico Linea y Puntos"} />
+						<Switch name={"hetmap"} text={"Gráfico Heatmap"} />
+						<Switch name={"Barras"} text={"Gráfico Barras"} />
+						<Switch name={"stacked"} text={"Gráfico Area"} />
+						<Switch name={"line_points"} text={"Gráfico Linea"} />
 					</ContentSwitcher >
 
 					<FormGroup 					onChange={e=>{
@@ -367,8 +493,8 @@ function DashboardCarbon(){
 							
 							console.log("Toggled:")
 							console.log(toggled)
-							
-							setMeta(({...meta,show:toggled,}))
+							getMeta([state.idIndicador],toggled)
+							//setMeta(({...meta,show:toggled,}))
 
 						}}
 					/>	
@@ -376,30 +502,31 @@ function DashboardCarbon(){
 					<Toggle 
 						id="toggle-forecast"
 						labelText='Pronostico'
-						onToggle={toggled=>{
-
-							setMeta(({...meta,forecastShow:toggled}))	
+						onToggle={toggled=>{							
+								getForecast([state.idIndicador],toggled)
+							
+							//setMeta(({...meta,forecastShow:toggled}))	
 						}}
 					/>
 					<AddIndicador   getData={getData} setIdSelected={setIdSelected} idSelected={idSelected}>
 						{
 							listIds.map((element,index) => {
-								//debugger
+								//
 							return (                        
 								<SelectItem
 									key ={`SelectId${index}`}
 									text={`${element.label}`}
-									value={`${element.label}`}
+									value={`${element.value}`}
 								/> 
 							)
 						})
 						}
 					</AddIndicador >
 					<div className="principalChart">
-					{principalChart=='opt-0' && (
-						<CarbonChart idIndicador={state.idIndicador} meta={meta} setMeta={setMeta} idKpiData={idKpiData}></CarbonChart>
-						
-					)}
+					{(principalChart=='opt-0')  && 
+						<CarbonChart key="chart0" idIndicador={state.idIndicador} meta={meta} setMeta={setMeta} idKpiData={idKpiData} points={true}></CarbonChart>
+						/*<LineChartDC points={principalChart=='opt-0'?true:false}/>*/
+					}
 					{principalChart=='opt-1' && (
 						/*<BarSimpleDC idIndicador={state.idIndicador}></BarSimpleDC>*/
 						
@@ -407,12 +534,40 @@ function DashboardCarbon(){
 						
 						
 					)}
+					{principalChart=='opt-2' && (
+						/*<BarSimpleDC idIndicador={state.idIndicador}></BarSimpleDC>
+						<GroupedBarDC idIndicador={state.idIndicador}  idKpiData={idKpiData}/>
+						*/
+						
+						<BarSimpleDC idIndicador={state.idIndicador}  idKpiData={idKpiData}/>
+
+						
+						
+					)}
+					{principalChart=='opt-3' && (
+						/*<BarSimpleDC idIndicador={state.idIndicador}></BarSimpleDC>*/
+						
+						<StackedAreaTS idIndicador={state.idIndicador}  idKpiData={idKpiData}/>
+						
+						
+					)}
+					{principalChart=='opt-4' && (
+						<CarbonChart  idIndicador={state.idIndicador} meta={meta} setMeta={setMeta} idKpiData={idKpiData} points={false}></CarbonChart>
+						
+												
+						
+					)}
+			
 					</div>
-					<div className="miniChartsContainer">						
+					<div className="miniChartsContainer">{
+						false && (
+						<React.Fragment>													
 						<BoxLineBarCarbon idIndicador={state.idIndicador}></BoxLineBarCarbon>
 						<LineChart data={state.data} options={state.options}> </LineChart>
 						<LinesResultForescast idIndicador={state.idIndicador}></LinesResultForescast>
-			
+						</React.Fragment>
+						)
+					}
 									
 					</div>
 					</React.Fragment>	
