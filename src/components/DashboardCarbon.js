@@ -287,9 +287,10 @@ function DashboardCarbon(){
 			setLoadingData(!loadingData)
 		}).catch(err=>{
 			console.log(`Error al intentar obtener resultado del ${idSelected}. Intentando obtener datos de almacenamiento local`)
+			debugger
 			let localData=localStorage.getItem(`${state.idIndicador}d`)
 			let test=JSON.parse(localData)
-			debugger
+			
 			setIdKpiData(test)
 			setLoadingData(!loadingData)
 		})
@@ -328,7 +329,7 @@ function DashboardCarbon(){
 					optionIndex++
 				}
 			}
-			//debugger
+			//
 			let addIndicatorsList=relationFamily.concat(relationType)
 			setListIds(addIndicatorsList)
 			if(listIds.length>0)
@@ -356,7 +357,7 @@ function DashboardCarbon(){
 			
 				let otherIdData=data.map(row=>({...row,type:2,group:row.idIndicador}))
 				let concatData=idKpiData.concat(otherIdData)
-				debugger
+				
 				setIdKpiData(concatData)
 				localStorage.setItem(`${idSelected}d`,JSON.stringify(otherIdData))
 				setLoadingData(false)		
@@ -400,6 +401,7 @@ function DashboardCarbon(){
 			console.log("getForevast finalizado")
 		}else{
 			updatedData(idKpiDataForecast,toggled,3)
+			setLoadingData(false)
 				
 		}	
 		//
@@ -429,11 +431,12 @@ function DashboardCarbon(){
 			console.log("getMeta finalizado")
 		}else{
 				updatedData(idKpiDataMeta,toggled,2)
+				setLoadingData(false)
 		}
 	}
 
 	function updatedData(data,toggled,type){
-		debugger
+		
 		let updatedData
 		if(toggled){
 			updatedData=idKpiData.concat(data)
@@ -559,7 +562,7 @@ function DashboardCarbon(){
 					)
 
 					}
-					{(principalChart=='opt-0')  && 
+					{(principalChart=='opt-0' && idKpiData)  && 
 						<CarbonChart key="chart0" idIndicador={state.idIndicador} meta={meta} setMeta={setMeta} idKpiData={idKpiData} points={true}></CarbonChart>
 						/*<LineChartDC points={principalChart=='opt-0'?true:false}/>*/
 					}
