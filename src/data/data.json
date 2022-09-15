@@ -10,18 +10,20 @@
     ],
     "categories":{
         "dashboardsCat":{
+            "idCategory":1,
             "name":"Dashboards",
             "typeIcon":"dashboard",
             "total":"312",
             "bag":[
-                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]},
-                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]},
-                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]},
-                {"name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","typeIcons":["dashboard","carbon"]},
-                {"name":"Productos","type":"Power Bi","typeCode":"PowerBi","typeIcons":["dashboard","carbon"]}
+                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"],"src":"https://public.tableau.com/views/DensityofMarijuanaRetailersinThurstonCounty/Dashboard1?:showVizHome=no&:embed=true","route":"/test/dasboard_bi"},                                                                                                                                     
+                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"],"src":"https://public.tableau.com/views/Sankey_16619871415230/Dashboard1?:showVizHome=no&:embed=true","route":"/test/dasboard_bi"},
+                {"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"],"src":"https://data.coppel.com/#/views/TableroResumen3_0/TableroResumen3_0?:showVizHome=no&:embed=true","route":"/test/dasboard_bi"},
+                {"name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","typeIcons":["dashboard","carbon"],"src":"https://data.coppel.com/#/views/MediosdePago/MediosdePago?:iid=6","route":"/test/dasboard_bi"},
+                {"name":"Productos","type":"Power Bi","typeCode":"PowerBi","typeIcons":["dashboard","carbon"],"src":"https://data.coppel.com/#/site/CieciadeDatosAVD/views/CovidMapa/Dashboard1?:iid=2","route":"/test/dasboard_bi"}
             ]
         },
         "indicadoresCat":{
+            "idCategory":2,
             "name":"Indicadores",
             "typeIcon":"indicator",
             "total":"1,123",
@@ -34,6 +36,7 @@
             ]
         },
         "rendicionCat":{
+            "idCategory":3,
             "name":"Rendición de Cuentas",
             "typeIcon":"report",
             "total":"120",
@@ -46,6 +49,7 @@
             ]
         },
         "proyectos_vCat":{
+            "idCategory":4,
             "name":"Proyectos Visualización",
             "typeIcon":"dataviz",
             "total":"95",
@@ -59,6 +63,7 @@
             ]
         },
         "TablerosCat":{
+            "idCategory":5,
             "name":"Tableros",
             "typeIcon":"dashcat",
             "total":"589",
@@ -73,3 +78,4 @@
 
     }
 }
+

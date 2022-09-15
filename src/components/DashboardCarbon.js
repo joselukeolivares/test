@@ -18,6 +18,7 @@ import {HeatMapChartDC} from './HeatMap'
 import {StackedAreaTS} from './StackedAreaTS'
 import { LineChartDC } from './LineTest/index';
 import {GroupedBarDC} from './GroupedBar'
+import { Loading } from './Loading/index';
 
 function DashboardCarbon(){
 	
@@ -25,6 +26,7 @@ function DashboardCarbon(){
 	
 	const [listIds,setListIds]=React.useState([])
 	const [idSelected,setIdSelected]=React.useState()
+	const [loadingData,setLoadingData]=React.useState(true)
 	
 	
 
@@ -281,7 +283,15 @@ function DashboardCarbon(){
 		data.promiseData.then(data=>{
 			//
 			setIdKpiData(data)
-
+			localStorage.setItem(`${state.idIndicador}d`,JSON.stringify(data))
+			setLoadingData(!loadingData)
+		}).catch(err=>{
+			console.log(`Error al intentar obtener resultado del ${idSelected}. Intentando obtener datos de almacenamiento local`)
+			let localData=localStorage.getItem(`${state.idIndicador}d`)
+			let test=JSON.parse(localData)
+			debugger
+			setIdKpiData(test)
+			setLoadingData(!loadingData)
 		})
 
 		if(indicator!=undefined){
@@ -341,19 +351,22 @@ function DashboardCarbon(){
 
 	function getData(){
 		let result=getDataIndicador([idSelected],1)
-		
+		setLoadingData(true)
 		result.promiseData.then(data=>{
 			
 				let otherIdData=data.map(row=>({...row,type:2,group:row.idIndicador}))
 				let concatData=idKpiData.concat(otherIdData)
 				debugger
 				setIdKpiData(concatData)
-				
-	
-			
-			
+				localStorage.setItem(`${idSelected}d`,JSON.stringify(otherIdData))
+				setLoadingData(false)		
 		})
-		
+		.catch(err=>{
+			console.log(`Error al intentar obtener resultado del ${idSelected}. Intentando obtener datos de almacenamiento local`)
+				let localData=localStorage.getItem(`${idSelected}d`)
+				setIdKpiData(JSON.parse(localData))
+				setLoadingData(false)
+		})
 		//console.log(result)
 
 	}
@@ -365,14 +378,23 @@ function DashboardCarbon(){
 */	
 	function getForecast(idIndicador,toggled){
 		//console.log("I got it: "+idSelected)
-		
+		setLoadingData(true)
 		if(idKpiDataForecast.length==0){
 			let result=getDataIndicador(idIndicador,2)
 			result.promiseData.then(data=>{
 				let addForecast=data.map(row=>({fechaCorte:row.fechaCorte,group:"pronostico",resultado:row.pronostico,type:3}))
 				setidKpiDataForecast(addForecast)
+				localStorage.setItem(`${idIndicador}f`,JSON.stringify(addForecast))
 				updatedData(addForecast,toggled,3)
 				console.log(`Pronostico :${addForecast.length}`)
+				setLoadingData(false)
+			}).catch(err=>{
+				console.log(`Error al intentar obtener pronostico del ${idSelected}. Intentando obtener datos de almacenamiento local`)
+				let addForecast=JSON.parse(localStorage.getItem(`${idIndicador}f`))
+				setidKpiDataForecast(addForecast)
+				updatedData(addForecast,toggled,3)
+				setLoadingData(false)
+		
 			})
 			//
 			console.log("getForevast finalizado")
@@ -385,14 +407,23 @@ function DashboardCarbon(){
 	}
 
 	function getMeta(idIndicador,toggled){
-		
+		setLoadingData(true)
 		if(idKpiDataMeta.length==0){
 			let result=getDataIndicador(idIndicador,3)
 			result.promiseData.then(data=>{
 				let addMeta=data.map(row=>({fechaCorte:row.fechaCorte,group:"meta","resultado":row.metaAcumulado,type:2}))
 				setIdKpiDataMeta(addMeta)
+				localStorage.setItem(`${idIndicador}m`,JSON.stringify(addMeta))
 				updatedData(addMeta,toggled,2)
+				setLoadingData(false)
 				//console.log(`Pronostico :${addForecast.length}`)
+			}).catch(err=>{
+				console.log(`Error al intentar obtener meta del ${idSelected}. Intentando obtener datos de almacenamiento local`)
+				let addMeta=JSON.parse(localStorage.getItem(`${idIndicador}m`))
+				setIdKpiDataMeta(addMeta)
+				updatedData(addMeta,toggled,2)
+				setLoadingData(false)
+		
 			})
 			//
 			console.log("getMeta finalizado")
@@ -402,6 +433,7 @@ function DashboardCarbon(){
 	}
 
 	function updatedData(data,toggled,type){
+		debugger
 		let updatedData
 		if(toggled){
 			updatedData=idKpiData.concat(data)
@@ -523,6 +555,10 @@ function DashboardCarbon(){
 						}
 					</AddIndicador >
 					<div className="principalChart">
+					{loadingData && (<div className="loadingData"> <Loading  /></div>
+					)
+
+					}
 					{(principalChart=='opt-0')  && 
 						<CarbonChart key="chart0" idIndicador={state.idIndicador} meta={meta} setMeta={setMeta} idKpiData={idKpiData} points={true}></CarbonChart>
 						/*<LineChartDC points={principalChart=='opt-0'?true:false}/>*/

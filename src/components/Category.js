@@ -3,7 +3,7 @@ import CardCategory from './CardCategory'
 import '../css/components/category.css'
 import { Link } from "carbon-components-react";
 import {Dashboard20,ChartLine20,View20,TableSplit20,ReportData20} from '@carbon/icons-react'
-
+import {Loading} from './Loading'
 
 
 let categoriesKeyList=[]
@@ -17,7 +17,7 @@ const idIndicadores=[
     ]
 
 function Category({categories,indicatorsData}){
-    debugger
+    //debugger
     categoriesKeyList=Object.keys(categories)
     if(typeof indicatorsData==='undefined'){
         indicatorsData=[]
@@ -40,13 +40,14 @@ function Category({categories,indicatorsData}){
         }
     }
 
+    const loadingList=[1,2,3,4,5]
 
 
     return (
         <React.Fragment>
             
             {categoriesKeyList.map((categoryKey,indexCategory)=>{
-
+                    //debugger
                     const categoryObj=categories[categoryKey]
    
                     return (
@@ -60,15 +61,27 @@ function Category({categories,indicatorsData}){
                             </div>
                         </div>
                         <div className="cardsCategory">
-                            {indexCategory!=1 && categoryObj.bag.map((element,i)=>{
+                            {indexCategory==0 && categoryObj.bag.map((element,i)=>{
                                 return (
-                                    <CardCategory key={`${i}`} metadata={element} idIndicador={indexCategory==1?idIndicadores[i]:0}></CardCategory>
+                                    <CardCategory key={`${i}`} metadata={element} idCategory={categoryObj.idCategory}></CardCategory>
                                 )
                             })}
+                            {indexCategory>1 && categoryObj.bag.map((element,i)=>{
+                                return (
+                                    <CardCategory key={`${i}`} metadata={element} idIndicador={indexCategory==1?idIndicadores[i]:0} idCategory={categoryObj.idCategory}></CardCategory>
+                                )
+                            })}
+                            {(indexCategory==1 && indicatorsData.length==0) && loadingList.map(l=>{return <Loading />})
+
+                            }
                             {
                                 indexCategory==1 && indicatorsData.map((element,i)=>{
+                                    //debugger
                                 return (
-                                    <CardCategory key={`${i}`} metadata={{"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]}} indicator={element} idIndicador={element.idIndicador}></CardCategory>
+                                    
+                                    <CardCategory key={`${i}`} metadata={{"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]}} indicator={element} idIndicador={element.idIndicador} idCategory={categoryObj.idCategory}></CardCategory>
+                                    
+                                    
                                 )
                             })
                             }
@@ -81,6 +94,8 @@ function Category({categories,indicatorsData}){
                     )
                 })
             }
+
+          
 
 
 

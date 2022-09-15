@@ -18,6 +18,7 @@ import {GaugeDC} from './components/Gauge'
 import { ScatterDC } from "./components/Scatter/index";
 import {HeatMapChartDC} from "./components/HeatMap"
 import { Sankey } from "./components/Sankey";
+import {DashboardBI} from "./components/DasboardBI"
 
 const MainRouter=()=>{
 
@@ -42,6 +43,7 @@ const MainRouter=()=>{
             <Route path="/test/carbon/scatter" element={<ScatterDC/>}/>
             <Route path="/test/carbon/headmap" element={<HeatMapChartDC/>}/>
             <Route path="/test/d3/proyectosCoppel" element={<Sankey/>}/>
+            <Route path="/test/dasboard_bi" element={<DashboardBI/>} />
               
                
             </Routes>

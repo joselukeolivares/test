@@ -9,6 +9,7 @@ import data from '../../data/data.json'
 import Resultados from "../Resultados";
 import {HomeContext} from '../../context/'
 import {getDataIndicador} from '../../fetchHelper/getData'
+import auxData from '../../data/auxData'
 
 
 
@@ -21,16 +22,40 @@ function Home (){
     
     React.useEffect(()=>{
         let promise=getDataIndicador([],4)
+        //debugger
         promise.promiseData.then(data=>{
+
             try{
                 localStorage.setItem('indicatorsMetaData',JSON.stringify(data))
             }catch(err){
                 console.log(err)
             }
             let aux=data.slice(-5)
+            console.log("*************DATA*****************")
+            console.log(JSON.stringify(aux))
+            localStorage.setItem('auxMetaData',JSON.stringify(aux))
+            
+            
             setIndicatorsData(aux)
-            debugger
-        })
+        }).catch(err=>{
+            //debugger
+            console.log("Los datos no pudieron obtenerse de la BD. Buscando de manera local...")
+            const localData=auxData()
+            const test=JSON.parse(localData.indicatorsList)            
+            setIndicatorsData(test)
+
+            localData.indicatorsData.forEach(indicator=>{
+                const id=indicator.id
+                if(indicator.data)
+                localStorage.setItem(`${id}d`,indicator.data)
+                if(indicator.forecast)
+                localStorage.setItem(`${id}f`,indicator.forecast)
+                if(indicator.meta)
+                localStorage.setItem(`${id}m`,indicator.meta)
+                //debugger
+            })
+        
+            })
     },[])
 
     

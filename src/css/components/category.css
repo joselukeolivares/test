@@ -28,3 +28,19 @@
 .linkMore > a{
     font-size: 2rem;
 }
+
+@media screen and (max-width: 1920px) and (max-height:1080px) {
+
+
+    .categoryColumn{
+        width: 20%;
+    }
+
+    .categoryColumn h4{
+        font-size: 12px;
+    }
+
+    
+
+
+}

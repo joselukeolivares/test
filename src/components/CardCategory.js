@@ -13,14 +13,14 @@ const clasesIconsCard={
 }
 
 
-    function CardCategory({metadata,idIndicador,indicator}){
+    function CardCategory({metadata,idIndicador,indicator,idCategory}){
 
         const name=metadata.name
         const type=metadata.type
         const typeCode=metadata.typeCode
         const typeIcons=metadata.typeIcons
         const route=metadata.route
-        console.log(type)
+        //console.log(type)
 
         const navigate=useNavigate()
     function handleClick(){
@@ -46,6 +46,35 @@ const clasesIconsCard={
         }
     }
 
+    
+        let stateValue={}
+        let pathnameValue="/test/"
+        switch(idCategory){
+            
+                case 1:
+                //debugger
+                stateValue={routeBI:metadata.src}
+                pathnameValue=metadata.route
+                break
+                case 2:
+                stateValue={indicator:indicator}
+                pathnameValue=`/test/dashboardCarbon?idIndicador=${idIndicador}`
+                break
+                case 3:
+                break
+                case 4:
+                pathnameValue=metadata.route
+                break
+                case 5:
+                break
+                default :
+
+                break
+            }
+
+console.log("PathNameValue & Categgory")
+console.log(pathnameValue)
+console.log(idCategory)    
 
     return   (
         <div className="Card-container">
@@ -58,12 +87,12 @@ const clasesIconsCard={
           
                     <Link
                         to={{
-                            pathname:type=='indicator'?`${route}`:`/test/dashboardCarbon?idIndicador=${idIndicador}`,
+                            pathname:pathnameValue,
                         }
                             }       
                             
                             state={
-                                {indicator:indicator}
+                                stateValue
                             }
                             
                             

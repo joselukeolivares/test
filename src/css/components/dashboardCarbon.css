@@ -9,6 +9,14 @@
 }
 
 .principalChart{
-    height: 550px
+    height: 550px;
+    position: relative;
+}
+
+.loadingData{
+    position: absolute;
+    top:15%;
+    left:45%;
+    z-index: 10;
 }
 
