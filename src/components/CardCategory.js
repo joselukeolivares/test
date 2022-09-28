@@ -14,8 +14,9 @@ const clasesIconsCard={
 
 
     function CardCategory({metadata,idIndicador,indicator,idCategory}){
-
-        const name=metadata.name
+        //debugger
+        const indicatorShortName=indicator===undefined?"":indicator.indicadorNC
+        const name=idCategory==2?indicatorShortName:metadata.name
         const type=metadata.type
         const typeCode=metadata.typeCode
         const typeIcons=metadata.typeIcons
@@ -24,7 +25,15 @@ const clasesIconsCard={
 
         const navigate=useNavigate()
     function handleClick(){
-        navigate("/test/home",{replace:true})
+        let viewedHistory=JSON.parse(localStorage.getItem('viwed_history'))
+        if( viewedHistory == null){
+            viewedHistory=[]
+        }
+        
+        viewedHistory.unshift(metadata)
+        localStorage.setItem("viwed_history",JSON.stringify(viewedHistory))
+
+
     }
 
     function iconComponent(name){
@@ -71,34 +80,36 @@ const clasesIconsCard={
 
                 break
             }
-
+/*
 console.log("PathNameValue & Categgory")
 console.log(pathnameValue)
 console.log(idCategory)    
+*/
 
     return   (
+        <Link onClick={handleClick}
+        to={{
+            pathname:pathnameValue,
+        }
+            }       
+            
+            state={
+                stateValue
+            }
+            
+            
+    > 
         <div className="Card-container">
             <div className={`top_CardCategory-container ${typeCode}Type`}>
 
             </div>
             <div className="bottom_CardCategory-container">
                 <div id="typeTitle-topSection_Card">
-                    <p id="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
+                    <p id="typeTitle_typeTitle" className='typesText_card-Container'>{name}</p>
           
-                    <Link
-                        to={{
-                            pathname:pathnameValue,
-                        }
-                            }       
-                            
-                            state={
-                                stateValue
-                            }
-                            
-                            
-                    >   
-                        {name}
-                    </Link>
+  
+                        
+                   
                     
                 </div>                               
                 <div className="iconSection-Category">                    
@@ -117,6 +128,7 @@ console.log(idCategory)
             </div>
             
         </div>
+        </Link>
     ) 
 
     }

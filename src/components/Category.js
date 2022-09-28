@@ -23,6 +23,10 @@ function Category({categories,indicatorsData}){
         indicatorsData=[]
     }
 
+    React.useEffect(() => {
+        console.log(`upate Indicators data ${indicatorsData.length}`)
+    }, [indicatorsData])
+
     function iconComponent(name){
         switch(name){
             case 'dashboard':
@@ -51,7 +55,7 @@ function Category({categories,indicatorsData}){
                     const categoryObj=categories[categoryKey]
    
                     return (
-                        <div key={`${categoryKey}`} className="categoryColumn">
+                        <div key={`${categoryKey}_${indexCategory}`} className="categoryColumn">
                         <div className="headerCategory">
                             <div className={`dashIcon_container ${categoryKey}`} >
                                 {iconComponent(categoryObj.typeIcon)}                                
@@ -63,23 +67,23 @@ function Category({categories,indicatorsData}){
                         <div className="cardsCategory">
                             {indexCategory==0 && categoryObj.bag.map((element,i)=>{
                                 return (
-                                    <CardCategory key={`${i}`} metadata={element} idCategory={categoryObj.idCategory}></CardCategory>
+                                    <CardCategory key={`c${indexCategory}_${i}`} metadata={element} idCategory={categoryObj.idCategory}></CardCategory>
                                 )
                             })}
                             {indexCategory>1 && categoryObj.bag.map((element,i)=>{
                                 return (
-                                    <CardCategory key={`${i}`} metadata={element} idIndicador={indexCategory==1?idIndicadores[i]:0} idCategory={categoryObj.idCategory}></CardCategory>
+                                    <CardCategory key={`c${indexCategory}_${i}`} metadata={element} idIndicador={indexCategory==1?idIndicadores[i]:0} idCategory={categoryObj.idCategory}></CardCategory>
                                 )
                             })}
-                            {(indexCategory==1 && indicatorsData.length==0) && loadingList.map(l=>{return <Loading />})
+                            {(indexCategory==1 && indicatorsData.length==0) && loadingList.map((l,index)=>{return <Loading key={`LoadingHomeCol${index}`}/>})
 
                             }
                             {
-                                indexCategory==1 && indicatorsData.map((element,i)=>{
+                                (indexCategory==1  && indicatorsData.length>0 ) && indicatorsData.map((element,i)=>{
                                     //debugger
                                 return (
                                     
-                                    <CardCategory key={`${i}`} metadata={{"name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"]}} indicator={element} idIndicador={element.idIndicador} idCategory={categoryObj.idCategory}></CardCategory>
+                                    <CardCategory key={`c${indexCategory}_${i}`} metadata={{"type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["carbon"]}} indicator={element} idIndicador={element.idIndicador} idCategory={categoryObj.idCategory}></CardCategory>
                                     
                                     
                                 )

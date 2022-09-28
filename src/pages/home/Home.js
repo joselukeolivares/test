@@ -5,12 +5,12 @@ import TopBarLogged from "../../components/TopBarLogged";
 import HistoryCards from "../../components/HistoryCards";
 import Categories from '../../components/Categories'
 import { Footer } from "../../components/Footer";
-import data from '../../data/data.json'
 import Resultados from "../Resultados";
 import {HomeContext} from '../../context/'
 import {getDataIndicador} from '../../fetchHelper/getData'
-import auxData from '../../data/auxData'
 
+import auxData from '../../data/auxData'
+import data from '../../data/data.json'
 
 
 
