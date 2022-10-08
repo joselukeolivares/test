@@ -83,7 +83,7 @@ function Category({categories,indicatorsData}){
                                     //debugger
                                 return (
                                     
-                                    <CardCategory key={`c${indexCategory}_${i}`} metadata={{"type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["carbon"]}} indicator={element} idIndicador={element.idIndicador} idCategory={categoryObj.idCategory}></CardCategory>
+                                    <CardCategory key={`c${indexCategory}_${i}`} metadata={({...element,"type":"Carbon Design","typeCode":"CarbonDesign","typeIcons":["carbon"]})} indicator={element} idIndicador={element.idIndicador} idCategory={categoryObj.idCategory}></CardCategory>
                                     
                                     
                                 )

@@ -2,10 +2,16 @@ import React, { useRef } from "react";
 import Card from "./Card"
 import '../css/components/historyCards.css'
 import { gsap } from "gsap";
+import { local } from "d3";
 
 
 
 function HistoryCards({history}){
+
+
+        let localHistory=JSON.parse(localStorage.getItem("viwed_history"))
+        if(typeof(localHistory)!='undefined' || localHistory.length>=0)
+            localHistory=localHistory.concat(history)
 
         let maxTranslateX=(history.length-3)*250
         let actualX=0
@@ -65,7 +71,7 @@ function HistoryCards({history}){
 
                     
                     <div id="carrousel" ref={currentTaget} className="CardsHist-Carrusel">
-                            {history.map((element,i)=>{
+                            {localHistory.map((element,i)=>{
                                 return (<Card key={`${i}`} cardInfo={element}></Card>)
                             })}
 

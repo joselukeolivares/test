@@ -287,7 +287,7 @@ function DashboardCarbon(){
 			setLoadingData(!loadingData)
 		}).catch(err=>{
 			console.log(`Error al intentar obtener resultado del ${idSelected}. Intentando obtener datos de almacenamiento local`)
-			debugger
+			
 			let localData=localStorage.getItem(`${state.idIndicador}d`)
 			let test=JSON.parse(localData)
 			
