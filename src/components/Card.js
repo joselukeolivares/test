@@ -31,7 +31,7 @@ function Card({cardInfo}){
 
     let stateValue={}
     let pathnameValue="/test/"
-    debugger
+    
     switch(cardInfo.idCategory){
         
             case 1:
@@ -71,9 +71,9 @@ function Card({cardInfo}){
         >
                 <div className="card-history">
             <div className="topSection_HistoryCard-container">
-                <div id="typeTitle-topSection_Card">
-                    <p id="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
-                    <p id="nameTitle_typeTitle" className='nameText_card-Container'>{title}</p>
+                <div className="typeTitle-topSection_Card">
+                    <p className="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
+                    <p className="nameTitle_typeTitle" className='nameText_card-Container'>{title}</p>
                 </div>
                 <div className="iconsSection_container">                    
                     <div className="iconSection">

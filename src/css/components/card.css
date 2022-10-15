@@ -4,9 +4,14 @@
     height: 8rem;
     margin: 2rem 1rem;
     border-radius: 1rem;
-        
+    text-decoration: none;    
     overflow: hidden;
     
+}
+
+a{
+    text-decoration: none;
+    color:#333333 !important;
 }
 
 .topSection_Card-container{
@@ -24,7 +29,7 @@
     font-size: 1rem;
 }
 
-#typeTitle-topSection_Card{
+.typeTitle-topSection_Card{
     margin: 1rem;
     
     

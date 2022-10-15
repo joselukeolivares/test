@@ -30,7 +30,7 @@ const clasesIconsCard={
             viewedHistory=[]
         }
         
-        viewedHistory.unshift(metadata)
+        viewedHistory.unshift({...metadata,idCategory:idCategory})
         localStorage.setItem("viwed_history",JSON.stringify(viewedHistory))
 
 

@@ -19,14 +19,41 @@ function Home (){
     //console.log(data)
 
     const [indicatorsData,setIndicatorsData]=React.useState([])
+    const values=useContext(HomeContext)
+    
+    let dataBags=[]
+    
+    try{
+        const dataJSON_s=JSON.stringify(data)
+        const dataJSON_p=JSON.parse(dataJSON_s).categories
+        
+        //dataBags=dataJSON_p.indicadoresCat.bag
+        dataBags=dataBags.concat(dataJSON_p.dashboardsCat.bag)        
+        dataBags=dataBags.concat(dataJSON_p.rendicionCat.bag)
+        dataBags=dataBags.concat(dataJSON_p.proyectos_vCat.bag)
+        dataBags=dataBags.concat(dataJSON_p.TablerosCat.bag)
+        
+    
+    }catch(err){
+        console.log(err)
+    }
     
     React.useEffect(()=>{
-        let promise=getDataIndicador([],4)
-        //
+        let promise=getDataIndicador([],4)        
+       
         promise.promiseData.then(data=>{
 
+
+
+
             try{
-                localStorage.setItem('indicatorsMetaData',JSON.stringify(data))
+                
+
+                const indicatorsFromDB=data.map((indicator,i)=>({...indicator,icon:"2",name:indicator.indicadorNC,type: "Carbon Design",developed:"Carbon","typeIcons":["dashboard","carbon"],updated:indicator.fechaCargado}))
+              
+                localStorage.setItem('indicatorsMetaData',JSON.stringify(indicatorsFromDB))
+                values.setSearchDataTable(indicatorsFromDB.concat(dataBags))
+                
             }catch(err){
                 console.log(err)
             }
@@ -38,6 +65,7 @@ function Home (){
             
             setIndicatorsData(aux)
         }).catch(err=>{
+
             //
             console.log("Los datos no pudieron obtenerse de la BD. Buscando de manera local...")
             const localData=auxData()
@@ -45,6 +73,7 @@ function Home (){
             setIndicatorsData(test)
 
             localStorage.setItem('indicatorsMetaData',localData.indicatorsList)
+            values.setSearchDataTable(dataBags.concat(JSON.parse(localData.indicatorsList)))
 
             localData.indicatorsData.forEach(indicator=>{
                 const id=indicator.id
@@ -58,7 +87,9 @@ function Home (){
             })
         
             })
-    },[])
+
+
+},[])
 
     
     function setComponent(komponent,properties){
@@ -75,7 +106,7 @@ function Home (){
         
     }
 
-    const values=useContext(HomeContext)
+    //const values=useContext(HomeContext)
     //values.setTopBar(true)
     //values.setFooter(true)
     //values.setBuscador(true)

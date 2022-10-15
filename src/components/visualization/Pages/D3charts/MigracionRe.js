@@ -2,6 +2,7 @@ import * as d3 from 'd3'
 import '../styles/migracion.css'
 import agenda from '../data/agenda.json'
 import {BarChart_Re} from './BarChart_Re'
+import 'url-change-event'
 
 
 function MigracionRe(){
@@ -41,10 +42,14 @@ function MigracionRe(){
       day_counter:1
     }
     let playSimulation=true
-
+    let timers=[]
     
-
-
+    document.addEventListener("visibilitychange",function(){
+      //debugger
+      console.log("leaving")
+    })
+    
+    
     //Annio Control
     timer.year=Object.keys(agenda)[timer.year_counter]
     //Mes control
@@ -374,47 +379,65 @@ function MigracionRe(){
           //console.log(`${sourceC.name} ----->${destinyC.name}: ${counter} vs ${migrationNumber}`)       
         }
 
+        function leaving(timeout){
+          console.log(`Cleaning timers${timeout}`)
+          timers.forEach(t=>{
+            clearTimeout(t)
+          })
+        }
+
         function timeManager(){
          //console.log(`timeManager runing with: ${data.length}`) 
           
-         idTimeInterval=0
+        
          
-         setTimeout(() => {
-           console.log(`timeManager ${idTimeInterval}`)
+ let migrateTimer=setTimeout(() => {
+          
+          console.log(`timeManager ${migrateTimer}`)
+          
+          timers.push(migrateTimer)
+           if(!document.getElementById("migracionSVG")){
+            clearTimeout(migrateTimer)
+              //debugger
+           }else{
 
             if(timer.month_counter<12){
-               timer.month_counter++
-               timer.month=Object.keys(agenda[timer.year])[(timer.month_counter-1)]              
+              timer.month_counter++
+              timer.month=Object.keys(agenda[timer.year])[(timer.month_counter-1)]              
 
-              nodesMigration()
-              data=[]
-              cluster.forEach(element => {
-                data=data.concat(element.containerNodes)
-              });
-              simulation.alpha(1).alphaTarget(0).restart()
+             nodesMigration()
+             data=[]
+             cluster.forEach(element => {
+               data=data.concat(element.containerNodes)
+             });
+             simulation.alpha(1).alphaTarget(0).restart()
 
-              
-            }else{
-              console.log("Happy new year")              
-              timer.month_counter=1
-              timer.month=Object.keys(agenda[timer.year])[(timer.month_counter-1)] 
+             
+           }else{
+             console.log("Happy new year")              
+             timer.month_counter=1
+             timer.month=Object.keys(agenda[timer.year])[(timer.month_counter-1)] 
 
-                if(timer.year_counter<timer.year_list.length){
-                  timer.year_counter++
-                  data=[]
-                  cluster.forEach(element => {
-                    element.containerNodes=[]
-                  });
-                  simulation=undefined
-                  buildData(cluster)
-                }else{
-                  timer.year_counter=1
-                }
-                
-            }
+               if(timer.year_counter<timer.year_list.length){
+                 timer.year_counter++
+                 data=[]
+                 cluster.forEach(element => {
+                   element.containerNodes=[]
+                 });
+                 simulation=undefined
+                 buildData(cluster)
+               }else{
+                 timer.year_counter=1
+               }
+               
+           }
 
-            
-            BarChart_Re(cluster) 
+           
+           BarChart_Re(cluster)
+           }
+    
+
+             
           }, 5000);
 
           return idTimeInterval

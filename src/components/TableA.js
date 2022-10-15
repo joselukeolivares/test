@@ -5,7 +5,7 @@ function TableA({
     rowData,
     headerData
 }){
-
+    localStorage.setItem("ToElasticData",JSON.stringify(rowData))
     function getIcons(icon){
 
         switch(icon){
@@ -19,13 +19,11 @@ function TableA({
                 return (<div className="dashIcon_container proyectos_vCat"><View20 /></div>)                    
             case '1':
                 return (<div className="dashIcon_container TablerosCat"><TableSplit20 /></div>)
-                case 'fav':
-                    return (<div className="dashIcon_container "><CheckmarkFilled32 className='favIcon'/></div>)
-                    case 'unfav':
-                        return (<div className="dashIcon_container "><AlarmAdd32 /></div>)                       
+            case 'fav':
+                return (<div className="dashIcon_container "><CheckmarkFilled32 className='favIcon'/></div>)
+            case 'unfav':
+                return (<div className="dashIcon_container "><AlarmAdd32 /></div>)                                  
             default:
-                console.log("icon")
-                console.log(icon)
                 return <p>not icon</p>
 
         }
@@ -36,7 +34,7 @@ function TableA({
         <DataTable  rows={rowData} headers={headerData}>
         {({ rows, headers, getHeaderProps, getTableProps }) => (
             <TableContainer title="DataTable">
-            <Table {...getTableProps()}>
+            <Table {...getTableProps()} size='xs'>
                 <TableHead>
                 <TableRow>
                     {headers.map((header) => (
@@ -48,6 +46,7 @@ function TableA({
                 </TableHead>
                 <TableBody>
                 {rows.map((row) => (
+                    
                     <TableRow key={row.id}>
                     {row.cells.map((cell,i) => (
                         <TableCell key={cell.id}>{

@@ -19,7 +19,14 @@ import { Footer } from "../components/Footer";
 function Resultados(){
 
 
-let [dataTableRows,setDataTableRows]=React.useState(rowData)
+let values=useContext(HomeContext)
+let [dataTableRows,setDataTableRows]=React.useState(values.searchDataTable.map((r,i)=>({...r,id:`${i+1}`,like:r.like||'unfav'})))
+
+let dataRows=dataTableRows
+    
+    //setDataTableRows(values.searchDataTable)
+    
+
 /*
 let filterCat=cat.state.cat.id
 setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
@@ -72,10 +79,12 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                         subtitle
                     })=>
                     {
-                        if(catFilter!=0){
-                            dataTableRows=rowData.filter(item=>item.icon==catFilter)
-                        }else if(catFilter==0){
-                            dataTableRows=rowData
+                        //debugger
+                        if(catFilter>0){
+                            dataRows=dataTableRows.filter(item=>item.icon==catFilter)
+                            
+                        }else if(catFilter==0 ||!catFilter){
+                            dataRows=dataTableRows
                         }
                         /*
                         if(favorite&&headerData.length==5){
@@ -140,7 +149,7 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                                         
                                         }
                                         {
-                                        k==0 && getIcons(td)   
+                                        k==0 && getIcons(td?td:2)   
                                         }
                                     </td>)}
                                 </tr>)}
@@ -155,7 +164,7 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                                     
                                                 <TableA
                                                 headerData={headerData}
-                                                rowData={dataTableRows}
+                                                rowData={dataRows}
                                                 ></TableA> 
                                         </React.Fragment>
                                     

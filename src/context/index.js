@@ -16,6 +16,7 @@ function HomeProvider(props){
     let [topSearch,setTopSearch]=React.useState(false)
     let [subtitle,setSubtitle]=React.useState("Data Coppel")
     let [rowRendicion,setRowRendicion]=React.useState([])
+    let [searchDataTable,setSearchDataTable]=React.useState([])
     
 
     return (
@@ -40,8 +41,10 @@ function HomeProvider(props){
             setSubtitle,
             topSearch,
             setTopSearch,
-            rowRendicion,setRowRendicion
-
+            rowRendicion,
+            setRowRendicion,
+            searchDataTable,
+            setSearchDataTable
 
 
 
