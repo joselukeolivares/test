@@ -37,6 +37,13 @@ function Home (){
     }catch(err){
         console.log(err)
     }
+
+    function getDateFormat(data){
+        let year=new Date(data).getFullYear()
+        let month=new Date(data).getMonth()
+        let day=new Date(data).getDay()
+        return `${year}/${month}/${day}`
+    }
     
     React.useEffect(()=>{
         let promise=getDataIndicador([],4)        
@@ -49,7 +56,7 @@ function Home (){
             try{
                 
 
-                const indicatorsFromDB=data.map((indicator,i)=>({...indicator,icon:"2",name:indicator.indicadorNC,type: "Carbon Design",developed:"Carbon","typeIcons":["dashboard","carbon"],updated:indicator.fechaCargado}))
+                const indicatorsFromDB=data.map((indicator,i)=>({...indicator,icon:"2",name:indicator.indicadorNC,type: "Carbon Design",developed:"Carbon","typeIcons":["dashboard","carbon"],updated:getDateFormat(indicator.fechaCargado)}))
               
                 localStorage.setItem('indicatorsMetaData',JSON.stringify(indicatorsFromDB))
                 values.setSearchDataTable(indicatorsFromDB.concat(dataBags))

@@ -9,9 +9,14 @@ import { local } from "d3";
 function HistoryCards({history}){
 
 
-        let localHistory=JSON.parse(localStorage.getItem("viwed_history"))
-        if(typeof(localHistory)!='undefined' || localHistory.length>=0)
-            localHistory=localHistory.concat(history)
+    let localHistory=[]
+    //debugger
+    if(JSON.parse(localStorage.getItem("viwed_history"))!==null){
+        //debugger
+        localHistory=(JSON.parse(localStorage.getItem("viwed_history"))).concat(history)
+    }else{
+        localHistory=history
+    }
 
         let maxTranslateX=(history.length-3)*250
         let actualX=0

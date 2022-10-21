@@ -131,7 +131,7 @@ function BurguerMenu(){
                           <p className='burguer-titles'>Indicadores</p>
                     </div>
                     <div className='burguer-cursor' onClick={()=>{
-                      values.setcatFilter(4)
+                      values.setcatFilter(5)
                       swithContent(4)
                     }}>
                           <div className="dashIcon_container rendicionCat">
@@ -139,7 +139,7 @@ function BurguerMenu(){
                           <p className='burguer-titles'>Reportes</p>
                     </div>
                     <div className='burguer-cursor' onClick={()=>{
-                      values.setcatFilter(5)
+                      values.setcatFilter(4)
                       swithContent(4)
                     }}>
                           <div className="dashIcon_container proyectos_vCat">

@@ -100,7 +100,7 @@ export const rowData = [
     },
     {
       key: 'type',
-      header: 'typeo',
+      header: 'Tipo',
     },
     {
       key: 'updated',

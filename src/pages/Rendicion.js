@@ -38,26 +38,34 @@ function Rendicion(){
       ];
 //console.log(filtersDropdown)
  //let values=useContext(HomeContext)
- let [rowsData,setRowsData]=React.useState(data.rowData)
+ let [rowsData,setRowsData]=React.useState([])
  
+
+      React.useEffect(()=>{
+        setRowsData(data.rowData)
+      },[])
 
  function updateRowsData(index){
      
-     let aux=[]
+     
 
-     rowsData.forEach((row,i)=>{
-         if(i==index){
-             row.favorite=!row.favorite
+  let aux=rowsData.map((row,i)=>{
+         if(i==index){          
+          return {...row,favorite:!row.favorite}
+         }else{
+           return row
          }
-         aux.push(row)
+         
      })
 
                    
-     setRowsData([])
+     setRowsData([...aux])
      
+     /*
      setTimeout(function(){
        setRowsData(aux)
      },1)
+     */
      
      //aux.pop()
      //console.log(aux)

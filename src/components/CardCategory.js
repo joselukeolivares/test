@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/components/cardCategory.css'
-import {Dashboard20,ChartTreemap20,Linux20,ChartLine20,TableSplit20,Carbon20} from '@carbon/icons-react'
+import {Code20,Dashboard20,ReportData20,Linux20,ChartLine20,TableSplit20,Carbon20,View20} from '@carbon/icons-react'
 import {Link} from 'react-router-dom'
 import dashboard from '../pictures/dashboard.jpg'
 import { useNavigate } from 'react-router-dom'
@@ -42,14 +42,16 @@ const clasesIconsCard={
                     return <Dashboard20 />
             case 'carbon':
                     return <Carbon20 />
-            case 'chart':
-                return <ChartTreemap20 />
-            case 'coppelBoard':
+            case 'report':
+                return <ReportData20 />
+            case 'dashcat':
                 return <TableSplit20 />                    
             case 'indicator':
                 return <ChartLine20 />
-            case 'tableauIcon':
-                return <br/>   
+            case 'dataviz':
+                return <View20/>
+            case 'developed':
+                return <Code20 />       
             default:
                 return <Linux20 />       
         }
@@ -70,14 +72,14 @@ const clasesIconsCard={
                 pathnameValue=`/test/dashboardCarbon?idIndicador=${idIndicador}`
                 break
                 case 3:
+                pathnameValue=route
                 break
                 case 4:
                 pathnameValue=metadata.route
                 break
                 case 5:
                 break
-                default :
-
+                default:
                 break
             }
 /*

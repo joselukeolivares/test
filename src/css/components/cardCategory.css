@@ -64,6 +64,26 @@
     background-color: #14B9B9;
 }
 
+.dataviz{
+    background-color: #F1C21B;
+}
+
+.dashcat{
+    background-color: #67CE51;
+}
+
+.report{
+    background-color: #BB96FB;
+}
+
+.indicator{
+    background-color: #14B9B9;
+}
+
+.developed{
+    background-color: rgb(151, 248, 243);
+}
+
 .linkCotainer{
     margin: 1rem;
     position: absolute;
@@ -97,8 +117,8 @@
     background-image: url("../../pictures/powerBiType.png");
 }
 
-@media screen and (max-width: 1920px) and (max-height:1080px) {
-
+@media screen and (max-width: 1920px)  {
+/*and (max-height:1080px)*/
 
     .Card-container{
         width: 100%;

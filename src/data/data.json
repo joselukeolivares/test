@@ -15,11 +15,11 @@
             "typeIcon":"dashboard",
             "total":"312",
             "bag":[
-                {"id":"dc001","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard","carbon"],"src":"https://public.tableau.com/views/DensityofMarijuanaRetailersinThurstonCounty/Dashboard1?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},                                                                                                                                     
-                {"id":"dc002","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard","carbon"],"src":"https://public.tableau.com/views/Sankey_16619871415230/Dashboard1?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},
-                {"id":"dc003","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard","carbon"],"src":"https://data.coppel.com/#/views/TableroResumen3_0/TableroResumen3_0?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},
-                {"id":"dc004","icon":"3","name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","developed":"Dashboard","typeIcons":["dashboard","carbon"],"src":"https://data.coppel.com/#/views/MediosdePago/MediosdePago?:iid=6","route":"/test/dasboard_bi","updated": "30/11/21"},
-                {"id":"dc005","icon":"3","name":"Productos","type":"Power Bi","typeCode":"PowerBi","developed":"Dashboard","typeIcons":["dashboard","carbon"],"src":"https://data.coppel.com/#/site/CieciadeDatosAVD/views/CovidMapa/Dashboard1?:iid=2","route":"/test/dasboard_bi","updated": "30/11/21"}
+                {"id":"dc001","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard"],"src":"https://public.tableau.com/views/DensityofMarijuanaRetailersinThurstonCounty/Dashboard1?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},                                                                                                                                     
+                {"id":"dc002","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard"],"src":"https://public.tableau.com/views/Sankey_16619871415230/Dashboard1?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},
+                {"id":"dc003","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard"],"src":"https://data.coppel.com/#/views/TableroResumen3_0/TableroResumen3_0?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},
+                {"id":"dc004","icon":"3","name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","developed":"Dashboard","typeIcons":["dashboard"],"src":"https://data.coppel.com/#/views/MediosdePago/MediosdePago?:iid=6","route":"/test/dasboard_bi","updated": "30/11/21"},
+                {"id":"dc005","icon":"3","name":"Productos","type":"Power Bi","typeCode":"PowerBi","developed":"Dashboard","typeIcons":["dashboard"],"src":"https://data.coppel.com/#/site/CieciadeDatosAVD/views/CovidMapa/Dashboard1?:iid=2","route":"/test/dasboard_bi","updated": "30/11/21"}
             ]
         },
         "indicadoresCat":{
@@ -37,11 +37,11 @@
             "typeIcon":"report",
             "total":"120",
             "bag":[
-                {"id":"rc001","icon":"5","name":"Ventas Celulares","type":"Carbon Design","developed":"HTML5","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"],"updated": "30/11/21"},
-                {"id":"rc002","icon":"5","name":"Ventas Celulares","type":"Carbon Design","developed":"HTML5","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"],"updated": "30/11/21"},
-                {"id":"rc003","icon":"5","name":"Ventas Celulares","type":"Carbon Design","developed":"HTML5","typeCode":"CarbonDesign","typeIcons":["dashboard","carbon"],"updated": "30/11/21"},
-                {"id":"rc004","icon":"5","name":"Ventas semanales","type":"Tableau","developed":"HTML5","typeCode":"Tableau","typeIcons":["dashboard","carbon"],"updated": "30/11/21"},
-                {"id":"rc005","icon":"5","name":"Productos","type":"Power Bi","developed":"HTML5","typeCode":"PowerBi","typeIcons":["dashboard","carbon"],"updated": "30/11/21"}
+                {"id":"rc001","icon":"5","name":"Ventas Celulares","type":"Carbon Design","developed":"HTML5","typeCode":"CarbonDesign","typeIcons":["report","carbon"],"updated": "30/11/21","route":"/test/rendicion"},
+                {"id":"rc002","icon":"5","name":"Ventas Celulares","type":"Carbon Design","developed":"HTML5","typeCode":"CarbonDesign","typeIcons":["report","carbon"],"updated": "30/11/21","route":"/test/rendicionimg"},
+                {"id":"rc003","icon":"5","name":"Ventas Celulares","type":"Carbon Design","developed":"HTML5","typeCode":"CarbonDesign","typeIcons":["report","carbon"],"updated": "30/11/21","route":"/test/rendicion"},
+                {"id":"rc004","icon":"5","name":"Ventas semanales","type":"Tableau","developed":"HTML5","typeCode":"Tableau","typeIcons":["report","carbon"],"updated": "30/11/21","route":"/test/rendicionimg"},
+                {"id":"rc005","icon":"5","name":"Productos","type":"Power Bi","developed":"HTML5","typeCode":"PowerBi","typeIcons":["report","carbon"],"updated": "30/11/21","route":"/test/rendicion"}
             ]
         },
         "proyectos_vCat":{
@@ -50,11 +50,11 @@
             "typeIcon":"dataviz",
             "total":"95",
             "bag":[                
-                {"id":"pv001","icon":"4","name":"Migración de clientes","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/migracion","updated": "30/11/21"},
-                {"id":"pv002","icon":"4","name":"Proyectos ADV Sankey","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Armando Felix Zaragoza","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/proyectosCoppel","updated": "30/11/21"},
-                {"id":"pv003","icon":"4","name":"Tiendas Coppel en mapa","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/coppelMap","updated": "30/11/21"},
-                {"id":"pv004","icon":"4","name":"Estado Resultado De Clientes","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"Pixi","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/erc","updated": "30/11/21"},
-                {"id":"pv005","icon":"4","name":"Estado Resultado De Clientes","typeIcons":["indicator"],"type":"indicator","typeCode":"CarbonDesign","developed":"Pixi","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/erc","updated": "30/11/21"}
+                {"id":"pv001","icon":"4","name":"Migración de clientes","typeIcons":["dataviz","developed"],"type":"dataviz","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/migracion","updated": "30/11/21"},
+                {"id":"pv002","icon":"4","name":"Proyectos ADV Sankey","typeIcons":["dataviz","developed"],"type":"dataviz","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Armando Felix Zaragoza","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/proyectosCoppel","updated": "30/11/21"},
+                {"id":"pv003","icon":"4","name":"Tiendas Coppel en mapa","typeIcons":["dataviz","developed"],"type":"dataviz","typeCode":"CarbonDesign","developed":"D3.js","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/coppelMap","updated": "30/11/21"},
+                {"id":"pv004","icon":"4","name":"Estado Resultado De Clientes","typeIcons":["dataviz","developed"],"type":"dataviz","typeCode":"CarbonDesign","developed":"Pixi","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/erc","updated": "30/11/21"},
+                {"id":"pv005","icon":"4","name":"Estado Resultado De Clientes","typeIcons":["dataviz","developed"],"type":"dataviz","typeCode":"CarbonDesign","developed":"Pixi","Author":"José Luis Olivares Camacho","client":"Analisis y visualización de datos","created":"2022","version":1,"poster":null,"route":"/test/d3/erc","updated": "30/11/21"}
             
             ]
         },
@@ -64,11 +64,11 @@
             "typeIcon":"dashcat",
             "total":"589",
             "bag":[
-                {"id":"tc001","icon":"1","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard","carbon"],"updated": "30/11/21"},
-                {"id":"tc002","icon":"1","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard","carbon"],"updated": "30/11/21"},
-                {"id":"tc003","icon":"1","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard","carbon"],"updated": "30/11/21"},
-                {"id":"tc004","icon":"1","name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","developed":"Dashboard","typeIcons":["dashboard","carbon"],"updated": "30/11/21"},
-                {"id":"tc005","icon":"1","name":"Productos","type":"Power Bi","typeCode":"PowerBi","developed":"Dashboard","typeIcons":["dashboard","carbon"],"updated": "30/11/21"}
+                {"id":"tc001","icon":"1","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashcat","carbon"],"updated": "30/11/21"},
+                {"id":"tc002","icon":"1","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashcat","carbon"],"updated": "30/11/21"},
+                {"id":"tc003","icon":"1","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashcat","carbon"],"updated": "30/11/21"},
+                {"id":"tc004","icon":"1","name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","developed":"Dashboard","typeIcons":["dashcat","carbon"],"updated": "30/11/21"},
+                {"id":"tc005","icon":"1","name":"Productos","type":"Power Bi","typeCode":"PowerBi","developed":"Dashboard","typeIcons":["dashcat","carbon"],"updated": "30/11/21"}
             ]
         }
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import '../css/components/card.css'
-import {Dashboard20,ChartTreemap20,Linux20,ChartLine20,TableSplit20,Carbon20} from '@carbon/icons-react'
+import {Code20,Dashboard20,ChartTreemap20,Linux20,ChartLine20,TableSplit20,Carbon20,View20} from '@carbon/icons-react'
 import {Link} from 'react-router-dom'
 
 
 
 function Card({cardInfo}){
-    let title=cardInfo.title||cardInfo.indicadorNC
+    let title=cardInfo.title||cardInfo.indicadorNC||cardInfo.name
     let type=cardInfo.type
     let typeIcons=cardInfo.typeIcons
 
@@ -22,8 +22,10 @@ function Card({cardInfo}){
                 return <TableSplit20 />                    
             case 'indicator':
                 return <ChartLine20 />
-            case 'tableauIcon':
-                return <br/>   
+            case 'dataviz':
+                return <View20/> 
+            case 'developed':
+                return <Code20 />       
             default:
                 return <Linux20 />       
         }

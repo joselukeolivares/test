@@ -3,7 +3,7 @@ import { DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, Tab
 import {CheckmarkFilled20,AddAlt20 } from '@carbon/icons-react'
 import '../css/components/tableRendicion.css'
 
-let dinamicRows=[]
+
 
 
 function getIcons(icon){
@@ -55,7 +55,7 @@ function updateFavIndicator(index){
 
 function TableRendicion({headerData,rowData,updateRowsData}){
 
-    dinamicRows=[]
+    
 
     function updateContent(index){
         updateRowsData(index)
@@ -64,7 +64,7 @@ function TableRendicion({headerData,rowData,updateRowsData}){
     return (
         <div className='tableRendicion-Container'>
                     <div className='titlesContainer'>
-                        <h4 className='header20'>Resultado Mensual</h4>
+                        <h4 className='header20'></h4>
                         <h4 className='header20'>Resultado Mensual</h4>
                         <h4 className='header20'>Resultado Acumulado</h4>
                         <h4 className='header40'>Resultado Anual</h4>

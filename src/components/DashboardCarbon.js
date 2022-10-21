@@ -295,7 +295,7 @@ function DashboardCarbon(){
 			setLoadingData(!loadingData)
 		})
 
-		if(indicator!=undefined){
+		if(indicator!=undefined && indicator.Hijos){
 			let hijos=indicator.Hijos
 			hijos=hijos.replace("[","")
 			hijos=hijos.replace("]","")
@@ -443,7 +443,7 @@ function DashboardCarbon(){
 		}else{
 			updatedData=idKpiData.filter(row=>row.type!=type)
 		}
-		setIdKpiData(updatedData)
+		setIdKpiData(updatedData.map(row=>row))
 		console.log(`Updated Data: ${updatedData.length}`)
 		console.log(updatedData)
 		//
@@ -479,48 +479,7 @@ function DashboardCarbon(){
 						<Switch name={"line_points"} text={"Gráfico Linea"} />
 					</ContentSwitcher >
 
-					<FormGroup 					onChange={e=>{
-						let value=e.target.value
-						switch(value){
-							case 'opt-1':
-							case 'opt-2':
-								setPrincipalChart(e.target.value)
-								break;
-							case 'opt-3':
-							break;
-							default:
-							console.log("opt-invalid")
-						}
-					}}
-					legendText='Selección de tipo de gráfico para Pronostico'
-					>
-						<RadioButtonGroup
-						defaultSelected="default-selected"
-						legend="Group Legend"
-						name="forecast-radio-button-group"
-						valueSelected="default-selected"
-						>
-							<RadioButton
-							id="radio-1"
-							labelText="Lineas"
-							value="opt-1"
-							/>
 
-							<RadioButton
-							id="radio-2"
-							labelText="Barras-Lineas"
-							value="opt-2"
-							/>
-
-							<RadioButton
-							id="radio-3"
-							labelText="Meta"
-							value="opt-3"
-							/>
-
-							
-						</RadioButtonGroup>
-					</FormGroup>
 					<Toggle
 						id="toggle-meta"
 						labelText="Meta"

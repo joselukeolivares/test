@@ -20,12 +20,40 @@ function Resultados(){
 
 
 let values=useContext(HomeContext)
-let [dataTableRows,setDataTableRows]=React.useState(values.searchDataTable.map((r,i)=>({...r,id:`${i+1}`,like:r.like||'unfav'})))
+let [dataTableRows,setDataTableRows]=React.useState([])
+let filter=[]
 
-let dataRows=dataTableRows
+React.useEffect(()=>{
+    let data=values.searchDataTable.map((r,i)=>({...r,id:`${i+1}`,like:r.like||false}))
+    //debugger
+    console.log(`Datos vacios, se cargaran: ${dataTableRows.length} elementos`)
+    setDataTableRows(data)
+
+},[])
+
+if(dataTableRows.length==0){
+    console.log(`No hay elementos`)
+}else{
+
+    console.log(`Total de datos ${dataTableRows.length} actualmente`)
+    console.log(dataTableRows[0].like)
+}
+
+//let dataRows=dataTableRows
     
     //setDataTableRows(values.searchDataTable)
+function updateDataRows(index){
     
+    let newData=dataTableRows.map((element,i)=>{
+        if(i==index){
+            return {...element,like:!element.like}
+        }else{
+            return element
+        }
+    })
+    
+    setDataTableRows([...newData])
+}
 
 /*
 let filterCat=cat.state.cat.id
@@ -79,12 +107,12 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                         subtitle
                     })=>
                     {
-                        //debugger
+                        //
                         if(catFilter>0){
-                            dataRows=dataTableRows.filter(item=>item.icon==catFilter)
+                            filter=dataTableRows.filter(item=>item.icon==catFilter)
                             
                         }else if(catFilter==0 ||!catFilter){
-                            dataRows=dataTableRows
+                            filter=[]
                         }
                         /*
                         if(favorite&&headerData.length==5){
@@ -138,6 +166,7 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                                             let aux=rowData.filter((element)=>element.icon==(j+1))
                                             //setDataTableRows(aux)
                                             setcatFilter(j+1)
+                                            
                                         }else{
                                             setcatFilter(0)
                                         }                               
@@ -164,7 +193,8 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                                     
                                                 <TableA
                                                 headerData={headerData}
-                                                rowData={dataRows}
+                                                rowData={filter.length==0?dataTableRows:filter}
+                                                updateDataRows={updateDataRows}
                                                 ></TableA> 
                                         </React.Fragment>
                                     
