@@ -1,0 +1,14 @@
+{
+  "name": "364c837e98157062",
+  "main": "364c837e98157062@667.js",
+  "version": "667.0.0",
+  "homepage": "https://observablehq.com/d/364c837e98157062",
+  "author": {
+    "name": "Armando Felix",
+    "url": "https://observablehq.com/@armandofelixzara"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
