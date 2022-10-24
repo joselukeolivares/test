@@ -3,7 +3,7 @@ import React from "react";
 
 const HomeContext=React.createContext()
 
-function HomeProvider(props){
+function HomeProvider(props) {
 
     let [resultados,setResultados]=React.useState(false)
     let [homeVisible,setHomeVisible]=React.useState(true)
