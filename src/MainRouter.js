@@ -20,6 +20,7 @@ import {HeatMapChartDC} from "./components/HeatMap"
 import { Sankey } from "./components/Sankey";
 import {DashboardBI} from "./components/DasboardBI"
 import {RendicionIMG} from "./components/RendicionIMG"
+import { CoppelGrowthMap } from "./components/CoppelGrowth";
 
 const MainRouter=()=>{
 
@@ -46,6 +47,7 @@ const MainRouter=()=>{
             <Route path="/test/d3/proyectosCoppel" element={<Sankey/>}/>
             <Route path="/test/dasboard_bi" element={<DashboardBI/>} />
             <Route path="/test/rendicionimg" element={<RendicionIMG/>} />
+            <Route path="/test/d3/coppelMap" element={<CoppelGrowthMap/>} />
               
                
             </Routes>
