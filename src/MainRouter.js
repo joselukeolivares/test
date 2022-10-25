@@ -21,7 +21,6 @@ import { Sankey } from "./components/Sankey";
 import {DashboardBI} from "./components/DasboardBI"
 import {RendicionIMG} from "./components/RendicionIMG"
 
-
 const MainRouter=()=>{
 
 
@@ -47,6 +46,7 @@ const MainRouter=()=>{
             <Route path="/test/d3/proyectosCoppel" element={<Sankey/>}/>
             <Route path="/test/dasboard_bi" element={<DashboardBI/>} />
             <Route path="/test/rendicionimg" element={<RendicionIMG/>} />
+            
               
                
             </Routes>
