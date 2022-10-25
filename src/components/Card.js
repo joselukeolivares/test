@@ -14,20 +14,32 @@ function Card({cardInfo}){
         switch(name){
             case 'dashboard':
                     return <Dashboard20 />
+                    break
+            case 'tableauIcon':
+                return <div />
+                    break
             case 'carbon':
                     return <Carbon20 />
+                    break
             case 'chart':
                 return <ChartTreemap20 />
+                break
             case 'coppelBoard':
                 return <TableSplit20 />                    
+                break
             case 'indicator':
                 return <ChartLine20 />
+                break
             case 'dataviz':
                 return <View20/> 
+                break
             case 'developed':
                 return <Code20 />       
-            default:
-                return <Linux20 />       
+                break
+            default:   
+            debugger             
+                return <Linux20 />
+                break
         }
     }
 
@@ -74,8 +86,8 @@ function Card({cardInfo}){
                 <div className="card-history">
             <div className="topSection_HistoryCard-container">
                 <div className="typeTitle-topSection_Card">
-                    <p className="typeTitle_typeTitle" className='typesText_card-Container'>{type}</p>
-                    <p className="nameTitle_typeTitle" className='nameText_card-Container'>{title}</p>
+                    <p className="typeTitle_typeTitle" >{type}</p>
+                    <p className="nameTitle_typeTitle" >{title}</p>
                 </div>
                 <div className="iconsSection_container">                    
                     <div className="iconSection">

@@ -3,10 +3,10 @@
         {"type":"Carbon Design","title":"Ventas Celulares","typeIcons":["dashboard","carbon"]},
         {"type":"Tableau","title":"Ventas Ropa y Zapatos","typeIcons":["indicator","carbon"]},
         {"type":"Tableau","title":"Ventas Muebles","typeIcons":["indicator","carbon"]},
-        {"type":"Tableau","title":"Ventas Muebles","typeIcons":["coppelBoard","tableauIcon"]},
-        {"type":"Tableau","title":"Ventas Muebles","typeIcons":["coppelBoard","tableauIcon"]},
-        {"type":"Tableau","title":"Ventas Muebles","typeIcons":["coppelBoard","tableauIcon"]},
-        {"type":"Tableau","title":"Ventas Muebles","typeIcons":["coppelBoard","tableauIcon"]}
+        {"type":"Tableau","title":"Ventas Muebles","typeIcons":["dashboard"]},
+        {"type":"Tableau","title":"Ventas Muebles","typeIcons":["dashboard"]},
+        {"type":"Tableau","title":"Ventas Muebles","typeIcons":["dashboard"]},
+        {"type":"Tableau","title":"Ventas Muebles","typeIcons":["dashboard"]}
     ],
     "categories":{
         "dashboardsCat":{

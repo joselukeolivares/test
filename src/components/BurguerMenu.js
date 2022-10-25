@@ -69,6 +69,7 @@ function BurguerMenu(){
               values.setHistory(false)
               values.setTopSearch(false)
               values.setBuscador(true)
+              navigate("/test/home",{replace:true})
               break;
         case 2:
           //console.log("option 2 burguer menu")
@@ -105,9 +106,15 @@ function BurguerMenu(){
 
     return (
         <Menu customBurgerIcon={<Menu32 className="carbon_icon"/>} styles={styles}>
-                    <div className='burguer-cursor'>
+                    <div className='burguer-cursor' onClick={()=>{
+                      values.setcatFilter(1)
+                      swithContent(1)
+                    }}>
                       
-                      <a id="home" className="menu-item menu-subItem" href="/test/home" > <Home20/><p className='burguer-titles'>Home</p> </a>
+                      <div id="home" className="menu-item menu-subItem"  > 
+                      <Home20/>
+                      <p className='burguer-titles'>Home</p> 
+                      </div>
                     </div>
                     
                     <div id="Explorar" className="menu-item buttonM burguer-cursor" styles={styles} onClick={()=>swithContent(2)}>
