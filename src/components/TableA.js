@@ -136,7 +136,7 @@ function TableA({
                             {i==5 && (
                                 <div onClick={()=>{
                             
-                                    updateDataRows(index)
+                                    updateDataRows(row.id)
                                 }}>{favIcon(cell.value)}</div>
                             )}
                             

@@ -11,7 +11,7 @@
     "categories":{
         "dashboardsCat":{
             "idCategory":1,
-            "name":"Dashboards",
+            "name":"Dashboards (Stategic Dasboards)",
             "typeIcon":"dashboard",
             "total":"312",
             "bag":[
@@ -24,7 +24,7 @@
         },
         "indicadoresCat":{
             "idCategory":2,
-            "name":"Indicadores",
+            "name":"Indicadores (KPI'S)",
             "typeIcon":"indicator",
             "total":"1,123",
             "bag":[             
@@ -33,7 +33,7 @@
         },
         "rendicionCat":{
             "idCategory":3,
-            "name":"Rendición de Cuentas",
+            "name":"Rendición de Cuentas (Accountability)",
             "typeIcon":"report",
             "total":"120",
             "bag":[
@@ -46,7 +46,7 @@
         },
         "proyectos_vCat":{
             "idCategory":4,
-            "name":"Proyectos Visualización",
+            "name":"Proyectos Visualización (D3.js)",
             "typeIcon":"dataviz",
             "total":"95",
             "bag":[                
@@ -60,7 +60,7 @@
         },
         "TablerosCat":{
             "idCategory":5,
-            "name":"Tableros",
+            "name":"Tableros (Operative Dashboards)",
             "typeIcon":"dashcat",
             "total":"589",
             "bag":[

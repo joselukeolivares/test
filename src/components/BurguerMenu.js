@@ -143,7 +143,7 @@ function BurguerMenu(){
                     }}>
                           <div className="dashIcon_container rendicionCat">
                             <ReportData20 /></div>
-                          <p className='burguer-titles'>Reportes</p>
+                          <p className='burguer-titles'>Rendición De Cuentas</p>
                     </div>
                     <div className='burguer-cursor' onClick={()=>{
                       values.setcatFilter(4)

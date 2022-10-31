@@ -53,11 +53,11 @@ function Home (){
 
 
 
+            debugger
             try{
                 
 
-                const indicatorsFromDB=data.map((indicator,i)=>({...indicator,icon:"2",name:indicator.indicadorNC,type: "Carbon Design",developed:"Carbon","typeIcons":["dashboard","carbon"],updated:getDateFormat(indicator.fechaCargado)}))
-              
+                const indicatorsFromDB=data.map((indicator,i)=>({...indicator,icon:'2',name:indicator.indicadorNC,type: "Carbon Design",developed:"Carbon","typeIcons":["dashboard","carbon"],updated:getDateFormat(indicator.fechaCargado)}))
                 localStorage.setItem('indicatorsMetaData',JSON.stringify(indicatorsFromDB))
                 values.setSearchDataTable(indicatorsFromDB.concat(dataBags))
                 
@@ -76,11 +76,12 @@ function Home (){
             //
             console.log("Los datos no pudieron obtenerse de la BD. Buscando de manera local...")
             const localData=auxData()
-            const test=JSON.parse(localData.indicatorsList)            
-            setIndicatorsData(test)
+            const test=JSON.parse(localData.indicatorsList)
+            const addIconAttribute=test.map(indicator=>({...indicator,icon:'2',name:indicator.indicadorNC,type: "Carbon Design",developed:"Carbon","typeIcons":["dashboard","carbon"],updated:getDateFormat(indicator.fechaCargado)}))            
+            setIndicatorsData(addIconAttribute)
 
-            localStorage.setItem('indicatorsMetaData',localData.indicatorsList)
-            values.setSearchDataTable(dataBags.concat(JSON.parse(localData.indicatorsList)))
+            localStorage.setItem('indicatorsMetaData',addIconAttribute)
+            values.setSearchDataTable(dataBags.concat(addIconAttribute))
 
             localData.indicatorsData.forEach(indicator=>{
                 const id=indicator.id

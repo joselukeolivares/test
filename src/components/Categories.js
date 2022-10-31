@@ -9,6 +9,7 @@ function Categories({categories,indicatorsData}){
                 <React.Fragment>
                 <div id="categoriesContainer">                    
                     <h3>Oferta de productos</h3>
+                    <h6>Avaliable Products...</h6>
                     <div className="categoryCards">
                         
                         <Category categories={categories} indicatorsData={indicatorsData}></Category>

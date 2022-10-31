@@ -25,9 +25,17 @@ let filter=[]
 
 React.useEffect(()=>{
     let data=values.searchDataTable.map((r,i)=>({...r,id:`${i+1}`,like:r.like||false}))
-    //debugger
+    //debuggerdbo
+    //debuggerdbo
+
+
+
+
+
+    
     console.log(`Datos vacios, se cargaran: ${dataTableRows.length} elementos`)
     setDataTableRows(data)
+    debugger
 
 },[])
 
@@ -42,10 +50,10 @@ if(dataTableRows.length==0){
 //let dataRows=dataTableRows
     
     //setDataTableRows(values.searchDataTable)
-function updateDataRows(index){
+function updateDataRows(id){
     
     let newData=dataTableRows.map((element,i)=>{
-        if(i==index){
+        if(id==element.id){
             return {...element,like:!element.like}
         }else{
             return element
@@ -109,7 +117,13 @@ setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
                     {
                         //
                         if(catFilter>0){
+                            //debugger
                             filter=dataTableRows.filter(item=>item.icon==catFilter)
+                            if(catFilter==2){
+                                console.log("Icon 2")
+                                
+                            }
+                            console.log(filter)
                             
                         }else if(catFilter==0 ||!catFilter){
                             filter=[]

@@ -1,0 +1,4 @@
+
+Fixed 'fatal: Couldn't find remote ref refs/heads/gh-pages' after running:git push origin :gh-pages'
+1.in package.sjon file change temporaly-->"deploy": "gh-pages-clean gh-pages -d build".
+2.restore options

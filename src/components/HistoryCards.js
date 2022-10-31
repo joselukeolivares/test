@@ -72,6 +72,7 @@ function HistoryCards({history}){
                         <p>Data Coppel es una plataforma que ordena y resume la informarción más importante de la empresa desde un mismo lugar. Además facilita la integración, visualización y análisis de datos para fortalecer la productividad y el conocimiento del negocio.</p>
                     </div>
                     <h3>Volver a ver</h3>
+                    <h6>Watch again...</h6>
 
 
                     
