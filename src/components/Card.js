@@ -37,7 +37,7 @@ function Card({cardInfo}){
                 return <Code20 />       
                 break
             default:   
-            debugger             
+            //debugger             
                 return <Linux20 />
                 break
         }

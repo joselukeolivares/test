@@ -11,6 +11,7 @@ import {getDataIndicador} from '../../fetchHelper/getData'
 
 import auxData from '../../data/auxData'
 import data from '../../data/data.json'
+import { local } from "d3";
 
 
 
@@ -80,7 +81,7 @@ function Home (){
             const addIconAttribute=test.map(indicator=>({...indicator,icon:'2',name:indicator.indicadorNC,type: "Carbon Design",developed:"Carbon","typeIcons":["dashboard","carbon"],updated:getDateFormat(indicator.fechaCargado)}))            
             setIndicatorsData(addIconAttribute)
 
-            localStorage.setItem('indicatorsMetaData',addIconAttribute)
+            localStorage.setItem('indicatorsMetaData',JSON.stringify(localData.indicatorsData))
             values.setSearchDataTable(dataBags.concat(addIconAttribute))
 
             localData.indicatorsData.forEach(indicator=>{
@@ -145,6 +146,7 @@ function Home (){
                                         {
                                             true && 
                                             <div id="Buscador_container-Home">
+                                                {/*This is the search component */}
                                             <Buscador ></Buscador>                    
                                             </div> 
                                         } 
