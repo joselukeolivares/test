@@ -89,22 +89,22 @@ export const rowData = [
   export const headerData = [
     {
       key: 'icon',
-      header: 'Icono',
+      header: '',
     },{
       key: 'developed',
-      header: 'Tipo',
+      header: 'Tipo (Type of Catefory)',
     },
     {
       key: 'name',
-      header: 'Nombre',
+      header: 'Nombre (Name)',
     },
     {
       key: 'type',
-      header: 'Tipo',
+      header: 'Formato (Developed by the tool NAME)',
     },
     {
       key: 'updated',
-      header: 'Ultima Actualización',
+      header: 'Ultima Actualización (Last update)',
     },
     {
       key: 'like',

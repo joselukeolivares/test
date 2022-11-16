@@ -35,7 +35,7 @@ React.useEffect(()=>{
     
     console.log(`Datos vacios, se cargaran: ${dataTableRows.length} elementos`)
     setDataTableRows(data)
-    debugger
+    //debugger
 
 },[])
 
@@ -68,7 +68,7 @@ let filterCat=cat.state.cat.id
 setDataTableRows(dataTableRows.filter(row=>row.icon==filterCat.substring(7)))
 */
 
-    let header=["","Activos","Resultados"]
+    let header=["","Activos (Products","Resultados (quantitiy od products avaliable in the category)"]
     let body=[
         ['1',"Tablero de Control",55],
         ['2',"Indicadores",1164],

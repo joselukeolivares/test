@@ -11,15 +11,15 @@
     "categories":{
         "dashboardsCat":{
             "idCategory":1,
-            "name":"Dashboards (Stategic Dasboards)",
+            "name":"Dashboards (Strategic Dasboards)",
             "typeIcon":"dashboard",
             "total":"312",
             "bag":[
                 {"id":"dc001","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard"],"src":"https://public.tableau.com/views/DensityofMarijuanaRetailersinThurstonCounty/Dashboard1?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},                                                                                                                                     
                 {"id":"dc002","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard"],"src":"https://public.tableau.com/views/Sankey_16619871415230/Dashboard1?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},
                 {"id":"dc003","icon":"3","name":"Ventas Celulares","type":"Carbon Design","typeCode":"CarbonDesign","developed":"Carbon","typeIcons":["dashboard"],"src":"https://data.coppel.com/#/views/TableroResumen3_0/TableroResumen3_0?:showVizHome=no&:embed=true","route":"/test/dasboard_bi","updated": "30/11/21"},
-                {"id":"dc004","icon":"3","name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","developed":"Dashboard","typeIcons":["dashboard"],"src":"https://data.coppel.com/#/views/MediosdePago/MediosdePago?:iid=6","route":"/test/dasboard_bi","updated": "30/11/21"},
-                {"id":"dc005","icon":"3","name":"Productos","type":"Power Bi","typeCode":"PowerBi","developed":"Dashboard","typeIcons":["dashboard"],"src":"https://data.coppel.com/#/site/CieciadeDatosAVD/views/CovidMapa/Dashboard1?:iid=2","route":"/test/dasboard_bi","updated": "30/11/21"}
+                {"id":"dc004","icon":"3","name":"Ventas semanales","type":"Tableau","typeCode":"Tableau","developed":"Dashboard","typeIcons":["dashboard"],"src":"https://bigdata.coppel.com/QvAJAXZfc/opendoc.htm?document=accespoint%5Ccompras%20muebles.qvw&host=QVS%4010.44.14.139","route":"/test/dasboard_bi","updated": "30/11/21"},
+                {"id":"dc005","icon":"3","name":"Productos","type":"Power Bi","typeCode":"PowerBi","developed":"Dashboard","typeIcons":["dashboard"],"src":"https://app.powerbi.com/view?r=eyJrIjoiMjg0Yzk2NzctMzgzNi00YzgxLWFkZDEtMTk5NGM1YWEwOTNhIiwidCI6Ijc2ZDgxNjIxLWI5YTktNDc4Ni1iYjhmLWEyZWZhODM5ZWVlMiIsImMiOjR9","route":"/test/dasboard_bi","updated": "30/11/21"}
             ]
         },
         "indicadoresCat":{
